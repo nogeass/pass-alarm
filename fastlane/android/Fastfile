@@ -1,0 +1,49 @@
+default_platform(:android)
+
+APP_PACKAGE  = "com.nogeass.passalarm"
+PROJECT_DIR  = File.expand_path("../../apps/android", __dir__)
+
+platform :android do
+  desc "Build debug APK"
+  lane :build do
+    gradle(project_dir: PROJECT_DIR, task: "assembleDebug")
+  end
+
+  desc "Run unit tests"
+  lane :test do
+    gradle(project_dir: PROJECT_DIR, task: "testDebugUnitTest")
+  end
+
+  desc "Deploy beta to Google Play internal track"
+  lane :beta do |options|
+    version = options[:version] || "0.0.1"
+    gradle(
+      project_dir: PROJECT_DIR,
+      task: "bundleRelease",
+      properties: { "versionName" => version }
+    )
+    supply(
+      package_name: APP_PACKAGE,
+      track: "internal",
+      aab: "#{PROJECT_DIR}/app/build/outputs/bundle/release/app-release.aab",
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+
+  desc "Promote to production"
+  lane :release do |options|
+    version = options[:version] || "1.0.0"
+    gradle(
+      project_dir: PROJECT_DIR,
+      task: "bundleRelease",
+      properties: { "versionName" => version }
+    )
+    supply(
+      package_name: APP_PACKAGE,
+      track: "production",
+      aab: "#{PROJECT_DIR}/app/build/outputs/bundle/release/app-release.aab"
+    )
+  end
+end

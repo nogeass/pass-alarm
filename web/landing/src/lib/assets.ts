@@ -1,0 +1,15 @@
+export const images = {
+  heroMap: '/images/hero-map.webp',
+  heroPinRipple: '/images/hero-pin-ripple.webp',
+  heroBell: '/images/hero-bell.webp',
+  painForgetOn: '/images/pain-forget-on.webp',
+  solutionSkip: '/images/solution-skip.webp',
+  featureQueueCards: '/images/feature-queue-cards.webp',
+  featureHoliday: '/images/feature-holiday.webp',
+  featureRepeat: '/images/feature-repeat.webp',
+  how3Steps: '/images/how-3steps.webp',
+  pricingFreePro: '/images/pricing-free-pro.webp',
+  mockIphone: '/images/mock-iphone.webp',
+  mockAndroid: '/images/mock-android.webp',
+  footerMapNight: '/images/footer-map-night.webp',
+} as const

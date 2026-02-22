@@ -1,0 +1,53 @@
+name: Update Holiday Data
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Every Monday at 9:00 UTC (18:00 JST)
+  workflow_dispatch:       # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-holidays:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch holiday data from API
+        run: |
+          YEAR=$(date +%Y)
+          NEXT=$((YEAR + 1))
+          mkdir -p packages/holidays
+          for Y in $YEAR $NEXT; do
+            echo "Fetching holidays for $Y..."
+            curl -sf "https://holidays-jp.github.io/api/v1/$Y/date.json" \
+              -o "packages/holidays/holidays_jp_${Y}_api.json" || echo "Failed to fetch $Y"
+          done
+
+      - name: Convert to app format
+        run: python3 tools/scripts/convert_holidays.py
+
+      - name: Copy to Android assets
+        run: |
+          mkdir -p apps/android/app/src/main/assets
+          cp packages/holidays/holidays_jp_20*.json apps/android/app/src/main/assets/ 2>/dev/null || true
+
+      - name: Check for changes
+        id: check
+        run: |
+          git diff --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add packages/holidays/ apps/android/app/src/main/assets/
+          git commit -m "chore: update holiday data from API [skip ci]"
+          git push

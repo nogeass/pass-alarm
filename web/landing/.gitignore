@@ -1,0 +1,18 @@
+# Next.js
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# Cloudflare
+.wrangler/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Misc
+*.tsbuildinfo
+next-env.d.ts
