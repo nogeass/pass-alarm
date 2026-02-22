@@ -1,0 +1,41 @@
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Xcode
+apps/ios/build/
+apps/ios/*.xcworkspace/xcuserdata/
+apps/ios/*.xcodeproj/xcuserdata/
+apps/ios/DerivedData/
+*.xcuserstate
+
+# SPM
+.build/
+.swiftpm/
+
+# Android
+apps/android/.gradle/
+apps/android/build/
+apps/android/app/build/
+apps/android/local.properties
+apps/android/*.keystore
+apps/android/captures/
+
+# Fastlane
+fastlane/ios/report.xml
+fastlane/android/report.xml
+
+# Node (landing page tooling)
+node_modules/
+web/landing/.wrangler/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Secrets
+*.env
+*.env.*
+!*.env.example

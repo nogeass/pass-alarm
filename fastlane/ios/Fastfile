@@ -1,0 +1,70 @@
+default_platform(:ios)
+
+APP_IDENTIFIER = "com.nogeass.passalarm"
+PROJECT_DIR    = File.expand_path("../../apps/ios", __dir__)
+
+platform :ios do
+  desc "Build the app"
+  lane :build do
+    gym(
+      project: "#{PROJECT_DIR}/PassAlarm.xcodeproj",
+      scheme: "PassAlarm",
+      clean: true,
+      export_method: "development",
+      skip_codesigning: true,
+      destination: "generic/platform=iOS Simulator"
+    )
+  end
+
+  desc "Run unit tests"
+  lane :test do
+    scan(
+      project: "#{PROJECT_DIR}/PassAlarm.xcodeproj",
+      scheme: "PassAlarm",
+      devices: ["iPhone 15"],
+      clean: true,
+      code_coverage: true
+    )
+  end
+
+  desc "Deploy beta to TestFlight"
+  lane :beta do |options|
+    version = options[:version] || "0.0.1"
+    increment_version_number(
+      version_number: version,
+      xcodeproj: "#{PROJECT_DIR}/PassAlarm.xcodeproj"
+    )
+    match(type: "appstore", app_identifier: APP_IDENTIFIER, readonly: true)
+    gym(
+      project: "#{PROJECT_DIR}/PassAlarm.xcodeproj",
+      scheme: "PassAlarm",
+      clean: true,
+      export_method: "app-store"
+    )
+    pilot(
+      app_identifier: APP_IDENTIFIER,
+      skip_waiting_for_build_processing: true
+    )
+  end
+
+  desc "Deploy to App Store"
+  lane :release do |options|
+    version = options[:version] || "1.0.0"
+    increment_version_number(
+      version_number: version,
+      xcodeproj: "#{PROJECT_DIR}/PassAlarm.xcodeproj"
+    )
+    match(type: "appstore", app_identifier: APP_IDENTIFIER, readonly: true)
+    gym(
+      project: "#{PROJECT_DIR}/PassAlarm.xcodeproj",
+      scheme: "PassAlarm",
+      clean: true,
+      export_method: "app-store"
+    )
+    deliver(
+      app_identifier: APP_IDENTIFIER,
+      submit_for_review: false,
+      force: true
+    )
+  end
+end

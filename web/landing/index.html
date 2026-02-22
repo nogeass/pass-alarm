@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>パスアラーム - OFFにしない目覚まし</title>
+  <meta name="description" content="OFFしない。今日だけスキップ。祝日も連続アラームも、もう迷わない。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏰</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwindcss.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#6366f1',
+            'brand-dark': '#4f46e5',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-950 text-white min-h-screen">
+  <header class="flex flex-col items-center justify-center min-h-[70vh] px-4 text-center">
+    <div class="mb-6 text-6xl">⏰</div>
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">
+      Pass<span class="text-brand">Alarm</span>
+    </h1>
+    <p class="text-lg md:text-xl text-gray-400 mb-2">パスアラーム</p>
+    <p class="text-2xl md:text-3xl font-bold mt-6 leading-relaxed">
+      OFFしない。<br class="md:hidden" />今日だけスキップ。
+    </p>
+    <p class="text-gray-400 mt-4 max-w-md">
+      祝日も連続アラームも、もう迷わない。<br />
+      明日のアラームが、今日から見える。
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 mt-10">
+      <a href="#" class="inline-flex items-center gap-2 bg-white text-black font-bold py-3 px-6 rounded-xl hover:bg-gray-200 transition">
+        App Store
+      </a>
+      <a href="#" class="inline-flex items-center gap-2 bg-white text-black font-bold py-3 px-6 rounded-xl hover:bg-gray-200 transition">
+        Google Play
+      </a>
+    </div>
+  </header>
+
+  <section class="max-w-4xl mx-auto px-4 py-20">
+    <h2 class="text-2xl font-bold text-center mb-12">3つの特長</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-900 rounded-2xl p-8 text-center">
+        <div class="text-4xl mb-4">🎌</div>
+        <h3 class="text-xl font-bold mb-3">祝日スキップ</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          日本の祝日を自動検知。<br />
+          祝日の朝、アラームは鳴りません。<br />
+          設定は一度だけ。
+        </p>
+      </div>
+      <div class="bg-gray-900 rounded-2xl p-8 text-center">
+        <div class="text-4xl mb-4">👀</div>
+        <h3 class="text-xl font-bold mb-3">次が見えるキュー</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          今日・明日・あさって。<br />
+          次に鳴るアラームが<br />
+          ひと目でわかる。
+        </p>
+      </div>
+      <div class="bg-gray-900 rounded-2xl p-8 text-center">
+        <div class="text-4xl mb-4">🔁</div>
+        <h3 class="text-xl font-bold mb-3">連続アラーム</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          5分間隔で最大10回。<br />
+          起きたら残りは自動停止。<br />
+          確実に起きる。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="text-center py-16 px-4">
+    <p class="text-xl font-bold mb-2">もう、祝日の前夜に慌てない。</p>
+    <p class="text-gray-400 mb-8">Coming Soon</p>
+  </section>
+
+  <footer class="border-t border-gray-800 py-8 px-4 text-center text-sm text-gray-500">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+      <a href="/privacy" class="hover:text-gray-300 transition">プライバシーポリシー</a>
+      <span class="hidden sm:inline">|</span>
+      <a href="/terms" class="hover:text-gray-300 transition">利用規約</a>
+      <span class="hidden sm:inline">|</span>
+      <a href="mailto:support@nogeass.com" class="hover:text-gray-300 transition">お問い合わせ</a>
+    </div>
+    <p>&copy; 2025 nogeass.com</p>
+  </footer>
+</body>
+</html>
