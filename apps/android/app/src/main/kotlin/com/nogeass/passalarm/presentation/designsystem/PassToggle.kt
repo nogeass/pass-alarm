@@ -116,7 +116,7 @@ fun PassToggle(
                 },
         ) {
             // Moon icon (visible when off)
-            AnimatedVisibility(
+            androidx.compose.animation.AnimatedVisibility(
                 visible = !isOn,
                 enter = fadeIn() + scaleIn(initialScale = 0.5f),
                 exit = fadeOut() + scaleOut(targetScale = 0.5f),

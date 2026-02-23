@@ -29,6 +29,7 @@ final class SeedDefaultAlarmsUseCase: Sendable {
                 weekdaysMask: weekdayMask,
                 repeatCount: 10,
                 intervalMin: 5,
+                soundId: "default",
                 createdAt: now,
                 updatedAt: now
             )

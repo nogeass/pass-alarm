@@ -40,8 +40,12 @@
 
         <service
             android:name=".service.AlarmForegroundService"
-            android:foregroundServiceType="alarm"
-            android:exported="false" />
+            android:foregroundServiceType="specialUse"
+            android:exported="false">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="alarm" />
+        </service>
 
         <receiver
             android:name=".receiver.AlarmReceiver"

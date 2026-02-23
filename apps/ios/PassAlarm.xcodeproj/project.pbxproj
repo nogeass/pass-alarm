@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -85,6 +85,9 @@
 		F5A4F29C13ACA37DEC42F065 /* SkipExceptionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D403134F2DE70886D03B42 /* SkipExceptionRecord.swift */; };
 		F60B780004346CD3598B5D3D /* SeedDefaultAlarmsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E04689A4623862771064795 /* SeedDefaultAlarmsUseCase.swift */; };
 		FEDC7E16A74EBB1D5462B244 /* PricePill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EC6528117103B6DB0F6360 /* PricePill.swift */; };
+		B2C3D4E5F6071829A3B4C5D6 /* SystemSoundPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5C /* SystemSoundPicker.swift */; };
+		D4E5F6071829A30B5C6D7E8F /* FeedbackSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4E5F607182930A4B5C6D7 /* FeedbackSheet.swift */; };
+		F607182930A1B2C5D6E7F8A9 /* FeedbackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F607182930A1B4C5D6E7F8 /* FeedbackAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,7 +132,7 @@
 		50EE81710C2737EFE4909472 /* AlarmEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEditViewModel.swift; sourceTree = "<group>"; };
 		52E9A085439AB1FFDB535085 /* AlarmRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRowView.swift; sourceTree = "<group>"; };
 		557AB9FCE2C7223EBB2F49BE /* UserDefaultsAppSettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAppSettingsRepository.swift; sourceTree = "<group>"; };
-		5FE2948E39D423480DDDE627 /* PassAlarm.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PassAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FE2948E39D423480DDDE627 /* PassAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6028B5A9DD7408713EBAE89E /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		62EC6528117103B6DB0F6360 /* PricePill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricePill.swift; sourceTree = "<group>"; };
 		6BA35DC7767D82B8124F2A63 /* ComputeQueueUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeQueueUseCase.swift; sourceTree = "<group>"; };
@@ -175,6 +178,9 @@
 		F26CA68413320A0F266521B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB4EACB29705074CC617D983 /* SubscriptionRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRepositoryProtocol.swift; sourceTree = "<group>"; };
 		FC069DA27E7E9C2AE5DC0391 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A1B2C3D4E5F60718293A4B5C /* SystemSoundPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSoundPicker.swift; sourceTree = "<group>"; };
+		C3D4E5F607182930A4B5C6D7 /* FeedbackSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackSheet.swift; sourceTree = "<group>"; };
+		E5F607182930A1B4C5D6E7F8 /* FeedbackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +290,7 @@
 		4AA77328FB495F1754530EC2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E5F607182930A1B4C5D6E7F8 /* FeedbackAPI.swift */,
 				F02FB9F9216F16248C69E348 /* UNNotificationPermissionAdapter.swift */,
 				307F7CE0D449DE8EC32971BB /* UNNotificationSchedulerAdapter.swift */,
 			);
@@ -365,6 +372,7 @@
 		7E04FDF7E4AF646EDEE807BC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				C3D4E5F607182930A4B5C6D7 /* FeedbackSheet.swift */,
 				3C5FC2527DB3D1AF622B17B9 /* GlobalSettingsSheet.swift */,
 			);
 			path = Settings;
@@ -529,6 +537,7 @@
 				8EA4E62444F62B961B088B16 /* PassTypography.swift */,
 				1836F5A9C33F3BBFF33CDD4C /* PillToggle.swift */,
 				9E6F9BFD908760BCB4E1EF48 /* PraiseToast.swift */,
+				A1B2C3D4E5F60718293A4B5C /* SystemSoundPicker.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -617,7 +626,6 @@
 				69B10FA40795334610E2F17A /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 				31C51183C9A22B792AB99DEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -717,6 +725,9 @@
 				ED5E5E1D0AAAA2A0DC3025E6 /* UpdatePlanUseCase.swift in Sources */,
 				1BAB5E102610FAEDB09E34D2 /* UserDefaultsAppSettingsRepository.swift in Sources */,
 				EAD366957F29FBA6E37A4E0A /* Weekday.swift in Sources */,
+				B2C3D4E5F6071829A3B4C5D6 /* SystemSoundPicker.swift in Sources */,
+				D4E5F6071829A30B5C6D7E8F /* FeedbackSheet.swift in Sources */,
+				F607182930A1B2C5D6E7F8A9 /* FeedbackAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,6 +812,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NDWFYRF8Y5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "パスアラーム";
@@ -923,6 +935,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NDWFYRF8Y5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "パスアラーム";

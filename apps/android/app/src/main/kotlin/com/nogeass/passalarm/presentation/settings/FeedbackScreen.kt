@@ -154,7 +154,7 @@ fun FeedbackScreen(navController: NavController) {
                     size = PassButtonSize.Medium,
                     color = PassColors.brand,
                     hapticType = PassHapticType.Tap,
-                    enabled = message.isNotBlank() && !isSending,
+                    isEnabled = message.isNotBlank() && !isSending,
                     onClick = {
                         scope.launch {
                             isSending = true
