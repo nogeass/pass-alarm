@@ -25,10 +25,9 @@ struct SkipQueueView: View {
         }
         .task {
             if viewModel == nil {
-                let vm = SkipQueueViewModel(container: container)
-                viewModel = vm
-                await vm.load()
+                viewModel = SkipQueueViewModel(container: container)
             }
+            await viewModel?.load()
         }
         .fullScreenCover(isPresented: Binding(
             get: { viewModel?.showProPurchase ?? false },

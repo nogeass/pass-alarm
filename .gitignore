@@ -28,6 +28,7 @@ fastlane/android/report.xml
 
 # Node (landing page tooling)
 node_modules/
+.wrangler/
 web/landing/.wrangler/
 
 # IDE

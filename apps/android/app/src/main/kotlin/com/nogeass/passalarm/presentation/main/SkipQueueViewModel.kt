@@ -3,6 +3,7 @@ package com.nogeass.passalarm.presentation.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nogeass.passalarm.domain.model.Occurrence
+import com.nogeass.passalarm.domain.repository.AlarmPlanRepository
 import com.nogeass.passalarm.domain.repository.AppSettingsRepository
 import com.nogeass.passalarm.domain.repository.SubscriptionRepository
 import com.nogeass.passalarm.domain.usecase.ComputeQueueUseCase
@@ -11,6 +12,7 @@ import com.nogeass.passalarm.domain.usecase.UpdateAppSettingsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
@@ -32,6 +34,7 @@ class SkipQueueViewModel @Inject constructor(
     private val subscriptionRepository: SubscriptionRepository,
     private val updateAppSettingsUseCase: UpdateAppSettingsUseCase,
     private val appSettingsRepository: AppSettingsRepository,
+    private val planRepository: AlarmPlanRepository,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SkipUiState())
@@ -40,6 +43,7 @@ class SkipQueueViewModel @Inject constructor(
     init {
         load()
         observeProStatus()
+        observePlans()
     }
 
     fun load() {
@@ -85,6 +89,13 @@ class SkipQueueViewModel @Inject constructor(
 
     fun dismissProPurchase() {
         _uiState.update { it.copy(showProPurchase = false) }
+    }
+
+    private fun observePlans() {
+        planRepository.observeAll()
+            .drop(1) // skip initial emission; init already calls load()
+            .onEach { load() }
+            .launchIn(viewModelScope)
     }
 
     private fun observeProStatus() {

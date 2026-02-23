@@ -4,6 +4,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.shadow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.DateRange
@@ -72,13 +73,16 @@ fun ModeToggleFab(
         },
         modifier = modifier
             .size(84.dp)
+            .shadow(elevation = 8.dp, shape = CircleShape)
             .graphicsLayer { rotationZ = rotation },
         shape = CircleShape,
         containerColor = fabColor,
         contentColor = Color.White,
         elevation = FloatingActionButtonDefaults.elevation(
-            defaultElevation = 8.dp,
-            pressedElevation = 12.dp,
+            defaultElevation = 0.dp,
+            pressedElevation = 0.dp,
+            hoveredElevation = 0.dp,
+            focusedElevation = 0.dp,
         ),
     ) {
         Icon(
