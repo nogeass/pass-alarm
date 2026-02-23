@@ -156,12 +156,15 @@ platform :ios do
     deliver(
       api_key: api_key,
       app_identifier: APP_IDENTIFIER,
-      metadata_path: METADATA_PATH,
-      screenshots_path: SCREENSHOTS_PATH,
+      skip_metadata: true,
+      skip_screenshots: true,
       submit_for_review: true,
       automatic_release: true,
       force: true,
-      precheck_include_in_app_purchases: false
+      precheck_include_in_app_purchases: false,
+      submission_information: {
+        add_id_info_uses_idfa: false
+      }
     )
   end
 end
