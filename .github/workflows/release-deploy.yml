@@ -3,7 +3,6 @@ name: Release Deploy
 on:
   push:
     tags:
-      - 'release'
       - 'v[0-9]+.[0-9]+.[0-9]+'
 
 concurrency:
@@ -19,16 +18,9 @@ jobs:
     steps:
       - name: Extract version
         id: version
-        run: |
-          TAG="${GITHUB_REF#refs/tags/}"
-          if [ "$TAG" = "release" ]; then
-            echo "version=1.0.0" >> $GITHUB_OUTPUT
-          else
-            # Strip leading 'v' if present
-            echo "version=${TAG#v}" >> $GITHUB_OUTPUT
-          fi
+        run: echo "version=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
 
-  # ── iOS: Build, upload, submit for review ──────────────────────────────
+  # ── iOS: Build, upload metadata, submit for review ─────────────────────
   ios-release:
     needs: prepare
     runs-on: macos-15
@@ -53,11 +45,9 @@ jobs:
 
       - name: Deploy iOS to App Store
         env:
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
-          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.ASC_KEY_ID }}
-          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
-          APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
         run: |
           cd fastlane/ios
           fastlane release version:${{ needs.prepare.outputs.version }}

@@ -22,9 +22,15 @@ apps/android/local.properties
 apps/android/*.keystore
 apps/android/captures/
 
+# Build artifacts
+*.ipa
+*.dSYM.zip
+
 # Fastlane
+fastlane/report.xml
 fastlane/ios/report.xml
 fastlane/android/report.xml
+fastlane/README.md
 
 # Node (landing page tooling)
 node_modules/
@@ -41,6 +47,7 @@ web/landing/.wrangler/
 *.env.*
 !*.env.example
 secrets/
+fastlane/keys/
 
 # Firebase config (stored in GitHub Secrets for CI)
 apps/ios/PassAlarm/Resources/GoogleService-Info.plist
