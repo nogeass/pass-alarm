@@ -28,7 +28,11 @@ jobs:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
-        run: cd fastlane/ios && fastlane beta
+        run: |
+          mkdir -p fastlane/ios/fastlane
+          ln -sf "$PWD/fastlane/ios/Fastfile" fastlane/ios/fastlane/Fastfile
+          cd fastlane/ios
+          fastlane beta
 
   android-beta:
     runs-on: ubuntu-latest
@@ -48,4 +52,8 @@ jobs:
       - name: Deploy Android Beta
         env:
           SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_PLAY_JSON_KEY }}
-        run: cd fastlane/android && fastlane beta
+        run: |
+          mkdir -p fastlane/android/fastlane
+          ln -sf "$PWD/fastlane/android/Fastfile" fastlane/android/fastlane/Fastfile
+          cd fastlane/android
+          fastlane beta
