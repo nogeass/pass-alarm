@@ -97,7 +97,7 @@ fun AlarmListContent(
 }
 
 @Composable
-private fun SwipeToDismissAlarmRow(
+internal fun SwipeToDismissAlarmRow(
     plan: AlarmPlan,
     onToggle: (Boolean) -> Unit,
     onClick: () -> Unit,

@@ -4,6 +4,7 @@ struct AlarmListView: View {
     @Environment(DIContainer.self) private var container
     @State private var viewModel: AlarmListViewModel?
     var onEdit: (AlarmPlan) -> Void
+    var onDeletePerformed: (() -> Void)? = nil
 
     var body: some View {
         Group {
@@ -63,7 +64,10 @@ struct AlarmListView: View {
                     )
                     .contextMenu {
                         Button(role: .destructive) {
-                            Task { await vm.deletePlan(plan.id) }
+                            Task {
+                                await vm.deletePlan(plan.id)
+                                onDeletePerformed?()
+                            }
                         } label: {
                             Label("削除", systemImage: "trash")
                         }

@@ -12,10 +12,14 @@ class DataStoreAppSettingsRepository @Inject constructor(
     private val prefs get() = context.getSharedPreferences("app_settings", Context.MODE_PRIVATE)
 
     override suspend fun get() = AppSettings(
-        holidayAutoSkip = prefs.getBoolean("holidayAutoSkip", true)
+        holidayAutoSkip = prefs.getBoolean("holidayAutoSkip", true),
+        tutorialCompleted = prefs.getBoolean("tutorialCompleted", false)
     )
 
     override suspend fun save(settings: AppSettings) {
-        prefs.edit().putBoolean("holidayAutoSkip", settings.holidayAutoSkip).apply()
+        prefs.edit()
+            .putBoolean("holidayAutoSkip", settings.holidayAutoSkip)
+            .putBoolean("tutorialCompleted", settings.tutorialCompleted)
+            .apply()
     }
 }

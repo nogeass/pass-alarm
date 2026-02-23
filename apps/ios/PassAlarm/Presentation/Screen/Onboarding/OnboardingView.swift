@@ -2,13 +2,13 @@ import SwiftUI
 
 private enum OnboardingStep {
     case permission
-    case seeding
     case tutorial
     case done
 }
 
 struct OnboardingView: View {
     @Environment(DIContainer.self) private var container
+    var skipPermission: Bool = false
     var onComplete: () -> Void
 
     @State private var step: OnboardingStep = .permission
@@ -16,29 +16,29 @@ struct OnboardingView: View {
     @State private var denied = false
     @State private var showToast = false
     @State private var toastMessage = ""
-    @State private var arrowOffset: CGFloat = 0
 
     var body: some View {
         ZStack {
             MapBackdrop(timeOfDay: .morning)
 
-            VStack(spacing: PassSpacing.lg) {
-                Spacer()
-
-                switch step {
-                case .permission:
+            switch step {
+            case .permission:
+                VStack(spacing: PassSpacing.lg) {
+                    Spacer()
                     permissionStep
-                case .seeding:
-                    seedingStep
-                case .tutorial:
-                    tutorialStep
-                case .done:
-                    EmptyView()
+                    Spacer()
                 }
-
-                Spacer()
+                .padding()
+            case .tutorial:
+                TutorialFlowView(onComplete: {
+                    withAnimation {
+                        step = .done
+                    }
+                    onComplete()
+                })
+            case .done:
+                EmptyView()
             }
-            .padding()
 
             VStack {
                 Spacer()
@@ -46,9 +46,14 @@ struct OnboardingView: View {
                     .padding(.bottom, PassSpacing.xl)
             }
         }
+        .onAppear {
+            if skipPermission {
+                step = .tutorial
+            }
+        }
     }
 
-    // MARK: - Step 1: Permission
+    // MARK: - Permission Step
 
     private var permissionStep: some View {
         VStack(spacing: PassSpacing.lg) {
@@ -103,80 +108,6 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: - Step 2: Seeding
-
-    private var seedingStep: some View {
-        VStack(spacing: PassSpacing.lg) {
-            ProgressView()
-                .tint(.white)
-                .scaleEffect(1.5)
-
-            Text("アラームを準備中...")
-                .font(.title3)
-                .fontWeight(.semibold)
-                .foregroundStyle(.white)
-
-            Text("デフォルトのアラームを設定しています")
-                .font(.subheadline)
-                .foregroundStyle(.white.opacity(0.6))
-        }
-        .task {
-            await seedAlarms()
-        }
-    }
-
-    // MARK: - Step 3: Tutorial
-
-    private var tutorialStep: some View {
-        VStack(spacing: PassSpacing.lg) {
-            Image(systemName: "hand.draw")
-                .font(.system(size: 64))
-                .foregroundStyle(.white.opacity(0.8))
-
-            Text("スワイプしてスキップしてみよう")
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundStyle(.white)
-                .multilineTextAlignment(.center)
-
-            // Animated swipe hint
-            HStack(spacing: PassSpacing.sm) {
-                Image(systemName: "arrow.right")
-                    .font(.system(size: 24, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.7))
-                    .offset(x: arrowOffset)
-
-                Text("右にスワイプでパス")
-                    .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.6))
-            }
-            .onAppear {
-                withAnimation(
-                    .easeInOut(duration: 1.0)
-                    .repeatForever(autoreverses: true)
-                ) {
-                    arrowOffset = 20
-                }
-            }
-
-            Spacer()
-                .frame(height: PassSpacing.lg)
-
-            PassButton(
-                title: "はじめる",
-                size: .large,
-                color: PassColors.brand,
-                haptic: .success
-            ) {
-                withAnimation {
-                    step = .done
-                }
-                onComplete()
-            }
-            .padding(.horizontal, PassSpacing.lg)
-        }
-    }
-
     // MARK: - Actions
 
     private func requestPermission() async {
@@ -190,7 +121,7 @@ struct OnboardingView: View {
                 }
                 try? await Task.sleep(for: .seconds(1))
                 withAnimation {
-                    step = .seeding
+                    step = .tutorial
                 }
             } else {
                 denied = true
@@ -201,17 +132,5 @@ struct OnboardingView: View {
             PassHaptics.warning()
         }
         requesting = false
-    }
-
-    private func seedAlarms() async {
-        do {
-            try await container.seedDefaultAlarmsUseCase.execute()
-        } catch {
-            print("Seed alarms error: \(error)")
-        }
-        try? await Task.sleep(for: .seconds(1))
-        withAnimation {
-            step = .tutorial
-        }
     }
 }

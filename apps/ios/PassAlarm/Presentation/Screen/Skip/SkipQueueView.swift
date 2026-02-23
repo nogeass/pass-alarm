@@ -5,6 +5,7 @@ struct SkipQueueView: View {
     @State private var viewModel: SkipQueueViewModel?
     @State private var showToast = false
     @State private var toastMessage = ""
+    var onSkipPerformed: (() -> Void)? = nil
 
     var body: some View {
         ZStack {
@@ -104,6 +105,7 @@ struct SkipQueueView: View {
                                                     showToast = true
                                                 }
                                             }
+                                            onSkipPerformed?()
                                         }
                                     } label: {
                                         Label("パス", systemImage: "hand.raised.fill")

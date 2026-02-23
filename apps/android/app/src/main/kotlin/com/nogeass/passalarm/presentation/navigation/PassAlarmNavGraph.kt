@@ -24,6 +24,9 @@ fun PassAlarmNavGraph(
                         popUpTo(Screen.Onboarding.route) { inclusive = true }
                     }
                 },
+                onNavigateToAlarmEdit = {
+                    navController.navigate(Screen.AlarmEdit.createRoute())
+                },
             )
         }
         composable(Screen.Main.route) {

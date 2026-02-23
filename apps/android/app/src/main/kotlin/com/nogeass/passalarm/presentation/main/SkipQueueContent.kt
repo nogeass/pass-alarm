@@ -183,7 +183,7 @@ fun SkipQueueContent(
  * Swipe right to skip, swipe left to unskip.
  */
 @Composable
-private fun AlarmCard(
+internal fun AlarmCard(
     occurrence: Occurrence,
     onSkip: () -> Unit,
     onUnskip: () -> Unit,
