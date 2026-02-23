@@ -17,6 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Restore GoogleService-Info.plist
+        run: echo "${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}" | base64 -d > apps/ios/PassAlarm/Resources/GoogleService-Info.plist
+
       - name: Install Fastlane
         run: gem install fastlane
 
@@ -25,6 +28,8 @@ jobs:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+          FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: "120"
+          FASTLANE_XCODEBUILD_SETTINGS_RETRIES: "6"
         run: |
           mkdir -p fastlane/ios/fastlane
           ln -sf "$PWD/fastlane/ios/Fastfile" fastlane/ios/fastlane/Fastfile
@@ -42,6 +47,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+
+      - name: Restore google-services.json
+        run: echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | base64 -d > apps/android/app/google-services.json
 
       - name: Install Fastlane
         run: sudo gem install fastlane
