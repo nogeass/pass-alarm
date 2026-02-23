@@ -21,7 +21,7 @@ export const ja = {
   pain: {
     title: '今日だけOFF問題、知ってますか？',
     off: {
-      label: 'OFF',
+      label: '今日だけOFF問題',
       title: '今日OFFにすると…',
       desc: 'ONにし忘れませんか？\n明日も鳴らないなんてことから解放されます。',
     },
