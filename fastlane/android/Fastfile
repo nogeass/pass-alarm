@@ -1,9 +1,10 @@
 default_platform(:android)
 
-APP_PACKAGE     = "com.nogeass.passalarm"
-PROJECT_DIR     = File.expand_path("../../apps/android", __dir__)
-METADATA_PATH   = File.expand_path("metadata/android", __dir__)
-SCREENSHOTS_PATH = File.expand_path("screenshots", __dir__)
+APP_PACKAGE      = "com.nogeass.passalarm"
+FASTFILE_DIR     = File.dirname(File.realpath(__FILE__))
+PROJECT_DIR      = File.expand_path("../../apps/android", FASTFILE_DIR)
+METADATA_PATH    = File.expand_path("metadata/android", FASTFILE_DIR)
+SCREENSHOTS_PATH = File.expand_path("screenshots", FASTFILE_DIR)
 
 platform :android do
   desc "Build debug APK"
