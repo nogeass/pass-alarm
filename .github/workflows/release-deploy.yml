@@ -76,10 +76,10 @@ jobs:
 
   # ── Android: Build, upload, submit for review ──────────────────────────
   android-release:
-    if: ${{ secrets.GOOGLE_PLAY_JSON_KEY != '' }}
     needs: prepare
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
