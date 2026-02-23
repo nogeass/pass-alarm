@@ -91,10 +91,6 @@ export function Hero() {
           {ja.hero.sub}
         </motion.p>
 
-        <motion.p variants={item} className="mt-3 text-sm text-text-subtle">
-          {ja.hero.note}
-        </motion.p>
-
         <motion.div
           variants={item}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"

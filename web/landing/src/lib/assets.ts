@@ -12,4 +12,8 @@ export const images = {
   mockIphone: '/images/mock-iphone.webp',
   mockAndroid: '/images/mock-android.webp',
   footerMapNight: '/images/footer-map-night.webp',
+  ssIosAlarmList: '/images/ss-ios-alarm-list.webp',
+  ssIosQueue: '/images/ss-ios-queue.webp',
+  ssIosSettings: '/images/ss-ios-settings.webp',
+  ssIosEdit: '/images/ss-ios-edit.webp',
 } as const

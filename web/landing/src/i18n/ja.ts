@@ -8,14 +8,14 @@ export const ja = {
   },
 
   header: {
-    logo: 'PassAlarm',
-    logoSub: 'パスアラーム',
+    logo: 'パスアラーム',
+    logoSub: 'OFFにしない目覚まし',
   },
 
   hero: {
     headline: 'OFFにしない目覚まし\n「パスアラーム」',
     sub: '鳴らしたくない日は、OFFじゃなく"スキップ"。',
-    note: '無料で使える。上限解放はアプリ内課金。',
+    note: '',
   },
 
   pain: {

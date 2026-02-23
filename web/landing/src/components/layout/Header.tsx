@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { ja } from '@/i18n/ja'
-import { DownloadButton } from '@/components/ui/DownloadButton'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -26,20 +26,25 @@ export function Header() {
         }
       `}
     >
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center">
         <a href="/" className="flex items-center gap-2">
-          <span className="text-2xl">⏰</span>
+          <Image
+            src="/images/hero-pin-ripple.webp"
+            alt="パスアラーム"
+            width={36}
+            height={36}
+            className="rounded-lg"
+          />
           <div className="flex flex-col leading-tight">
-            <span className="font-black text-lg text-text tracking-tight">
-              {ja.header.logo}
+            <span className="font-black text-base md:text-lg text-text tracking-tight">
+              {ja.header.logoSub}
+              <span className="hidden md:inline">「{ja.header.logo}」</span>
+            </span>
+            <span className="text-[10px] text-text-muted md:hidden">
+              「{ja.header.logo}」
             </span>
           </div>
         </a>
-
-        <div className="hidden md:flex items-center gap-3">
-          <DownloadButton platform="ios" variant="compact" />
-          <DownloadButton platform="android" variant="compact" />
-        </div>
       </div>
     </header>
   )
