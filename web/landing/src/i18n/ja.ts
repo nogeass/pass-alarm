@@ -80,7 +80,7 @@ export const ja = {
       name: '無料',
       price: '¥0',
       features: [
-        'アラーム3つまで',
+        'アラーム10個まで',
         '今日だけスキップ',
         '祝日スキップ',
         'キュー表示',
@@ -92,8 +92,6 @@ export const ja = {
       price: 'Coming Soon',
       features: [
         'アラーム無制限',
-        '連続アラーム',
-        'カスタムサウンド',
         '優先サポート',
       ],
     },
@@ -131,7 +129,7 @@ export const ja = {
   },
 
   finalCta: {
-    headline: 'もう、祝日の前夜に慌てない。',
+    headline: 'もうONにし忘れから解放されます。',
     sub: '今すぐ無料ダウンロード',
   },
 
