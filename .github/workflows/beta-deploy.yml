@@ -43,7 +43,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Install Fastlane
-        run: gem install fastlane
+        run: sudo gem install fastlane
 
       - name: Deploy Android Beta
         env:
