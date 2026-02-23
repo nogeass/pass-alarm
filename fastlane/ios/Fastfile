@@ -94,7 +94,13 @@ platform :ios do
       version_number: version,
       xcodeproj: "#{PROJECT_DIR}/PassAlarm.xcodeproj"
     )
+    latest = latest_testflight_build_number(
+      api_key: api_key,
+      app_identifier: APP_IDENTIFIER,
+      version: version
+    )
     increment_build_number(
+      build_number: latest + 1,
       xcodeproj: "#{PROJECT_DIR}/PassAlarm.xcodeproj"
     )
     setup_manual_signing_if_ci
@@ -148,7 +154,13 @@ platform :ios do
       version_number: version,
       xcodeproj: "#{PROJECT_DIR}/PassAlarm.xcodeproj"
     )
+    latest = latest_testflight_build_number(
+      api_key: api_key,
+      app_identifier: APP_IDENTIFIER,
+      version: version
+    )
     increment_build_number(
+      build_number: latest + 1,
       xcodeproj: "#{PROJECT_DIR}/PassAlarm.xcodeproj"
     )
     setup_manual_signing_if_ci
