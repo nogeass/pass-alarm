@@ -38,13 +38,13 @@ export function HowItWorks() {
                 <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-500 text-white text-lg font-bold mb-4 shadow-lg">
                   {step.num}
                 </span>
-                <div className="mb-4 scale-[0.6] origin-top -mb-16">
-                  <DeviceFrame>
+                <div className="mb-4">
+                  <DeviceFrame className="!w-[150px] md:!w-[170px]">
                     <Image
                       src={stepScreenshots[i]}
                       alt={step.title}
-                      width={280}
-                      height={600}
+                      width={170}
+                      height={370}
                       className="w-full h-full object-cover"
                     />
                   </DeviceFrame>

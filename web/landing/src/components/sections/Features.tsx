@@ -26,13 +26,13 @@ export function Features() {
         {ja.features.items.map((feature, i) => (
           <FadeIn key={feature.title} delay={i * 0.15}>
             <Card className="h-full text-center flex flex-col items-center">
-              <div className="mb-4 scale-75 origin-top">
-                <DeviceFrame>
+              <div className="mb-4">
+                <DeviceFrame className="!w-[160px] md:!w-[180px]">
                   <Image
                     src={featureScreenshots[i]}
                     alt={feature.title}
-                    width={280}
-                    height={600}
+                    width={180}
+                    height={390}
                     className="w-full h-full object-cover"
                   />
                 </DeviceFrame>

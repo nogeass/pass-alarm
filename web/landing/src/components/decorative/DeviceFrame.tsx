@@ -16,8 +16,8 @@ export function DeviceFrame({ children, className = '' }: Props) {
       `}
       style={{ aspectRatio: '9 / 19.5' }}
     >
-      {/* Notch */}
-      <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-b-2xl z-10" />
+      {/* Dynamic Island */}
+      <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10" />
 
       {/* Screen */}
       <div className="w-full h-full bg-gradient-to-b from-surface to-surface-muted rounded-[2rem] overflow-hidden flex items-center justify-center">
