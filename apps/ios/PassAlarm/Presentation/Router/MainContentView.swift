@@ -86,12 +86,13 @@ struct MainContentView: View {
                 .padding(.bottom, PassSpacing.xl)
             }
         }
-        .sheet(isPresented: $showAlarmEdit) {
+        .sheet(isPresented: $showAlarmEdit, onDismiss: {
+            refreshId = UUID()
+        }) {
             AlarmEditSheet(
                 plan: editingPlan,
                 onSaved: {
                     showAlarmEdit = false
-                    refreshId = UUID()
                 }
             )
         }

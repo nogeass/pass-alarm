@@ -7,6 +7,7 @@ final class UNNotificationSchedulerAdapter: NotificationSchedulerProtocol {
         content.title = title
         content.body = body
         content.sound = .default
+        content.interruptionLevel = .timeSensitive
         content.categoryIdentifier = "ALARM_RING"
         content.userInfo["soundId"] = soundId
 

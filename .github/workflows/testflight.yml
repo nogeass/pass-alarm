@@ -1,0 +1,42 @@
+name: TestFlight Deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: testflight
+  cancel-in-progress: true
+
+jobs:
+  ios-testflight:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache SPM
+        uses: actions/cache@v4
+        with:
+          path: |
+            apps/ios/.build
+            ~/Library/Caches/org.swift.swiftpm
+          key: spm-beta-${{ runner.os }}-${{ hashFiles('apps/ios/**/Package.resolved') }}
+          restore-keys: spm-beta-${{ runner.os }}-
+
+      - name: Install Fastlane
+        run: gem install fastlane
+
+      - name: Restore GoogleService-Info.plist
+        run: echo "${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}" | base64 -d > apps/ios/PassAlarm/Resources/GoogleService-Info.plist
+
+      - name: Deploy to TestFlight
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+          FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: "120"
+          FASTLANE_XCODEBUILD_SETTINGS_RETRIES: "6"
+        run: |
+          ln -sf ios/Fastfile fastlane/Fastfile
+          fastlane beta version:1.0.0
