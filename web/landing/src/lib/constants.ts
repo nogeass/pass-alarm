@@ -14,7 +14,7 @@ export const SECTION_IDS = {
 
 export const EXTERNAL_LINKS = {
   github: 'https://github.com/nogeass/pass-alarm',
-  contact: 'https://github.com/nogeass/pass-alarm/issues',
+  contact: '/contact',
   privacy: '/privacy',
   terms: '/terms',
   oss: '/oss',

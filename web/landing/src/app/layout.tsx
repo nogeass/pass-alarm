@@ -47,6 +47,11 @@ export default function RootLayout({
   return (
     <html lang="ja" className={notoSansJP.variable}>
       <body className="font-sans bg-surface text-text antialiased">
+        <script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          async
+          defer
+        />
         <Header />
         <main>{children}</main>
         <Footer />

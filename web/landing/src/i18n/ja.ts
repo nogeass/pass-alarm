@@ -76,6 +76,7 @@ export const ja = {
 
   pricing: {
     title: '料金',
+    trial: '1週間無料で試せます',
     free: {
       name: '無料',
       price: '¥0',
@@ -86,10 +87,24 @@ export const ja = {
         'キュー表示',
       ],
     },
-    pro: {
-      name: 'Pro',
-      badge: 'アプリ内課金',
-      price: 'Coming Soon',
+    proMonthly: {
+      name: 'Pro 月額',
+      badge: 'おすすめ',
+      price: '¥480',
+      period: '/月',
+      trial: '1週間無料',
+      features: [
+        'アラーム無制限',
+        '優先サポート',
+      ],
+    },
+    proYearly: {
+      name: 'Pro 年額',
+      badge: 'お得',
+      price: '¥3,800',
+      period: '/年',
+      saving: '月額換算 ¥317 — 34%お得',
+      trial: '1週間無料',
       features: [
         'アラーム無制限',
         '優先サポート',
@@ -123,7 +138,7 @@ export const ja = {
       },
       {
         q: '本当に無料ですか？',
-        a: 'はい。基本機能は完全無料です。Pro機能（目覚まし上限解放）のみアプリ内課金が必要です。',
+        a: 'はい。基本機能は完全無料です。Pro機能（目覚まし上限解放）のみ有料プランが必要です。',
       },
     ],
   },
