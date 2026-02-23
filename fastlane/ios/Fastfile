@@ -168,11 +168,12 @@ platform :ios do
     deliver(
       api_key: api_key,
       app_identifier: APP_IDENTIFIER,
-      skip_metadata: true,
-      skip_screenshots: true,
+      metadata_path: METADATA_PATH,
+      screenshots_path: SCREENSHOTS_PATH,
       submit_for_review: false,
       force: true,
-      precheck_include_in_app_purchases: false
+      precheck_include_in_app_purchases: false,
+      run_precheck_before_submit: false
     )
   end
 end
