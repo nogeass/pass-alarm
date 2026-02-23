@@ -165,11 +165,12 @@ platform :ios do
     )
     setup_manual_signing_if_ci
     gym(**appstore_gym_options)
-    deliver(
+    upload_to_app_store(
       api_key: api_key,
       app_identifier: APP_IDENTIFIER,
-      metadata_path: METADATA_PATH,
+      skip_metadata: true,
       screenshots_path: SCREENSHOTS_PATH,
+      overwrite_screenshots: true,
       submit_for_review: false,
       force: true,
       precheck_include_in_app_purchases: false,
