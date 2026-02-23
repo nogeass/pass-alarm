@@ -49,6 +49,8 @@ jobs:
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
         run: |
+          mkdir -p fastlane/ios/fastlane
+          ln -sf "$PWD/fastlane/ios/Fastfile" fastlane/ios/fastlane/Fastfile
           cd fastlane/ios
           fastlane release version:${{ needs.prepare.outputs.version }}
 
@@ -89,5 +91,7 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
           ANDROID_STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
         run: |
+          mkdir -p fastlane/android/fastlane
+          ln -sf "$PWD/fastlane/android/Fastfile" fastlane/android/fastlane/Fastfile
           cd fastlane/android
           fastlane release version:${{ needs.prepare.outputs.version }}
