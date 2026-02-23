@@ -10,19 +10,19 @@ export function DeviceFrame({ children, className = '' }: Props) {
     <div
       className={`
         relative w-[240px] md:w-[280px]
-        bg-gray-900 rounded-[2.5rem] p-3
-        shadow-2xl shadow-black/15
+        rounded-[1.8rem] overflow-hidden
+        ring-[3px] ring-gray-800
+        shadow-xl shadow-black/20
         ${className}
       `}
-      style={{ aspectRatio: '9 / 19.5' }}
     >
       {/* Dynamic Island */}
-      <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10" />
+      <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-[50px] h-[14px] bg-black rounded-full z-10" />
 
       {/* Screen */}
-      <div className="w-full h-full bg-gradient-to-b from-surface to-surface-muted rounded-[2rem] overflow-hidden flex items-center justify-center">
+      <div className="w-full">
         {children || (
-          <div className="text-center text-text-subtle text-sm">
+          <div className="aspect-[9/19.5] bg-gradient-to-b from-surface to-surface-muted flex flex-col items-center justify-center text-center text-text-subtle text-sm">
             <span className="text-4xl block mb-2">⏰</span>
             Coming Soon
           </div>

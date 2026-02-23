@@ -25,7 +25,7 @@ export function FinalCta() {
 
       <div className="relative z-10 max-w-2xl mx-auto text-center">
         <FadeIn>
-          <h2 className="heading-lg mb-4">{ja.finalCta.headline}</h2>
+          <h2 className="heading-lg mb-4 whitespace-pre-line">{ja.finalCta.headline}</h2>
         </FadeIn>
         <FadeIn delay={0.1}>
           <p className="body-text mb-10">{ja.finalCta.sub}</p>

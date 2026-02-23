@@ -144,7 +144,7 @@ export const ja = {
   },
 
   finalCta: {
-    headline: 'もうONにし忘れから解放されます。',
+    headline: 'もうONにし忘れから\n解放されます。',
     sub: '今すぐ無料ダウンロード',
   },
 

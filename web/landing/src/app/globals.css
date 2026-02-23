@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  html {
+  html, body {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
   }
 
   body {
@@ -40,7 +41,7 @@
   }
 
   .heading-lg {
-    @apply text-3xl md:text-5xl font-black tracking-tight text-text;
+    @apply text-3xl md:text-5xl font-black tracking-tight text-text leading-tight;
   }
 
   .heading-md {
