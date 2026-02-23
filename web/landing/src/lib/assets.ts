@@ -1,6 +1,6 @@
 export const images = {
   heroMap: '/images/hero-map.webp',
-  heroPinRipple: '/images/hero-pin-ripple.webp',
+  heroPinRipple: '/icon-512.png',
   heroBell: '/images/hero-bell.webp',
   painForgetOn: '/images/pain-forget-on.webp',
   solutionSkip: '/images/solution-skip.webp',

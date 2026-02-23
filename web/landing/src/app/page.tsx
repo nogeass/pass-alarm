@@ -3,8 +3,6 @@ import { PainSolution } from '@/components/sections/PainSolution'
 import { Features } from '@/components/sections/Features'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 import { Pricing } from '@/components/sections/Pricing'
-import { AppScreens } from '@/components/sections/AppScreens'
-import { Faq } from '@/components/sections/Faq'
 import { FinalCta } from '@/components/sections/FinalCta'
 
 export default function Home() {
@@ -15,8 +13,6 @@ export default function Home() {
       <Features />
       <HowItWorks />
       <Pricing />
-      <AppScreens />
-      <Faq />
       <FinalCta />
     </>
   )

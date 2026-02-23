@@ -33,12 +33,6 @@ export function Footer() {
             {ja.footer.terms}
           </a>
           <a
-            href={EXTERNAL_LINKS.oss}
-            className="text-gray-300 hover:text-white transition"
-          >
-            {ja.footer.oss}
-          </a>
-          <a
             href={EXTERNAL_LINKS.contact}
             className="text-gray-300 hover:text-white transition"
           >
@@ -46,7 +40,14 @@ export function Footer() {
           </a>
         </div>
         <p className="text-center text-sm text-gray-400">
-          {ja.footer.copyright}
+          <a
+            href="https://nogeass.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition"
+          >
+            {ja.footer.copyright}
+          </a>
         </p>
       </div>
     </footer>

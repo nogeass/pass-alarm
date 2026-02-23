@@ -29,7 +29,7 @@ export function Header() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center">
         <a href="/" className="flex items-center gap-2">
           <Image
-            src="/images/hero-pin-ripple.webp"
+            src="/icon-512.png"
             alt="パスアラーム"
             width={36}
             height={36}
