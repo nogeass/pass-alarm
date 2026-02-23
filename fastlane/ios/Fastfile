@@ -26,27 +26,6 @@ def asc_api_key_params
   params
 end
 
-# ---------------------------------------------------------------------------
-# Write ASC API key to a temp .p8 file for xcodebuild authentication
-# Returns xcargs string for automatic signing on CI
-# ---------------------------------------------------------------------------
-def xcodebuild_auth_xcargs
-  key_id    = ENV.fetch('ASC_KEY_ID', 'R7PF52F527')
-  issuer_id = ENV.fetch('ASC_ISSUER_ID', '44f2cad6-60e5-437b-8a28-a830872fc253')
-
-  if ENV['ASC_PRIVATE_KEY']
-    require 'base64'
-    key_path = "/tmp/AuthKey_#{key_id}.p8"
-    File.write(key_path, Base64.decode64(ENV['ASC_PRIVATE_KEY']))
-  else
-    key_path = "#{KEYS_DIR}/AuthKey.p8"
-  end
-
-  "-allowProvisioningUpdates " \
-  "-authenticationKeyPath #{key_path} " \
-  "-authenticationKeyID #{key_id} " \
-  "-authenticationKeyIssuerID #{issuer_id}"
-end
 
 platform :ios do
   desc "Build the app"
@@ -88,12 +67,7 @@ platform :ios do
       project: "#{PROJECT_DIR}/PassAlarm.xcodeproj",
       scheme: "PassAlarm",
       clean: true,
-      export_method: "app-store",
-      export_options: {
-        signingStyle: "automatic",
-        teamID: "NDWFYRF8Y5"
-      },
-      xcargs: xcodebuild_auth_xcargs
+      export_method: "app-store"
     )
     pilot(
       api_key: api_key,
@@ -151,12 +125,7 @@ platform :ios do
       project: "#{PROJECT_DIR}/PassAlarm.xcodeproj",
       scheme: "PassAlarm",
       clean: true,
-      export_method: "app-store",
-      export_options: {
-        signingStyle: "automatic",
-        teamID: "NDWFYRF8Y5"
-      },
-      xcargs: xcodebuild_auth_xcargs
+      export_method: "app-store"
     )
     deliver(
       api_key: api_key,
