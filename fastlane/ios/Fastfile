@@ -170,13 +170,9 @@ platform :ios do
       app_identifier: APP_IDENTIFIER,
       skip_metadata: true,
       skip_screenshots: true,
-      submit_for_review: true,
-      automatic_release: true,
+      submit_for_review: false,
       force: true,
-      precheck_include_in_app_purchases: false,
-      submission_information: {
-        add_id_info_uses_idfa: false
-      }
+      precheck_include_in_app_purchases: false
     )
   end
 end
