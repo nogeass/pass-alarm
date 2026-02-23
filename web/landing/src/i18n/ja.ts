@@ -23,7 +23,7 @@ export const ja = {
     off: {
       label: 'OFF',
       title: '今日OFFにすると…',
-      desc: '明日も鳴らない。\n気づくのは寝坊した朝。',
+      desc: 'ONにし忘れませんか？\n明日も鳴らないなんてことから解放されます。',
     },
     skip: {
       label: 'スキップ',
