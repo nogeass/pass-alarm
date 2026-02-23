@@ -1,7 +1,9 @@
 default_platform(:android)
 
-APP_PACKAGE  = "com.nogeass.passalarm"
-PROJECT_DIR  = File.expand_path("../../apps/android", __dir__)
+APP_PACKAGE     = "com.nogeass.passalarm"
+PROJECT_DIR     = File.expand_path("../../apps/android", __dir__)
+METADATA_PATH   = File.expand_path("metadata/android", __dir__)
+SCREENSHOTS_PATH = File.expand_path("screenshots", __dir__)
 
 platform :android do
   desc "Build debug APK"
@@ -12,6 +14,32 @@ platform :android do
   desc "Run unit tests"
   lane :test do
     gradle(project_dir: PROJECT_DIR, task: "testDebugUnitTest")
+  end
+
+  desc "Capture screenshots on emulator"
+  lane :screenshots do
+    gradle(project_dir: PROJECT_DIR, task: "assembleDebug")
+    gradle(project_dir: PROJECT_DIR, task: "assembleAndroidTest")
+    capture_android_screenshots(
+      app_package_name: APP_PACKAGE,
+      app_apk_path: "#{PROJECT_DIR}/app/build/outputs/apk/debug/app-debug.apk",
+      tests_apk_path: "#{PROJECT_DIR}/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      locales: ["ja-JP", "en-US"],
+      clear_previous_screenshots: true,
+      output_directory: SCREENSHOTS_PATH,
+      use_tests_in_classes: ["com.nogeass.passalarm.ScreenshotTest"]
+    )
+  end
+
+  desc "Upload metadata only (no binary)"
+  lane :upload_metadata do
+    supply(
+      package_name: APP_PACKAGE,
+      metadata_path: METADATA_PATH,
+      skip_upload_apk: true,
+      skip_upload_aab: true,
+      skip_upload_changelogs: false
+    )
   end
 
   desc "Deploy beta to Google Play internal track"
@@ -32,7 +60,7 @@ platform :android do
     )
   end
 
-  desc "Promote to production"
+  desc "Promote to production (with metadata + screenshots)"
   lane :release do |options|
     version = options[:version] || "1.0.0"
     gradle(
@@ -43,7 +71,8 @@ platform :android do
     supply(
       package_name: APP_PACKAGE,
       track: "production",
-      aab: "#{PROJECT_DIR}/app/build/outputs/bundle/release/app-release.aab"
+      aab: "#{PROJECT_DIR}/app/build/outputs/bundle/release/app-release.aab",
+      metadata_path: METADATA_PATH
     )
   end
 end

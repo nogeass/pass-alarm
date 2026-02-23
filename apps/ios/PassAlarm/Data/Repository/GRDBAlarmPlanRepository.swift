@@ -31,4 +31,13 @@ final class GRDBAlarmPlanRepository: AlarmPlanRepositoryProtocol, Sendable {
             _ = try AlarmPlanRecord.deleteOne(db, key: id.uuidString)
         }
     }
+
+    func fetchEnabled() async throws -> [AlarmPlan] {
+        try await database.dbQueue.read { db in
+            try AlarmPlanRecord
+                .filter(Column("isEnabled") == true)
+                .fetchAll(db)
+                .map { $0.toEntity() }
+        }
+    }
 }

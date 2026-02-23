@@ -15,6 +15,9 @@ interface AlarmPlanDao {
     @Query("SELECT * FROM alarm_plan WHERE id = :id")
     suspend fun fetchById(id: Long): AlarmPlanEntity?
 
+    @Query("SELECT * FROM alarm_plan WHERE isEnabled = 1")
+    suspend fun fetchEnabled(): List<AlarmPlanEntity>
+
     @Upsert
     suspend fun upsert(entity: AlarmPlanEntity): Long
 

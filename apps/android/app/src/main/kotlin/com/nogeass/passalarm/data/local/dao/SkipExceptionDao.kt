@@ -11,6 +11,9 @@ interface SkipExceptionDao {
     @Query("SELECT * FROM skip_exception WHERE date >= :from AND date <= :to")
     suspend fun fetchByDateRange(from: String, to: String): List<SkipExceptionEntity>
 
+    @Query("SELECT * FROM skip_exception WHERE planId = :planId AND date >= :from AND date <= :to")
+    suspend fun fetchByPlanAndDateRange(planId: Long, from: String, to: String): List<SkipExceptionEntity>
+
     @Upsert
     suspend fun upsert(entity: SkipExceptionEntity): Long
 
@@ -19,4 +22,7 @@ interface SkipExceptionDao {
 
     @Query("DELETE FROM skip_exception WHERE date = :date")
     suspend fun deleteByDate(date: String)
+
+    @Query("DELETE FROM skip_exception WHERE planId = :planId AND date = :date")
+    suspend fun deleteByPlanAndDate(planId: Long, date: String)
 }

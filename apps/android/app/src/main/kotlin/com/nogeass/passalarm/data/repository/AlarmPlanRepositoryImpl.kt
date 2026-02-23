@@ -20,6 +20,9 @@ class AlarmPlanRepositoryImpl @Inject constructor(
     override suspend fun fetchById(id: Long): AlarmPlan? =
         dao.fetchById(id)?.toDomain()
 
+    override suspend fun fetchEnabled(): List<AlarmPlan> =
+        dao.fetchEnabled().map { it.toDomain() }
+
     override suspend fun save(plan: AlarmPlan): Long =
         dao.upsert(AlarmPlanEntity.fromDomain(plan))
 

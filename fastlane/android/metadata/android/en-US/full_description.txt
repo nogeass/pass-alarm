@@ -1,0 +1,48 @@
+Pass Alarm — The alarm you never turn OFF.
+
+Don't turn it OFF. Just skip today.
+Today stays silent. Tomorrow rings on time.
+
+<b>The problem with turning alarms OFF</b>
+
+When you turn an alarm OFF today… it won't ring tomorrow either.
+You only notice when you oversleep.
+
+With Pass Alarm, you skip today only.
+Since the alarm stays ON, there's nothing to forget.
+
+<b>3 Key Features</b>
+
+★ Skip Today Only
+No turning OFF means no forgetting to turn it back ON.
+
+★ Visual Queue
+See upcoming alarms and swipe to skip.
+
+★ Auto-Skip Holidays
+Japanese national holidays supported. No waking up on days off.
+
+<b>How It Works</b>
+
+1. Set your alarm time and days
+2. Tap "Skip Today" when you don't need it
+3. Tomorrow it rings automatically — because you never turned it OFF
+
+<b>Pricing</b>
+
+Core features are completely free:
+• Up to 3 alarms
+• Skip Today
+• Holiday skip
+• Queue view
+
+Pro (In-App Purchase):
+• Unlimited alarms
+• Consecutive alarms
+• Custom sounds
+• Priority support
+
+<b>Important</b>
+
+Pass Alarm uses OS notification features. Notification permission is required.
+Please check your battery optimization settings.

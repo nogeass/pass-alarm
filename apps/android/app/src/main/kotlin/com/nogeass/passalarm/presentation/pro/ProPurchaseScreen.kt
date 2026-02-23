@@ -163,6 +163,7 @@ fun ProPurchaseScreen(
                 PricePill(
                     label = "月額",
                     price = monthly?.displayPrice ?: "--",
+                    trialText = monthly?.trialText,
                     isSelected = uiState.selectedPeriod == ProPeriod.MONTHLY,
                     onClick = { viewModel.selectPeriod(ProPeriod.MONTHLY) },
                     modifier = Modifier.weight(1f),
@@ -171,6 +172,7 @@ fun ProPurchaseScreen(
                     label = "年額",
                     price = yearly?.displayPrice ?: "--",
                     subtitle = yearly?.pricePerMonth?.let { "$it/月" },
+                    trialText = yearly?.trialText,
                     isSelected = uiState.selectedPeriod == ProPeriod.YEARLY,
                     onClick = { viewModel.selectPeriod(ProPeriod.YEARLY) },
                     modifier = Modifier.weight(1f),
@@ -180,8 +182,10 @@ fun ProPurchaseScreen(
             Spacer(modifier = Modifier.height(PassSpacing.lg))
 
             // ── Purchase button ──────────────────────────────────────────
+            val selectedProduct = uiState.products.firstOrNull { it.period == uiState.selectedPeriod }
+            val ctaTitle = selectedProduct?.trialText?.let { "${it}で試す" } ?: "はじめる"
             PassButton(
-                title = "はじめる",
+                title = if (uiState.isPurchasing) "処理中..." else ctaTitle,
                 isEnabled = !uiState.isPurchasing && uiState.products.isNotEmpty(),
                 hapticType = PassHapticType.Success,
             ) {
@@ -264,6 +268,7 @@ private fun PricePill(
     price: String,
     modifier: Modifier = Modifier,
     subtitle: String? = null,
+    trialText: String? = null,
     isSelected: Boolean = false,
     onClick: () -> Unit = {},
 ) {
@@ -310,6 +315,20 @@ private fun PricePill(
                     style = PassTypography.badgeText,
                     color = Color.White.copy(alpha = 0.5f),
                 )
+            }
+            trialText?.let {
+                Spacer(modifier = Modifier.height(PassSpacing.xs))
+                Surface(
+                    shape = RoundedCornerShape(50),
+                    color = PassColors.successGreen,
+                ) {
+                    Text(
+                        text = it,
+                        style = PassTypography.badgeText.copy(fontWeight = FontWeight.Bold),
+                        color = Color.White,
+                        modifier = Modifier.padding(horizontal = PassSpacing.sm, vertical = 3.dp),
+                    )
+                }
             }
         }
     }

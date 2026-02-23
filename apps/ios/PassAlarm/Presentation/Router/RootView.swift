@@ -14,7 +14,7 @@ struct RootView: View {
                     permissionGranted = true
                 })
             } else {
-                MainTabView()
+                MainContentView()
             }
         }
         .task {

@@ -5,4 +5,5 @@ protocol AlarmPlanRepositoryProtocol: Sendable {
     func fetchById(_ id: UUID) async throws -> AlarmPlan?
     func save(_ plan: AlarmPlan) async throws
     func delete(_ id: UUID) async throws
+    func fetchEnabled() async throws -> [AlarmPlan]
 }

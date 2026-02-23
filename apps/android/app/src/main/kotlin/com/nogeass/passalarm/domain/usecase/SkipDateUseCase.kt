@@ -9,13 +9,13 @@ class SkipDateUseCase @Inject constructor(
     private val skipRepository: SkipExceptionRepository,
     private val reschedule: RescheduleNextNUseCase
 ) {
-    suspend fun execute(date: String, reason: SkipReason = SkipReason.MANUAL) {
-        skipRepository.save(SkipException(date = date, reason = reason))
+    suspend fun execute(planId: Long, date: String, reason: SkipReason = SkipReason.MANUAL) {
+        skipRepository.save(SkipException(planId = planId, date = date, reason = reason))
         reschedule()
     }
 
-    suspend fun unskip(date: String) {
-        skipRepository.deleteByDate(date)
+    suspend fun unskip(planId: Long, date: String) {
+        skipRepository.deleteByPlanAndDate(planId, date)
         reschedule()
     }
 }

@@ -22,4 +22,5 @@ struct ProProduct: Identifiable, Sendable {
     let period: ProPeriod
     let displayPrice: String
     let pricePerMonth: String?
+    let trialText: String?
 }

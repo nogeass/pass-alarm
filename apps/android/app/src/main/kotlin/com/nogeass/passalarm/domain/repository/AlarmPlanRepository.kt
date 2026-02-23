@@ -7,6 +7,7 @@ interface AlarmPlanRepository {
     fun observeAll(): Flow<List<AlarmPlan>>
     suspend fun fetchAll(): List<AlarmPlan>
     suspend fun fetchById(id: Long): AlarmPlan?
+    suspend fun fetchEnabled(): List<AlarmPlan>
     suspend fun save(plan: AlarmPlan): Long
     suspend fun delete(id: Long)
 }

@@ -19,4 +19,5 @@ data class ProProduct(
     val period: ProPeriod,
     val displayPrice: String,
     val pricePerMonth: String?,
+    val trialText: String?,
 )

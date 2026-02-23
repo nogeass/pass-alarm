@@ -66,11 +66,13 @@ final class StoreKitSubscriptionRepository: SubscriptionRepositoryProtocol, @unc
                 let monthly = product.price / 12
                 return product.priceFormatStyle.format(monthly)
             }()
+            let trialText = Self.trialText(for: product)
             return ProProduct(
                 id: product.id,
                 period: period,
                 displayPrice: product.displayPrice,
-                pricePerMonth: pricePerMonth
+                pricePerMonth: pricePerMonth,
+                trialText: trialText
             )
         }
     }
@@ -136,6 +138,19 @@ final class StoreKitSubscriptionRepository: SubscriptionRepositoryProtocol, @unc
         case monthlyID: return .monthly
         case yearlyID:  return .yearly
         default:        return nil
+        }
+    }
+
+    private static func trialText(for product: Product) -> String? {
+        guard let intro = product.subscription?.introductoryOffer,
+              intro.paymentMode == .freeTrial else { return nil }
+        let value = intro.period.value
+        switch intro.period.unit {
+        case .day:   return "\(value)日間無料"
+        case .week:  return "\(value)週間無料"
+        case .month: return "\(value)ヶ月無料"
+        case .year:  return "\(value)年間無料"
+        @unknown default: return nil
         }
     }
 }

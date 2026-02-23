@@ -6,22 +6,26 @@ struct AlarmPlanRecord: Codable, FetchableRecord, PersistableRecord, Sendable {
 
     var id: String
     var isEnabled: Bool
+    var label: String
     var timeHHmm: String
     var weekdaysMask: Int
     var repeatCount: Int
     var intervalMin: Int
-    var holidayAutoSkip: Bool
+    var soundId: String
+    var holidayAutoSkip: Bool // kept in DB for backward compat, ignored in domain
     var createdAt: Date
     var updatedAt: Date
 
     init(from entity: AlarmPlan) {
         self.id = entity.id.uuidString
         self.isEnabled = entity.isEnabled
+        self.label = entity.label
         self.timeHHmm = entity.timeHHmm
         self.weekdaysMask = Int(entity.weekdaysMask)
         self.repeatCount = entity.repeatCount
         self.intervalMin = entity.intervalMin
-        self.holidayAutoSkip = entity.holidayAutoSkip
+        self.soundId = entity.soundId
+        self.holidayAutoSkip = true
         self.createdAt = entity.createdAt
         self.updatedAt = entity.updatedAt
     }
@@ -30,11 +34,12 @@ struct AlarmPlanRecord: Codable, FetchableRecord, PersistableRecord, Sendable {
         AlarmPlan(
             id: UUID(uuidString: id) ?? UUID(),
             isEnabled: isEnabled,
+            label: label,
             timeHHmm: timeHHmm,
             weekdaysMask: UInt8(weekdaysMask),
             repeatCount: repeatCount,
             intervalMin: intervalMin,
-            holidayAutoSkip: holidayAutoSkip,
+            soundId: soundId,
             createdAt: createdAt,
             updatedAt: updatedAt
         )

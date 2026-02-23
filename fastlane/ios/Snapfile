@@ -1,0 +1,17 @@
+project File.expand_path("../../apps/ios/PassAlarm.xcodeproj", __dir__)
+scheme "PassAlarm"
+
+devices([
+  "iPhone 16 Pro Max",   # 6.7" (required)
+  "iPhone 16 Pro",       # 6.3"
+  "iPhone SE (3rd generation)",  # 4.7"
+  "iPad Pro 13-inch (M4)",       # iPad
+])
+
+languages(["ja", "en-US"])
+
+output_directory File.expand_path("screenshots", __dir__)
+
+clear_previous_screenshots true
+
+override_status_bar true

@@ -1,0 +1,1014 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06DC78F896F6155221228599 /* GRDBSkipExceptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36B355A6B5E20483DD925 /* GRDBSkipExceptionRepository.swift */; };
+		0A4D09F92DFC602D79D7567D /* SkipDateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E982C3C2F9C2AB1E04AC9DE6 /* SkipDateUseCase.swift */; };
+		0E7917D7F3D164D7BD614A4B /* ComputeQueueUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA35DC7767D82B8124F2A63 /* ComputeQueueUseCase.swift */; };
+		0EE22D2AF4D0C3CD4A6168E5 /* TokenStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B0D8AA38041FCCA492232 /* TokenStatus.swift */; };
+		12375B5452B2A402C558E84A /* AlarmPlanRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1167F5B1745E7A872A62341 /* AlarmPlanRecord.swift */; };
+		161A353E6CA4291EA0265FAD /* PraiseToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6F9BFD908760BCB4E1EF48 /* PraiseToast.swift */; };
+		183F1675B196C52CFAC11EBA /* SkipExceptionRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC53473C717E4C7F75ACE3 /* SkipExceptionRepositoryProtocol.swift */; };
+		1BAB5E102610FAEDB09E34D2 /* UserDefaultsAppSettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557AB9FCE2C7223EBB2F49BE /* UserDefaultsAppSettingsRepository.swift */; };
+		1DB5A3E2F3F95A2A1D1D9185 /* AlarmPlanRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F83028C8187BC012A77BEBA /* AlarmPlanRepositoryProtocol.swift */; };
+		20993177C158DE4DC367BBD0 /* AlarmRingingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742484BCB24E461CF447221C /* AlarmRingingView.swift */; };
+		2744236E2A039B6BE3282614 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB33F90F8F7060E2E5F6A1 /* AppDelegate.swift */; };
+		27D235A6996B6E4D829F82E0 /* HolidaySeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758509665FC13199F6138C /* HolidaySeedLoader.swift */; };
+		2B1DB81A478362FBD17B6D35 /* ProPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEF286B385D14F7731729BC /* ProPurchaseView.swift */; };
+		2C2600D165EFD7CB048D26C8 /* AlarmRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E9A085439AB1FFDB535085 /* AlarmRowView.swift */; };
+		30D17C25E8854558BEFCA646 /* AlarmEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EE81710C2737EFE4909472 /* AlarmEditViewModel.swift */; };
+		329BDC690AD46E0F2A95583E /* Occurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4166C939BBD749A2EA97B5A7 /* Occurrence.swift */; };
+		32EF6102B13BFE2EB8CAC339 /* GlobalSettingsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FC2527DB3D1AF622B17B9 /* GlobalSettingsSheet.swift */; };
+		36D79BA17BF9B4A18F145CA8 /* PillToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836F5A9C33F3BBFF33CDD4C /* PillToggle.swift */; };
+		39CD57E04C61364B67276565 /* GRDBScheduledTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F296EFB2F8A9689229BEC2 /* GRDBScheduledTokenRepository.swift */; };
+		3B6C7A6CFF72E8582C3D01B0 /* PassAlarmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D2B4D1B6F98AFFA6E40C4 /* PassAlarmApp.swift */; };
+		4655F17D589050C77D424666 /* GRDBHolidayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DC27F927311A965C1CD5A /* GRDBHolidayRepository.swift */; };
+		4A4429FDB002A0FEA7CCB6F3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC8F91B6B5CAC48C87B87F /* OnboardingView.swift */; };
+		4F2785055DFA77B120BAA26B /* GRDBAlarmPlanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B425B9FB3A31510BB43AA583 /* GRDBAlarmPlanRepository.swift */; };
+		5110B1AA2A4B64F75AE6685D /* SkipQueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABD6E2757973836C73AF428 /* SkipQueueView.swift */; };
+		55437F9C958D0FF42A06CBCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F26CA68413320A0F266521B8 /* Assets.xcassets */; };
+		593069B0A422E997B5C50AAF /* AlarmEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191765B8C061F753D9BD885E /* AlarmEditSheet.swift */; };
+		5A0DE3FB1E998D5E190C4390 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AD79A1E180113AA9DEB3D /* AppSettings.swift */; };
+		5B99932F42590DF92C06A8DC /* HolidayJPRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439199C882B7F3C9A32C2359 /* HolidayJPRecord.swift */; };
+		5F5F16545C9E3C26AE2B0B1E /* ProCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39897774E6F9563C3B88C5B8 /* ProCardView.swift */; };
+		6285A4894CEB8F9DABF1A272 /* UpdateAppSettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A14F28BF95F9F14206C1B /* UpdateAppSettingsUseCase.swift */; };
+		687A9B1F997D9EBAD86A6FDB /* AlarmRingingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDC6E102E75DD01E0AC3459 /* AlarmRingingViewModel.swift */; };
+		6E0A184C5F07F44790955ABC /* AppSettingsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BA3BBC9C25B731E54C184D /* AppSettingsRepositoryProtocol.swift */; };
+		6F11479D3B1E94A2C0D90278 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 7B3DBE989BC5727FD501850B /* GRDB */; };
+		730F054886140966811CE682 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 37C2D29E23FC8694200998F0 /* FirebaseCrashlytics */; };
+		7573D5A635EDC655BA36A562 /* PassSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA31DB9356A2EF95C97D6BC /* PassSpacing.swift */; };
+		75AAAC8668C931FFF83C2929 /* MapBackdrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508944CC3949E09537A8678 /* MapBackdrop.swift */; };
+		76B821E4EDAE84D3AB332552 /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8A1B43A584226C191044F /* Date+Util.swift */; };
+		798E6114049A17F07022E91E /* UNNotificationPermissionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02FB9F9216F16248C69E348 /* UNNotificationPermissionAdapter.swift */; };
+		7CDAB6C1D5C4FEE4330CF5D7 /* StoreKitSubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3AE12AC77323E3D649D5B /* StoreKitSubscriptionRepository.swift */; };
+		7D8DB089FAA127A26BBC772A /* CheckProLimitUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9668E3A40F6FA5AE6EA051 /* CheckProLimitUseCase.swift */; };
+		7F5CE642DC14B73E4F7029E1 /* NotificationSchedulerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9E5F50B2D5C496D7E68F65 /* NotificationSchedulerProtocol.swift */; };
+		8107F8D9164CC628B5FF0CCD /* AlarmSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A7784B8446508DDF4318F8 /* AlarmSession.swift */; };
+		82C0AB2CC1876687A582ACB9 /* HolidayRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72631CCD0D12F31BB2526895 /* HolidayRepositoryProtocol.swift */; };
+		89585F813F89A965F19D54EA /* HolidayJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA76F8010ABF63129E72D23 /* HolidayJP.swift */; };
+		8E9004D82C9F4C774E21B893 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CDEF37B24AF174CEC801CB /* MainContentView.swift */; };
+		9009675B5B03F688E5F6C0B5 /* PassToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BE2FF19445427D136CF5 /* PassToggle.swift */; };
+		9326455DAFA549A6B5094875 /* PassButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751419266572873408240FF /* PassButton.swift */; };
+		944669A32159574E6916C5B9 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EEE264084641AA57F6EDBF /* DIContainer.swift */; };
+		9FCECDA0C0E073DC731167A1 /* NotificationPermissionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7328F927BC3E8C705C1EA46 /* NotificationPermissionProtocol.swift */; };
+		A2B815C9EB03812428E622F8 /* UNNotificationSchedulerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307F7CE0D449DE8EC32971BB /* UNNotificationSchedulerAdapter.swift */; };
+		A4E7F41D15C0BA4B68A55B79 /* CreatePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4CEF78F22038F1D35FDF29 /* CreatePlanUseCase.swift */; };
+		AB622E0196B92C0E4C97FBE0 /* ProStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D4A2AA664AB2B5ACDB4FC /* ProStatus.swift */; };
+		AED3876A57F0D5E24B419FE5 /* SkipException.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6BB2EC671BD386ABF6D1A /* SkipException.swift */; };
+		AF43D14615DE8B517A1F60A3 /* SubscriptionRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EACB29705074CC617D983 /* SubscriptionRepositoryProtocol.swift */; };
+		BC5020BB50CC4E7D4482E48D /* PassTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4E62444F62B961B088B16 /* PassTypography.swift */; };
+		BC77805E0022632B6B98AF96 /* AlarmListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC45204787608817B0FD25 /* AlarmListViewModel.swift */; };
+		C412A94923E1C7161FD45623 /* PassColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4183DC43A5F11ABAED675ED5 /* PassColors.swift */; };
+		C442E1F5CB6887215516A311 /* AlarmCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A74EE0C19ABB7AEC0B832 /* AlarmCardView.swift */; };
+		C50743D13CD4C38192BC57CD /* EnablePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A34BD139798EF404516BD2 /* EnablePlanUseCase.swift */; };
+		C6C2BEAC7235C7826280BCB9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC069DA27E7E9C2AE5DC0391 /* GoogleService-Info.plist */; };
+		C982BB549F90F13F4EA57DA5 /* AlarmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6509553555213B0F0F5BC49 /* AlarmListView.swift */; };
+		D321FCE1C1E7C7849083FAD0 /* RescheduleNextNUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579654B6D3BAD3FF8960813 /* RescheduleNextNUseCase.swift */; };
+		D726BE148F926656CC5C4BF3 /* DeletePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE022CA19ABFB289101C39 /* DeletePlanUseCase.swift */; };
+		DB780FD605A9F072A3B16688 /* PassHaptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFC896DE456F6057BB95D1 /* PassHaptics.swift */; };
+		DDB1566995CBFFD527CE897C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EA371E4AAC5F0114EBC646 /* RootView.swift */; };
+		DE2AFD5917D300021FABD04C /* ScheduledTokenRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D399D71699D97F821E1E9D9B /* ScheduledTokenRepositoryProtocol.swift */; };
+		DEA74A6B52991AB53F03E5D5 /* SkipQueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1CBB2C74EC728B70BC6FA1 /* SkipQueueViewModel.swift */; };
+		E297F0718CAF0F9107C0ACF1 /* OnAlarmFiredUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ED38BE547885EDD91A0051 /* OnAlarmFiredUseCase.swift */; };
+		E37BE3C1BF9DB08F37D20865 /* AlarmPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DC5CB189B4C24C74EC32E /* AlarmPlan.swift */; };
+		E7EF583111AE34EB5570A9E6 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D2CB710365C55F4615D07 /* AppDatabase.swift */; };
+		EAD366957F29FBA6E37A4E0A /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028B5A9DD7408713EBAE89E /* Weekday.swift */; };
+		EB9CD1DE66423BA631E301FC /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4C22E234CCFC51FC688A854D /* FirebaseAnalytics */; };
+		ED5E5E1D0AAAA2A0DC3025E6 /* UpdatePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C48A1E8E344981B34DD771 /* UpdatePlanUseCase.swift */; };
+		F2C926888FED64E1C2852723 /* ScheduledTokenRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB70CA8A52F11865E4380E2 /* ScheduledTokenRecord.swift */; };
+		F572D4726383B613C5C58F2D /* ScheduledToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80A7A52EC8A5E9CF2F5D9B1 /* ScheduledToken.swift */; };
+		F5A4F29C13ACA37DEC42F065 /* SkipExceptionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D403134F2DE70886D03B42 /* SkipExceptionRecord.swift */; };
+		F60B780004346CD3598B5D3D /* SeedDefaultAlarmsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E04689A4623862771064795 /* SeedDefaultAlarmsUseCase.swift */; };
+		FEDC7E16A74EBB1D5462B244 /* PricePill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EC6528117103B6DB0F6360 /* PricePill.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9B6A55D4F26A4D3595FA2E3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC92E3AA7D6E2589AF7104B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0651FAEE77F52412CF57E44;
+			remoteInfo = PassAlarm;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		07BA3BBC9C25B731E54C184D /* AppSettingsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsRepositoryProtocol.swift; sourceTree = "<group>"; };
+		1508944CC3949E09537A8678 /* MapBackdrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBackdrop.swift; sourceTree = "<group>"; };
+		1836F5A9C33F3BBFF33CDD4C /* PillToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillToggle.swift; sourceTree = "<group>"; };
+		191765B8C061F753D9BD885E /* AlarmEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEditSheet.swift; sourceTree = "<group>"; };
+		199B0D8AA38041FCCA492232 /* TokenStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStatus.swift; sourceTree = "<group>"; };
+		1CA31DB9356A2EF95C97D6BC /* PassSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassSpacing.swift; sourceTree = "<group>"; };
+		24DEC9E7A1A3A949416DA7A4 /* PassAlarmTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PassAlarmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		281DC5CB189B4C24C74EC32E /* AlarmPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPlan.swift; sourceTree = "<group>"; };
+		2B4CEF78F22038F1D35FDF29 /* CreatePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanUseCase.swift; sourceTree = "<group>"; };
+		307F7CE0D449DE8EC32971BB /* UNNotificationSchedulerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNNotificationSchedulerAdapter.swift; sourceTree = "<group>"; };
+		31A34BD139798EF404516BD2 /* EnablePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnablePlanUseCase.swift; sourceTree = "<group>"; };
+		334A74EE0C19ABB7AEC0B832 /* AlarmCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCardView.swift; sourceTree = "<group>"; };
+		36ED38BE547885EDD91A0051 /* OnAlarmFiredUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnAlarmFiredUseCase.swift; sourceTree = "<group>"; };
+		3751419266572873408240FF /* PassButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassButton.swift; sourceTree = "<group>"; };
+		39897774E6F9563C3B88C5B8 /* ProCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProCardView.swift; sourceTree = "<group>"; };
+		3C1CBB2C74EC728B70BC6FA1 /* SkipQueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipQueueViewModel.swift; sourceTree = "<group>"; };
+		3C5FC2527DB3D1AF622B17B9 /* GlobalSettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettingsSheet.swift; sourceTree = "<group>"; };
+		3CA76F8010ABF63129E72D23 /* HolidayJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayJP.swift; sourceTree = "<group>"; };
+		3E04689A4623862771064795 /* SeedDefaultAlarmsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedDefaultAlarmsUseCase.swift; sourceTree = "<group>"; };
+		3EE36B355A6B5E20483DD925 /* GRDBSkipExceptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBSkipExceptionRepository.swift; sourceTree = "<group>"; };
+		4166C939BBD749A2EA97B5A7 /* Occurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occurrence.swift; sourceTree = "<group>"; };
+		4183DC43A5F11ABAED675ED5 /* PassColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassColors.swift; sourceTree = "<group>"; };
+		439199C882B7F3C9A32C2359 /* HolidayJPRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayJPRecord.swift; sourceTree = "<group>"; };
+		4A8D2CB710365C55F4615D07 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
+		4A9668E3A40F6FA5AE6EA051 /* CheckProLimitUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProLimitUseCase.swift; sourceTree = "<group>"; };
+		4B1D4A2AA664AB2B5ACDB4FC /* ProStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProStatus.swift; sourceTree = "<group>"; };
+		4CDC6E102E75DD01E0AC3459 /* AlarmRingingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRingingViewModel.swift; sourceTree = "<group>"; };
+		4D6AD79A1E180113AA9DEB3D /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		50EE81710C2737EFE4909472 /* AlarmEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEditViewModel.swift; sourceTree = "<group>"; };
+		52E9A085439AB1FFDB535085 /* AlarmRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRowView.swift; sourceTree = "<group>"; };
+		557AB9FCE2C7223EBB2F49BE /* UserDefaultsAppSettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAppSettingsRepository.swift; sourceTree = "<group>"; };
+		5FE2948E39D423480DDDE627 /* PassAlarm.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PassAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6028B5A9DD7408713EBAE89E /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
+		62EC6528117103B6DB0F6360 /* PricePill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricePill.swift; sourceTree = "<group>"; };
+		6BA35DC7767D82B8124F2A63 /* ComputeQueueUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeQueueUseCase.swift; sourceTree = "<group>"; };
+		6D9E5F50B2D5C496D7E68F65 /* NotificationSchedulerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSchedulerProtocol.swift; sourceTree = "<group>"; };
+		72631CCD0D12F31BB2526895 /* HolidayRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayRepositoryProtocol.swift; sourceTree = "<group>"; };
+		742484BCB24E461CF447221C /* AlarmRingingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRingingView.swift; sourceTree = "<group>"; };
+		7579654B6D3BAD3FF8960813 /* RescheduleNextNUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleNextNUseCase.swift; sourceTree = "<group>"; };
+		7A7A14F28BF95F9F14206C1B /* UpdateAppSettingsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppSettingsUseCase.swift; sourceTree = "<group>"; };
+		7F83028C8187BC012A77BEBA /* AlarmPlanRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPlanRepositoryProtocol.swift; sourceTree = "<group>"; };
+		83AE022CA19ABFB289101C39 /* DeletePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePlanUseCase.swift; sourceTree = "<group>"; };
+		83F296EFB2F8A9689229BEC2 /* GRDBScheduledTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBScheduledTokenRepository.swift; sourceTree = "<group>"; };
+		89758509665FC13199F6138C /* HolidaySeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaySeedLoader.swift; sourceTree = "<group>"; };
+		89EA371E4AAC5F0114EBC646 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		8EA4E62444F62B961B088B16 /* PassTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassTypography.swift; sourceTree = "<group>"; };
+		8FFB33F90F8F7060E2E5F6A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9520BE2FF19445427D136CF5 /* PassToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassToggle.swift; sourceTree = "<group>"; };
+		966DC27F927311A965C1CD5A /* GRDBHolidayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBHolidayRepository.swift; sourceTree = "<group>"; };
+		9CEFC896DE456F6057BB95D1 /* PassHaptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassHaptics.swift; sourceTree = "<group>"; };
+		9E6F9BFD908760BCB4E1EF48 /* PraiseToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraiseToast.swift; sourceTree = "<group>"; };
+		A2F3AE12AC77323E3D649D5B /* StoreKitSubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitSubscriptionRepository.swift; sourceTree = "<group>"; };
+		A3D403134F2DE70886D03B42 /* SkipExceptionRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipExceptionRecord.swift; sourceTree = "<group>"; };
+		A7CDEF37B24AF174CEC801CB /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
+		ACCC45204787608817B0FD25 /* AlarmListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewModel.swift; sourceTree = "<group>"; };
+		B425B9FB3A31510BB43AA583 /* GRDBAlarmPlanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBAlarmPlanRepository.swift; sourceTree = "<group>"; };
+		B7328F927BC3E8C705C1EA46 /* NotificationPermissionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionProtocol.swift; sourceTree = "<group>"; };
+		BDB70CA8A52F11865E4380E2 /* ScheduledTokenRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledTokenRecord.swift; sourceTree = "<group>"; };
+		C2EEE264084641AA57F6EDBF /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		C80A7A52EC8A5E9CF2F5D9B1 /* ScheduledToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledToken.swift; sourceTree = "<group>"; };
+		CABD6E2757973836C73AF428 /* SkipQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipQueueView.swift; sourceTree = "<group>"; };
+		D0BC53473C717E4C7F75ACE3 /* SkipExceptionRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipExceptionRepositoryProtocol.swift; sourceTree = "<group>"; };
+		D399D71699D97F821E1E9D9B /* ScheduledTokenRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledTokenRepositoryProtocol.swift; sourceTree = "<group>"; };
+		D6509553555213B0F0F5BC49 /* AlarmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListView.swift; sourceTree = "<group>"; };
+		DAC6BB2EC671BD386ABF6D1A /* SkipException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipException.swift; sourceTree = "<group>"; };
+		DDAC8F91B6B5CAC48C87B87F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		DE5D2B4D1B6F98AFFA6E40C4 /* PassAlarmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassAlarmApp.swift; sourceTree = "<group>"; };
+		DFE8A1B43A584226C191044F /* Date+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Util.swift"; sourceTree = "<group>"; };
+		E1A7784B8446508DDF4318F8 /* AlarmSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSession.swift; sourceTree = "<group>"; };
+		E7C48A1E8E344981B34DD771 /* UpdatePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePlanUseCase.swift; sourceTree = "<group>"; };
+		E982C3C2F9C2AB1E04AC9DE6 /* SkipDateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipDateUseCase.swift; sourceTree = "<group>"; };
+		EEEF286B385D14F7731729BC /* ProPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProPurchaseView.swift; sourceTree = "<group>"; };
+		F02FB9F9216F16248C69E348 /* UNNotificationPermissionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNNotificationPermissionAdapter.swift; sourceTree = "<group>"; };
+		F1167F5B1745E7A872A62341 /* AlarmPlanRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPlanRecord.swift; sourceTree = "<group>"; };
+		F26CA68413320A0F266521B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB4EACB29705074CC617D983 /* SubscriptionRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRepositoryProtocol.swift; sourceTree = "<group>"; };
+		FC069DA27E7E9C2AE5DC0391 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D62B48BA5A1312503998368 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F11479D3B1E94A2C0D90278 /* GRDB in Frameworks */,
+				EB9CD1DE66423BA631E301FC /* FirebaseAnalytics in Frameworks */,
+				730F054886140966811CE682 /* FirebaseCrashlytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		167C6CCB34FAB65E9E2AFECA /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		20FB67EA510928EECD6E7BEA /* Ringing */ = {
+			isa = PBXGroup;
+			children = (
+				742484BCB24E461CF447221C /* AlarmRingingView.swift */,
+				4CDC6E102E75DD01E0AC3459 /* AlarmRingingViewModel.swift */,
+			);
+			path = Ringing;
+			sourceTree = "<group>";
+		};
+		213BE041789497D1DD79A932 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DDAC8F91B6B5CAC48C87B87F /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		2336BF5307B5487FFDAA70AF /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				B425B9FB3A31510BB43AA583 /* GRDBAlarmPlanRepository.swift */,
+				966DC27F927311A965C1CD5A /* GRDBHolidayRepository.swift */,
+				83F296EFB2F8A9689229BEC2 /* GRDBScheduledTokenRepository.swift */,
+				3EE36B355A6B5E20483DD925 /* GRDBSkipExceptionRepository.swift */,
+				A2F3AE12AC77323E3D649D5B /* StoreKitSubscriptionRepository.swift */,
+				557AB9FCE2C7223EBB2F49BE /* UserDefaultsAppSettingsRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		2B71FF678936DA7AC8795A99 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				4A8D2CB710365C55F4615D07 /* AppDatabase.swift */,
+				2FB86CDE8C285CACD4A2D17B /* Record */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		2BD7F95360302DBE8AFC6718 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F26CA68413320A0F266521B8 /* Assets.xcassets */,
+				FC069DA27E7E9C2AE5DC0391 /* GoogleService-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2FB86CDE8C285CACD4A2D17B /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				F1167F5B1745E7A872A62341 /* AlarmPlanRecord.swift */,
+				439199C882B7F3C9A32C2359 /* HolidayJPRecord.swift */,
+				BDB70CA8A52F11865E4380E2 /* ScheduledTokenRecord.swift */,
+				A3D403134F2DE70886D03B42 /* SkipExceptionRecord.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		4521B2E2DAF1EA9BEA06C14D /* Pro */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF286B385D14F7731729BC /* ProPurchaseView.swift */,
+				74CB48B88BBDE5AAD0A913FB /* Component */,
+			);
+			path = Pro;
+			sourceTree = "<group>";
+		};
+		47878D60B9B8A0F6EF8E237B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DFE8A1B43A584226C191044F /* Date+Util.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		4A0842AB8FD56FD05C433738 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4AA77328FB495F1754530EC2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F02FB9F9216F16248C69E348 /* UNNotificationPermissionAdapter.swift */,
+				307F7CE0D449DE8EC32971BB /* UNNotificationSchedulerAdapter.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		4B88F68A8D5E3465F9455C8E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				A7CDEF37B24AF174CEC801CB /* MainContentView.swift */,
+				89EA371E4AAC5F0114EBC646 /* RootView.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		5B3AF5D8087D8587397337B1 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				281DC5CB189B4C24C74EC32E /* AlarmPlan.swift */,
+				E1A7784B8446508DDF4318F8 /* AlarmSession.swift */,
+				4D6AD79A1E180113AA9DEB3D /* AppSettings.swift */,
+				3CA76F8010ABF63129E72D23 /* HolidayJP.swift */,
+				4166C939BBD749A2EA97B5A7 /* Occurrence.swift */,
+				4B1D4A2AA664AB2B5ACDB4FC /* ProStatus.swift */,
+				C80A7A52EC8A5E9CF2F5D9B1 /* ScheduledToken.swift */,
+				DAC6BB2EC671BD386ABF6D1A /* SkipException.swift */,
+				199B0D8AA38041FCCA492232 /* TokenStatus.swift */,
+				6028B5A9DD7408713EBAE89E /* Weekday.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		63C3ECCB917CFE5F2AF498C1 /* AlarmEdit */ = {
+			isa = PBXGroup;
+			children = (
+				191765B8C061F753D9BD885E /* AlarmEditSheet.swift */,
+				50EE81710C2737EFE4909472 /* AlarmEditViewModel.swift */,
+			);
+			path = AlarmEdit;
+			sourceTree = "<group>";
+		};
+		678264F04FB5AB2172DB8187 /* AlarmList */ = {
+			isa = PBXGroup;
+			children = (
+				D6509553555213B0F0F5BC49 /* AlarmListView.swift */,
+				ACCC45204787608817B0FD25 /* AlarmListViewModel.swift */,
+				B136939B2346636A1430CBFD /* Component */,
+			);
+			path = AlarmList;
+			sourceTree = "<group>";
+		};
+		7481113CB81611A4C2593AFA /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5B3AF5D8087D8587397337B1 /* Entity */,
+				F4347BEF17BA5155ADC44285 /* Repository */,
+				CE283E900A08F58C298EDEE2 /* Service */,
+				8C4F209B140984CF5578A72B /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		74CB48B88BBDE5AAD0A913FB /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				62EC6528117103B6DB0F6360 /* PricePill.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		7D2C9BE1015E4322352D9021 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				A3304DC046ADAA20D94B9C94 /* Component */,
+			);
+			path = Queue;
+			sourceTree = "<group>";
+		};
+		7E04FDF7E4AF646EDEE807BC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3C5FC2527DB3D1AF622B17B9 /* GlobalSettingsSheet.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7EEB43B14D341F54F8981C13 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2B71FF678936DA7AC8795A99 /* Database */,
+				2336BF5307B5487FFDAA70AF /* Repository */,
+				C3B724CED6386C347E213E7E /* Seed */,
+				4AA77328FB495F1754530EC2 /* Service */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		895F22BB6E080AF16C52B78B /* PassAlarmTests */ = {
+			isa = PBXGroup;
+			children = (
+				4A0842AB8FD56FD05C433738 /* Data */,
+				167C6CCB34FAB65E9E2AFECA /* Domain */,
+			);
+			path = PassAlarmTests;
+			sourceTree = "<group>";
+		};
+		8C4F209B140984CF5578A72B /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				4A9668E3A40F6FA5AE6EA051 /* CheckProLimitUseCase.swift */,
+				6BA35DC7767D82B8124F2A63 /* ComputeQueueUseCase.swift */,
+				2B4CEF78F22038F1D35FDF29 /* CreatePlanUseCase.swift */,
+				83AE022CA19ABFB289101C39 /* DeletePlanUseCase.swift */,
+				31A34BD139798EF404516BD2 /* EnablePlanUseCase.swift */,
+				36ED38BE547885EDD91A0051 /* OnAlarmFiredUseCase.swift */,
+				7579654B6D3BAD3FF8960813 /* RescheduleNextNUseCase.swift */,
+				3E04689A4623862771064795 /* SeedDefaultAlarmsUseCase.swift */,
+				E982C3C2F9C2AB1E04AC9DE6 /* SkipDateUseCase.swift */,
+				7A7A14F28BF95F9F14206C1B /* UpdateAppSettingsUseCase.swift */,
+				E7C48A1E8E344981B34DD771 /* UpdatePlanUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		92E37CB690AB509EDD7F4F18 /* Skip */ = {
+			isa = PBXGroup;
+			children = (
+				CABD6E2757973836C73AF428 /* SkipQueueView.swift */,
+				3C1CBB2C74EC728B70BC6FA1 /* SkipQueueViewModel.swift */,
+			);
+			path = Skip;
+			sourceTree = "<group>";
+		};
+		9B7933A86498311125DF3FC2 = {
+			isa = PBXGroup;
+			children = (
+				CF84282571129D3C13EE34ED /* PassAlarm */,
+				895F22BB6E080AF16C52B78B /* PassAlarmTests */,
+				D54B76A417A76F3B3EB34ADD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A0E67B7D3E6569FE1429B6C3 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				63C3ECCB917CFE5F2AF498C1 /* AlarmEdit */,
+				678264F04FB5AB2172DB8187 /* AlarmList */,
+				213BE041789497D1DD79A932 /* Onboarding */,
+				4521B2E2DAF1EA9BEA06C14D /* Pro */,
+				7D2C9BE1015E4322352D9021 /* Queue */,
+				20FB67EA510928EECD6E7BEA /* Ringing */,
+				7E04FDF7E4AF646EDEE807BC /* Settings */,
+				92E37CB690AB509EDD7F4F18 /* Skip */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		A3304DC046ADAA20D94B9C94 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				334A74EE0C19ABB7AEC0B832 /* AlarmCardView.swift */,
+				39897774E6F9563C3B88C5B8 /* ProCardView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		B136939B2346636A1430CBFD /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				52E9A085439AB1FFDB535085 /* AlarmRowView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		BFC5B8B9B319F6D808BF835B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8FFB33F90F8F7060E2E5F6A1 /* AppDelegate.swift */,
+				C2EEE264084641AA57F6EDBF /* DIContainer.swift */,
+				DE5D2B4D1B6F98AFFA6E40C4 /* PassAlarmApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C3B724CED6386C347E213E7E /* Seed */ = {
+			isa = PBXGroup;
+			children = (
+				89758509665FC13199F6138C /* HolidaySeedLoader.swift */,
+			);
+			path = Seed;
+			sourceTree = "<group>";
+		};
+		CE283E900A08F58C298EDEE2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B7328F927BC3E8C705C1EA46 /* NotificationPermissionProtocol.swift */,
+				6D9E5F50B2D5C496D7E68F65 /* NotificationSchedulerProtocol.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CF84282571129D3C13EE34ED /* PassAlarm */ = {
+			isa = PBXGroup;
+			children = (
+				BFC5B8B9B319F6D808BF835B /* App */,
+				7EEB43B14D341F54F8981C13 /* Data */,
+				7481113CB81611A4C2593AFA /* Domain */,
+				47878D60B9B8A0F6EF8E237B /* Extension */,
+				D7B6B044594F89C3E57CB94C /* Presentation */,
+				2BD7F95360302DBE8AFC6718 /* Resources */,
+			);
+			path = PassAlarm;
+			sourceTree = "<group>";
+		};
+		D54B76A417A76F3B3EB34ADD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5FE2948E39D423480DDDE627 /* PassAlarm.app */,
+				24DEC9E7A1A3A949416DA7A4 /* PassAlarmTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D7B6B044594F89C3E57CB94C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F0B89959690C19B93F449954 /* DesignSystem */,
+				4B88F68A8D5E3465F9455C8E /* Router */,
+				A0E67B7D3E6569FE1429B6C3 /* Screen */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F0B89959690C19B93F449954 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				1508944CC3949E09537A8678 /* MapBackdrop.swift */,
+				3751419266572873408240FF /* PassButton.swift */,
+				4183DC43A5F11ABAED675ED5 /* PassColors.swift */,
+				9CEFC896DE456F6057BB95D1 /* PassHaptics.swift */,
+				1CA31DB9356A2EF95C97D6BC /* PassSpacing.swift */,
+				9520BE2FF19445427D136CF5 /* PassToggle.swift */,
+				8EA4E62444F62B961B088B16 /* PassTypography.swift */,
+				1836F5A9C33F3BBFF33CDD4C /* PillToggle.swift */,
+				9E6F9BFD908760BCB4E1EF48 /* PraiseToast.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		F4347BEF17BA5155ADC44285 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				7F83028C8187BC012A77BEBA /* AlarmPlanRepositoryProtocol.swift */,
+				07BA3BBC9C25B731E54C184D /* AppSettingsRepositoryProtocol.swift */,
+				72631CCD0D12F31BB2526895 /* HolidayRepositoryProtocol.swift */,
+				D399D71699D97F821E1E9D9B /* ScheduledTokenRepositoryProtocol.swift */,
+				D0BC53473C717E4C7F75ACE3 /* SkipExceptionRepositoryProtocol.swift */,
+				FB4EACB29705074CC617D983 /* SubscriptionRepositoryProtocol.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		680D3444814AB13ADC1C4C70 /* PassAlarmTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62364BE5AE5E05B054FA54C2 /* Build configuration list for PBXNativeTarget "PassAlarmTests" */;
+			buildPhases = (
+				A36D658071431C0B6869D075 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				517F5886DEB6856F820DD50C /* PBXTargetDependency */,
+			);
+			name = PassAlarmTests;
+			packageProductDependencies = (
+			);
+			productName = PassAlarmTests;
+			productReference = 24DEC9E7A1A3A949416DA7A4 /* PassAlarmTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E0651FAEE77F52412CF57E44 /* PassAlarm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B310F58AE1E765FD280E63C /* Build configuration list for PBXNativeTarget "PassAlarm" */;
+			buildPhases = (
+				6D5650DEFE946241880AB381 /* Sources */,
+				CFF56487416FD537824D1333 /* Resources */,
+				8D62B48BA5A1312503998368 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PassAlarm;
+			packageProductDependencies = (
+				7B3DBE989BC5727FD501850B /* GRDB */,
+				4C22E234CCFC51FC688A854D /* FirebaseAnalytics */,
+				37C2D29E23FC8694200998F0 /* FirebaseCrashlytics */,
+			);
+			productName = PassAlarm;
+			productReference = 5FE2948E39D423480DDDE627 /* PassAlarm.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC92E3AA7D6E2589AF7104B9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					E0651FAEE77F52412CF57E44 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 055C3E4BBEFE8927FEC5835F /* Build configuration list for PBXProject "PassAlarm" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 9B7933A86498311125DF3FC2;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				69B10FA40795334610E2F17A /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				31C51183C9A22B792AB99DEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E0651FAEE77F52412CF57E44 /* PassAlarm */,
+				680D3444814AB13ADC1C4C70 /* PassAlarmTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CFF56487416FD537824D1333 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55437F9C958D0FF42A06CBCF /* Assets.xcassets in Resources */,
+				C6C2BEAC7235C7826280BCB9 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6D5650DEFE946241880AB381 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C442E1F5CB6887215516A311 /* AlarmCardView.swift in Sources */,
+				593069B0A422E997B5C50AAF /* AlarmEditSheet.swift in Sources */,
+				30D17C25E8854558BEFCA646 /* AlarmEditViewModel.swift in Sources */,
+				C982BB549F90F13F4EA57DA5 /* AlarmListView.swift in Sources */,
+				BC77805E0022632B6B98AF96 /* AlarmListViewModel.swift in Sources */,
+				E37BE3C1BF9DB08F37D20865 /* AlarmPlan.swift in Sources */,
+				12375B5452B2A402C558E84A /* AlarmPlanRecord.swift in Sources */,
+				1DB5A3E2F3F95A2A1D1D9185 /* AlarmPlanRepositoryProtocol.swift in Sources */,
+				20993177C158DE4DC367BBD0 /* AlarmRingingView.swift in Sources */,
+				687A9B1F997D9EBAD86A6FDB /* AlarmRingingViewModel.swift in Sources */,
+				2C2600D165EFD7CB048D26C8 /* AlarmRowView.swift in Sources */,
+				8107F8D9164CC628B5FF0CCD /* AlarmSession.swift in Sources */,
+				E7EF583111AE34EB5570A9E6 /* AppDatabase.swift in Sources */,
+				2744236E2A039B6BE3282614 /* AppDelegate.swift in Sources */,
+				5A0DE3FB1E998D5E190C4390 /* AppSettings.swift in Sources */,
+				6E0A184C5F07F44790955ABC /* AppSettingsRepositoryProtocol.swift in Sources */,
+				7D8DB089FAA127A26BBC772A /* CheckProLimitUseCase.swift in Sources */,
+				0E7917D7F3D164D7BD614A4B /* ComputeQueueUseCase.swift in Sources */,
+				A4E7F41D15C0BA4B68A55B79 /* CreatePlanUseCase.swift in Sources */,
+				944669A32159574E6916C5B9 /* DIContainer.swift in Sources */,
+				76B821E4EDAE84D3AB332552 /* Date+Util.swift in Sources */,
+				D726BE148F926656CC5C4BF3 /* DeletePlanUseCase.swift in Sources */,
+				C50743D13CD4C38192BC57CD /* EnablePlanUseCase.swift in Sources */,
+				4F2785055DFA77B120BAA26B /* GRDBAlarmPlanRepository.swift in Sources */,
+				4655F17D589050C77D424666 /* GRDBHolidayRepository.swift in Sources */,
+				39CD57E04C61364B67276565 /* GRDBScheduledTokenRepository.swift in Sources */,
+				06DC78F896F6155221228599 /* GRDBSkipExceptionRepository.swift in Sources */,
+				32EF6102B13BFE2EB8CAC339 /* GlobalSettingsSheet.swift in Sources */,
+				89585F813F89A965F19D54EA /* HolidayJP.swift in Sources */,
+				5B99932F42590DF92C06A8DC /* HolidayJPRecord.swift in Sources */,
+				82C0AB2CC1876687A582ACB9 /* HolidayRepositoryProtocol.swift in Sources */,
+				27D235A6996B6E4D829F82E0 /* HolidaySeedLoader.swift in Sources */,
+				8E9004D82C9F4C774E21B893 /* MainContentView.swift in Sources */,
+				75AAAC8668C931FFF83C2929 /* MapBackdrop.swift in Sources */,
+				9FCECDA0C0E073DC731167A1 /* NotificationPermissionProtocol.swift in Sources */,
+				7F5CE642DC14B73E4F7029E1 /* NotificationSchedulerProtocol.swift in Sources */,
+				329BDC690AD46E0F2A95583E /* Occurrence.swift in Sources */,
+				E297F0718CAF0F9107C0ACF1 /* OnAlarmFiredUseCase.swift in Sources */,
+				4A4429FDB002A0FEA7CCB6F3 /* OnboardingView.swift in Sources */,
+				3B6C7A6CFF72E8582C3D01B0 /* PassAlarmApp.swift in Sources */,
+				9326455DAFA549A6B5094875 /* PassButton.swift in Sources */,
+				C412A94923E1C7161FD45623 /* PassColors.swift in Sources */,
+				DB780FD605A9F072A3B16688 /* PassHaptics.swift in Sources */,
+				7573D5A635EDC655BA36A562 /* PassSpacing.swift in Sources */,
+				9009675B5B03F688E5F6C0B5 /* PassToggle.swift in Sources */,
+				BC5020BB50CC4E7D4482E48D /* PassTypography.swift in Sources */,
+				36D79BA17BF9B4A18F145CA8 /* PillToggle.swift in Sources */,
+				161A353E6CA4291EA0265FAD /* PraiseToast.swift in Sources */,
+				FEDC7E16A74EBB1D5462B244 /* PricePill.swift in Sources */,
+				5F5F16545C9E3C26AE2B0B1E /* ProCardView.swift in Sources */,
+				2B1DB81A478362FBD17B6D35 /* ProPurchaseView.swift in Sources */,
+				AB622E0196B92C0E4C97FBE0 /* ProStatus.swift in Sources */,
+				D321FCE1C1E7C7849083FAD0 /* RescheduleNextNUseCase.swift in Sources */,
+				DDB1566995CBFFD527CE897C /* RootView.swift in Sources */,
+				F572D4726383B613C5C58F2D /* ScheduledToken.swift in Sources */,
+				F2C926888FED64E1C2852723 /* ScheduledTokenRecord.swift in Sources */,
+				DE2AFD5917D300021FABD04C /* ScheduledTokenRepositoryProtocol.swift in Sources */,
+				F60B780004346CD3598B5D3D /* SeedDefaultAlarmsUseCase.swift in Sources */,
+				0A4D09F92DFC602D79D7567D /* SkipDateUseCase.swift in Sources */,
+				AED3876A57F0D5E24B419FE5 /* SkipException.swift in Sources */,
+				F5A4F29C13ACA37DEC42F065 /* SkipExceptionRecord.swift in Sources */,
+				183F1675B196C52CFAC11EBA /* SkipExceptionRepositoryProtocol.swift in Sources */,
+				5110B1AA2A4B64F75AE6685D /* SkipQueueView.swift in Sources */,
+				DEA74A6B52991AB53F03E5D5 /* SkipQueueViewModel.swift in Sources */,
+				7CDAB6C1D5C4FEE4330CF5D7 /* StoreKitSubscriptionRepository.swift in Sources */,
+				AF43D14615DE8B517A1F60A3 /* SubscriptionRepositoryProtocol.swift in Sources */,
+				0EE22D2AF4D0C3CD4A6168E5 /* TokenStatus.swift in Sources */,
+				798E6114049A17F07022E91E /* UNNotificationPermissionAdapter.swift in Sources */,
+				A2B815C9EB03812428E622F8 /* UNNotificationSchedulerAdapter.swift in Sources */,
+				6285A4894CEB8F9DABF1A272 /* UpdateAppSettingsUseCase.swift in Sources */,
+				ED5E5E1D0AAAA2A0DC3025E6 /* UpdatePlanUseCase.swift in Sources */,
+				1BAB5E102610FAEDB09E34D2 /* UserDefaultsAppSettingsRepository.swift in Sources */,
+				EAD366957F29FBA6E37A4E0A /* Weekday.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A36D658071431C0B6869D075 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		517F5886DEB6856F820DD50C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0651FAEE77F52412CF57E44 /* PassAlarm */;
+			targetProxy = 9B6A55D4F26A4D3595FA2E3A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3DDB08F36B8E822D109A47BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		43CD4B7A64B093A991D13151 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "パスアラーム";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nogeass.passalarm;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		75415F2793959F70B804D0E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nogeass.passalarm.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PassAlarm.app/PassAlarm";
+			};
+			name = Debug;
+		};
+		8F02A79EB36721A7CA80367C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		99D84D05348EF2CFAD43CD71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nogeass.passalarm.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PassAlarm.app/PassAlarm";
+			};
+			name = Release;
+		};
+		B7F9ABD9D6D57A397841E4D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "パスアラーム";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nogeass.passalarm;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		055C3E4BBEFE8927FEC5835F /* Build configuration list for PBXProject "PassAlarm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F02A79EB36721A7CA80367C /* Debug */,
+				3DDB08F36B8E822D109A47BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5B310F58AE1E765FD280E63C /* Build configuration list for PBXNativeTarget "PassAlarm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43CD4B7A64B093A991D13151 /* Debug */,
+				B7F9ABD9D6D57A397841E4D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		62364BE5AE5E05B054FA54C2 /* Build configuration list for PBXNativeTarget "PassAlarmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75415F2793959F70B804D0E3 /* Debug */,
+				99D84D05348EF2CFAD43CD71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		31C51183C9A22B792AB99DEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+		69B10FA40795334610E2F17A /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		37C2D29E23FC8694200998F0 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31C51183C9A22B792AB99DEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		4C22E234CCFC51FC688A854D /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31C51183C9A22B792AB99DEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		7B3DBE989BC5727FD501850B /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69B10FA40795334610E2F17A /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EC92E3AA7D6E2589AF7104B9 /* Project object */;
+}

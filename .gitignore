@@ -39,6 +39,7 @@ web/landing/.wrangler/
 *.env
 *.env.*
 !*.env.example
+secrets/
 
 # Firebase config (stored in GitHub Secrets for CI)
 apps/ios/PassAlarm/Resources/GoogleService-Info.plist

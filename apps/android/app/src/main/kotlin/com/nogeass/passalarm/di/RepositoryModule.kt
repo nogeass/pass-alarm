@@ -14,4 +14,5 @@ abstract class RepositoryModule {
     @Binds abstract fun bindSkipExceptionRepository(impl: SkipExceptionRepositoryImpl): SkipExceptionRepository
     @Binds abstract fun bindScheduledTokenRepository(impl: ScheduledTokenRepositoryImpl): ScheduledTokenRepository
     @Binds abstract fun bindHolidayRepository(impl: HolidayRepositoryImpl): HolidayRepository
+    @Binds abstract fun bindAppSettingsRepository(impl: DataStoreAppSettingsRepository): AppSettingsRepository
 }

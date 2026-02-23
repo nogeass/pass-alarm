@@ -5,7 +5,9 @@ import com.nogeass.passalarm.domain.model.SkipException
 interface SkipExceptionRepository {
     suspend fun fetchAll(): List<SkipException>
     suspend fun fetchByDateRange(from: String, to: String): List<SkipException>
+    suspend fun fetchByPlanAndDateRange(planId: Long, from: String, to: String): List<SkipException>
     suspend fun save(skip: SkipException): Long
     suspend fun delete(id: Long)
     suspend fun deleteByDate(date: String)
+    suspend fun deleteByPlanAndDate(planId: Long, date: String)
 }

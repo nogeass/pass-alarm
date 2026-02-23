@@ -14,25 +14,6 @@ struct ProPurchaseView: View {
         ZStack {
             MapBackdrop(timeOfDay: .evening)
 
-            // Close button
-            VStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        PassHaptics.tap()
-                        onDismiss()
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.system(size: 28))
-                            .foregroundStyle(.white.opacity(0.6))
-                    }
-                }
-                .padding(.horizontal, PassSpacing.lg)
-                .padding(.top, PassSpacing.md)
-
-                Spacer()
-            }
-
             // Main content
             ScrollView {
                 VStack(spacing: PassSpacing.lg) {
@@ -75,6 +56,7 @@ struct ProPurchaseView: View {
                                 periodLabel: "月額",
                                 price: monthly.displayPrice,
                                 pricePerMonth: nil,
+                                trialText: monthly.trialText,
                                 isYearly: false,
                                 isSelected: selectedPeriod == .monthly
                             ) {
@@ -87,6 +69,7 @@ struct ProPurchaseView: View {
                                 periodLabel: "年額",
                                 price: yearly.displayPrice,
                                 pricePerMonth: yearly.pricePerMonth,
+                                trialText: yearly.trialText,
                                 isYearly: true,
                                 isSelected: selectedPeriod == .yearly
                             ) {
@@ -98,7 +81,7 @@ struct ProPurchaseView: View {
 
                     // Purchase button
                     PassButton(
-                        title: isPurchasing ? "処理中..." : "はじめる",
+                        title: isPurchasing ? "処理中..." : ctaTitle,
                         size: .large,
                         color: PassColors.brand,
                         isEnabled: !isPurchasing && !products.isEmpty,
@@ -119,6 +102,25 @@ struct ProPurchaseView: View {
                     .padding(.bottom, PassSpacing.xl)
                 }
                 .padding(.horizontal, PassSpacing.md)
+            }
+
+            // Close button (on top of ScrollView)
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        PassHaptics.tap()
+                        onDismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 28))
+                            .foregroundStyle(.white.opacity(0.6))
+                    }
+                }
+                .padding(.horizontal, PassSpacing.lg)
+                .padding(.top, PassSpacing.md)
+
+                Spacer()
             }
         }
         .scaleEffect(appeared ? 1.0 : 0.8)
@@ -146,6 +148,14 @@ struct ProPurchaseView: View {
                 .font(.system(size: 16, weight: .medium))
                 .foregroundStyle(.white)
         }
+    }
+
+    private var ctaTitle: String {
+        let selected = products.first(where: { $0.period == selectedPeriod })
+        if let trial = selected?.trialText {
+            return "\(trial)で試す"
+        }
+        return "はじめる"
     }
 
     // MARK: - Actions

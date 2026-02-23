@@ -2,7 +2,6 @@ package com.nogeass.passalarm.domain.usecase
 
 import com.nogeass.passalarm.domain.model.ScheduledToken
 import com.nogeass.passalarm.domain.model.TokenStatus
-import com.nogeass.passalarm.domain.repository.AlarmPlanRepository
 import com.nogeass.passalarm.domain.repository.ScheduledTokenRepository
 import com.nogeass.passalarm.domain.scheduler.AlarmScheduler
 import javax.inject.Inject
@@ -10,11 +9,10 @@ import javax.inject.Inject
 class RescheduleNextNUseCase @Inject constructor(
     private val computeQueue: ComputeQueueUseCase,
     private val tokenRepository: ScheduledTokenRepository,
-    private val planRepository: AlarmPlanRepository,
     private val scheduler: AlarmScheduler
 ) {
     companion object {
-        const val SCHEDULE_COUNT = 10
+        const val MAX_TOKENS = 60
     }
 
     suspend operator fun invoke() {
@@ -23,20 +21,17 @@ class RescheduleNextNUseCase @Inject constructor(
         existing.forEach { scheduler.cancelAlarm(it) }
         tokenRepository.deletePending()
 
-        // 2. Compute fresh queue
+        // 2. Compute fresh merged queue from all enabled plans
         val queue = computeQueue.execute()
-        val active = queue.filter { !it.isSkipped }.take(SCHEDULE_COUNT)
+        val active = queue.filter { !it.isSkipped }.take(MAX_TOKENS)
 
-        // 3. Get plan for planId
-        val plans = planRepository.fetchAll()
-        val plan = plans.firstOrNull { it.isEnabled } ?: return
-
-        // 4. Schedule new tokens
+        // 3. Schedule new tokens
         val tokens = active.map { occurrence ->
-            val osId = occurrence.date.replace("-", "").toInt() * 10000 +
+            val osId = occurrence.planId.toInt() * 100_000_000 +
+                    occurrence.date.replace("-", "").toInt() % 100_000 * 1000 +
                     occurrence.timeHHmm.replace(":", "").toInt()
             ScheduledToken(
-                planId = plan.id,
+                planId = occurrence.planId,
                 date = occurrence.date,
                 fireAtEpoch = occurrence.fireAtEpoch,
                 osIdentifier = osId,

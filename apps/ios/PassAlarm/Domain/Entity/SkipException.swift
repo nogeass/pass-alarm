@@ -2,6 +2,7 @@ import Foundation
 
 struct SkipException: Identifiable, Equatable, Sendable, Codable {
     var id: UUID
+    var planId: UUID
     var date: String // "YYYY-MM-DD"
     var reason: SkipReason
     var createdAt: Date

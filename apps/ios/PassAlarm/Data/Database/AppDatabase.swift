@@ -77,6 +77,31 @@ final class AppDatabase: Sendable {
             }
         }
 
+        migrator.registerMigration("v2") { db in
+            try db.alter(table: "alarm_plan") { t in
+                t.add(column: "label", .text).notNull().defaults(to: "")
+            }
+            try db.alter(table: "skip_exception") { t in
+                t.add(column: "planId", .text).notNull().defaults(to: "")
+            }
+            try db.create(index: "idx_skip_exception_planId_date",
+                          on: "skip_exception", columns: ["planId", "date"])
+            try db.alter(table: "scheduled_token") { t in
+                t.add(column: "planId", .text).notNull().defaults(to: "")
+            }
+            if let row = try Row.fetchOne(db, sql: "SELECT id FROM alarm_plan LIMIT 1") {
+                let pid: String = row["id"]
+                try db.execute(sql: "UPDATE skip_exception SET planId = ?", arguments: [pid])
+                try db.execute(sql: "UPDATE scheduled_token SET planId = ?", arguments: [pid])
+            }
+        }
+
+        migrator.registerMigration("v3") { db in
+            try db.alter(table: "alarm_plan") { t in
+                t.add(column: "soundId", .text).notNull().defaults(to: "default")
+            }
+        }
+
         try migrator.migrate(dbQueue)
     }
 }

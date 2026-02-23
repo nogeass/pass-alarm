@@ -233,7 +233,9 @@ class PlayBillingSubscriptionRepository @Inject constructor(
 
     private fun mapProductDetails(details: ProductDetails): ProProduct? {
         val offer = details.subscriptionOfferDetails?.firstOrNull() ?: return null
-        val pricingPhase = offer.pricingPhases.pricingPhaseList.firstOrNull() ?: return null
+        val phases = offer.pricingPhases.pricingPhaseList
+        // The paid phase is the last one (trial phases come first)
+        val paidPhase = phases.lastOrNull() ?: return null
 
         val period = when (details.productId) {
             PRODUCT_MONTHLY -> ProPeriod.MONTHLY
@@ -242,19 +244,38 @@ class PlayBillingSubscriptionRepository @Inject constructor(
         }
 
         val pricePerMonth = if (period == ProPeriod.YEARLY) {
-            val monthlyMicros = pricingPhase.priceAmountMicros / 12
+            val monthlyMicros = paidPhase.priceAmountMicros / 12
             val monthlyPrice = monthlyMicros / 1_000_000.0
-            String.format("%s%.0f", pricingPhase.priceCurrencyCode + " ", monthlyPrice)
+            String.format("%s%.0f", paidPhase.priceCurrencyCode + " ", monthlyPrice)
         } else {
             null
         }
 
+        // Detect free trial phase (priceAmountMicros == 0)
+        val trialPhase = phases.firstOrNull { it.priceAmountMicros == 0L }
+        val trialText = trialPhase?.let { parseTrialText(it.billingPeriod) }
+
         return ProProduct(
             id = details.productId,
             period = period,
-            displayPrice = pricingPhase.formattedPrice,
+            displayPrice = paidPhase.formattedPrice,
             pricePerMonth = pricePerMonth,
+            trialText = trialText,
         )
+    }
+
+    private fun parseTrialText(isoPeriod: String): String? {
+        // ISO 8601 duration: P1W, P1M, P3D, P1Y, etc.
+        val regex = Regex("^P(\\d+)([DWMY])$")
+        val match = regex.find(isoPeriod) ?: return null
+        val value = match.groupValues[1].toIntOrNull() ?: return null
+        return when (match.groupValues[2]) {
+            "D" -> "${value}日間無料"
+            "W" -> "${value}週間無料"
+            "M" -> "${value}ヶ月無料"
+            "Y" -> "${value}年間無料"
+            else -> null
+        }
     }
 }
 

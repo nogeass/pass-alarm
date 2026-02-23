@@ -18,6 +18,7 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): PassAlarmDatabase =
         Room.databaseBuilder(context, PassAlarmDatabase::class.java, "passalarm.db")
+            .addMigrations(PassAlarmDatabase.MIGRATION_1_2, PassAlarmDatabase.MIGRATION_2_3)
             .build()
 
     @Provides fun provideAlarmPlanDao(db: PassAlarmDatabase): AlarmPlanDao = db.alarmPlanDao()

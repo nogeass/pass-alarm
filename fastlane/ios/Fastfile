@@ -2,6 +2,8 @@ default_platform(:ios)
 
 APP_IDENTIFIER = "com.nogeass.passalarm"
 PROJECT_DIR    = File.expand_path("../../apps/ios", __dir__)
+METADATA_PATH  = File.expand_path("metadata", __dir__)
+SCREENSHOTS_PATH = File.expand_path("screenshots", __dir__)
 
 platform :ios do
   desc "Build the app"
@@ -47,6 +49,36 @@ platform :ios do
     )
   end
 
+  desc "Capture screenshots on simulators"
+  lane :screenshots do
+    capture_screenshots(
+      project: "#{PROJECT_DIR}/PassAlarm.xcodeproj",
+      scheme: "PassAlarm",
+      output_directory: SCREENSHOTS_PATH,
+      clear_previous_screenshots: true,
+      override_status_bar: true,
+      devices: [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone SE (3rd generation)",
+        "iPad Pro 13-inch (M4)",
+      ],
+      languages: ["ja", "en-US"]
+    )
+  end
+
+  desc "Upload metadata only (no binary)"
+  lane :upload_metadata do
+    deliver(
+      app_identifier: APP_IDENTIFIER,
+      metadata_path: METADATA_PATH,
+      screenshots_path: SCREENSHOTS_PATH,
+      skip_binary_upload: true,
+      submit_for_review: false,
+      force: true
+    )
+  end
+
   desc "Deploy to App Store"
   lane :release do |options|
     version = options[:version] || "1.0.0"
@@ -63,6 +95,8 @@ platform :ios do
     )
     deliver(
       app_identifier: APP_IDENTIFIER,
+      metadata_path: METADATA_PATH,
+      screenshots_path: SCREENSHOTS_PATH,
       submit_for_review: false,
       force: true
     )

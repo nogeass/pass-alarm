@@ -1,0 +1,39 @@
+name: Feedback / 改善要望
+description: アプリの改善要望・フィードバック
+title: "[Feedback]: "
+labels: ["feedback"]
+body:
+  - type: textarea
+    id: request
+    attributes:
+      label: 改善要望 / Feedback
+      description: どんな機能がほしいか、何が不便か教えてください。
+      placeholder: "例: スヌーズの長さを変えたい"
+    validations:
+      required: true
+
+  - type: input
+    id: app_version
+    attributes:
+      label: App version
+      placeholder: "自動入力されます"
+
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      placeholder: "自動入力されます"
+
+  - type: input
+    id: os_version
+    attributes:
+      label: OS version
+      placeholder: "自動入力されます"
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - iOS
+        - Android

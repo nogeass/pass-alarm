@@ -30,8 +30,11 @@ class AlarmSoundPlayer(private val context: Context) {
     private var mediaPlayer: MediaPlayer? = null
     private var vibrator: Vibrator? = null
 
+    private var soundId: String = "default"
+
     /** Start playing the alarm tone on loop and begin vibration pattern. */
-    fun start() {
+    fun start(soundId: String = "default") {
+        this.soundId = soundId
         startSound()
         startVibration()
     }
@@ -46,8 +49,12 @@ class AlarmSoundPlayer(private val context: Context) {
 
     private fun startSound() {
         try {
-            val alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-                ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+            val alarmUri = if (soundId == "default") {
+                RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+                    ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+            } else {
+                android.net.Uri.parse(soundId)
+            }
 
             mediaPlayer = MediaPlayer().apply {
                 setAudioAttributes(

@@ -1,0 +1,14 @@
+app_package_name "com.nogeass.passalarm"
+app_apk_path File.expand_path("../../apps/android/app/build/outputs/apk/debug/app-debug.apk", __dir__)
+tests_apk_path File.expand_path("../../apps/android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk", __dir__)
+
+locales ["ja-JP", "en-US"]
+
+use_adb_root false
+clear_previous_screenshots true
+
+output_directory File.expand_path("screenshots", __dir__)
+
+specific_device ""  # Use default running emulator
+
+use_tests_in_classes ["com.nogeass.passalarm.ScreenshotTest"]

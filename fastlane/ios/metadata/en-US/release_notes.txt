@@ -1,0 +1,4 @@
+Initial release
+- Skip Today feature
+- Auto-skip Japanese holidays
+- Alarm queue view

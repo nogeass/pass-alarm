@@ -41,6 +41,7 @@ class AlarmForegroundService : Service() {
 
         const val EXTRA_REPEAT_COUNT = "extra_repeat_count"
         const val EXTRA_INTERVAL_MIN = "extra_interval_min"
+        const val EXTRA_SOUND_ID = "extra_sound_id"
 
         private const val WAKELOCK_TAG = "passalarm:alarm_session"
         private const val WAKELOCK_TIMEOUT_MS = 5L * 60 * 1000 // 5 min per ring max
@@ -51,6 +52,7 @@ class AlarmForegroundService : Service() {
     private var session: AlarmSession = AlarmSession.Idle
     private var tokenId: Long = -1
     private var osIdentifier: Int = -1
+    private var soundId: String = "default"
 
     // ── Resources ────────────────────────────────────────────────────────
 
@@ -86,6 +88,7 @@ class AlarmForegroundService : Service() {
     private fun handleStartOrNextRing(intent: Intent?) {
         tokenId = intent?.getLongExtra(AlarmReceiver.EXTRA_TOKEN_ID, tokenId) ?: tokenId
         osIdentifier = intent?.getIntExtra(AlarmReceiver.EXTRA_OS_IDENTIFIER, osIdentifier) ?: osIdentifier
+        soundId = intent?.getStringExtra(EXTRA_SOUND_ID) ?: soundId
 
         val currentSession = session
         val ringing: AlarmSession.Ringing = when (currentSession) {
@@ -173,7 +176,7 @@ class AlarmForegroundService : Service() {
 
     private fun startRinging() {
         stopRinging() // safety: stop any previous playback
-        soundPlayer = AlarmSoundPlayer(this).also { it.start() }
+        soundPlayer = AlarmSoundPlayer(this).also { it.start(soundId) }
     }
 
     private fun stopRinging() {

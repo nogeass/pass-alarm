@@ -40,4 +40,21 @@ final class GRDBSkipExceptionRepository: SkipExceptionRepositoryProtocol, Sendab
             _ = try SkipExceptionRecord.filter(Column("date") == date).deleteAll(db)
         }
     }
+
+    func fetchByPlanAndDateRange(planId: UUID, from: String, to: String) async throws -> [SkipException] {
+        try await database.dbQueue.read { db in
+            try SkipExceptionRecord
+                .filter(Column("planId") == planId.uuidString && Column("date") >= from && Column("date") <= to)
+                .fetchAll(db)
+                .map { $0.toEntity() }
+        }
+    }
+
+    func deleteByPlanAndDate(planId: UUID, date: String) async throws {
+        try await database.dbQueue.write { db in
+            _ = try SkipExceptionRecord
+                .filter(Column("planId") == planId.uuidString && Column("date") == date)
+                .deleteAll(db)
+        }
+    }
 }

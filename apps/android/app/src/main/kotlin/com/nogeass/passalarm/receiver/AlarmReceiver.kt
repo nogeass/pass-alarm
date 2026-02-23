@@ -47,12 +47,14 @@ class AlarmReceiver : BroadcastReceiver() {
 
                 val repeatCount = plan?.repeatCount ?: 10
                 val intervalMin = plan?.intervalMin ?: 5
+                val soundId = plan?.soundId ?: "default"
 
                 val serviceIntent = Intent(context, AlarmForegroundService::class.java).apply {
                     putExtra(EXTRA_TOKEN_ID, tokenId)
                     putExtra(EXTRA_OS_IDENTIFIER, osIdentifier)
                     putExtra(AlarmForegroundService.EXTRA_REPEAT_COUNT, repeatCount)
                     putExtra(AlarmForegroundService.EXTRA_INTERVAL_MIN, intervalMin)
+                    putExtra(AlarmForegroundService.EXTRA_SOUND_ID, soundId)
                 }
                 context.startForegroundService(serviceIntent)
             } finally {

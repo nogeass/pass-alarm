@@ -5,6 +5,7 @@ struct ScheduledTokenRecord: Codable, FetchableRecord, PersistableRecord, Sendab
     static let databaseTableName = "scheduled_token"
 
     var id: String
+    var planId: String
     var date: String
     var fireAtEpoch: Double
     var osIdentifier: String
@@ -14,6 +15,7 @@ struct ScheduledTokenRecord: Codable, FetchableRecord, PersistableRecord, Sendab
 
     init(from entity: ScheduledToken) {
         self.id = entity.id.uuidString
+        self.planId = entity.planId.uuidString
         self.date = entity.date
         self.fireAtEpoch = entity.fireAtEpoch
         self.osIdentifier = entity.osIdentifier
@@ -25,6 +27,7 @@ struct ScheduledTokenRecord: Codable, FetchableRecord, PersistableRecord, Sendab
     func toEntity() -> ScheduledToken {
         ScheduledToken(
             id: UUID(uuidString: id) ?? UUID(),
+            planId: UUID(uuidString: planId) ?? UUID(),
             date: date,
             fireAtEpoch: fireAtEpoch,
             osIdentifier: osIdentifier,

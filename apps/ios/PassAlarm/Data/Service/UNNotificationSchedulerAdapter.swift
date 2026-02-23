@@ -2,12 +2,13 @@ import Foundation
 import UserNotifications
 
 final class UNNotificationSchedulerAdapter: NotificationSchedulerProtocol {
-    func schedule(identifier: String, at date: Date, title: String, body: String) async throws {
+    func schedule(identifier: String, at date: Date, title: String, body: String, soundId: String) async throws {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
         content.sound = .default
         content.categoryIdentifier = "ALARM_RING"
+        content.userInfo["soundId"] = soundId
 
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)

@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
         }
 
         val startDestination = if (notificationsEnabled) {
-            Screen.Home.route
+            Screen.Main.route
         } else {
             Screen.Onboarding.route
         }

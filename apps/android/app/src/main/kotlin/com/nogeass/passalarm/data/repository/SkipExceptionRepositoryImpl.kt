@@ -15,10 +15,16 @@ class SkipExceptionRepositoryImpl @Inject constructor(
     override suspend fun fetchByDateRange(from: String, to: String): List<SkipException> =
         dao.fetchByDateRange(from, to).map { it.toDomain() }
 
+    override suspend fun fetchByPlanAndDateRange(planId: Long, from: String, to: String): List<SkipException> =
+        dao.fetchByPlanAndDateRange(planId, from, to).map { it.toDomain() }
+
     override suspend fun save(skip: SkipException): Long =
         dao.upsert(SkipExceptionEntity.fromDomain(skip))
 
     override suspend fun delete(id: Long) = dao.delete(id)
 
     override suspend fun deleteByDate(date: String) = dao.deleteByDate(date)
+
+    override suspend fun deleteByPlanAndDate(planId: Long, date: String) =
+        dao.deleteByPlanAndDate(planId, date)
 }

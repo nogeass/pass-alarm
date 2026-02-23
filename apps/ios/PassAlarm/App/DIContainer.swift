@@ -13,6 +13,7 @@ final class DIContainer {
     let scheduledTokenRepository: ScheduledTokenRepositoryProtocol
     let holidayRepository: HolidayRepositoryProtocol
     let subscriptionRepository: SubscriptionRepositoryProtocol
+    let appSettingsRepository: AppSettingsRepositoryProtocol
 
     // Services
     let notificationScheduler: NotificationSchedulerProtocol
@@ -26,6 +27,10 @@ final class DIContainer {
     let updatePlanUseCase: UpdatePlanUseCase
     let onAlarmFiredUseCase: OnAlarmFiredUseCase
     let checkProLimitUseCase: CheckProLimitUseCase
+    let createPlanUseCase: CreatePlanUseCase
+    let deletePlanUseCase: DeletePlanUseCase
+    let seedDefaultAlarmsUseCase: SeedDefaultAlarmsUseCase
+    let updateAppSettingsUseCase: UpdateAppSettingsUseCase
 
     private init() {
         // Database
@@ -37,6 +42,7 @@ final class DIContainer {
         scheduledTokenRepository = GRDBScheduledTokenRepository(database: database)
         holidayRepository = GRDBHolidayRepository(database: database)
         subscriptionRepository = StoreKitSubscriptionRepository()
+        appSettingsRepository = UserDefaultsAppSettingsRepository()
 
         // Services
         notificationScheduler = UNNotificationSchedulerAdapter()
@@ -46,7 +52,8 @@ final class DIContainer {
         computeQueueUseCase = ComputeQueueUseCase(
             planRepository: alarmPlanRepository,
             skipRepository: skipExceptionRepository,
-            holidayRepository: holidayRepository
+            holidayRepository: holidayRepository,
+            appSettingsRepository: appSettingsRepository
         )
         rescheduleNextNUseCase = RescheduleNextNUseCase(
             computeQueue: computeQueueUseCase,
@@ -73,6 +80,23 @@ final class DIContainer {
             planRepository: alarmPlanRepository,
             subscriptionRepository: subscriptionRepository
         )
+        createPlanUseCase = CreatePlanUseCase(
+            planRepository: alarmPlanRepository,
+            checkProLimit: checkProLimitUseCase,
+            reschedule: rescheduleNextNUseCase
+        )
+        deletePlanUseCase = DeletePlanUseCase(
+            planRepository: alarmPlanRepository,
+            reschedule: rescheduleNextNUseCase
+        )
+        seedDefaultAlarmsUseCase = SeedDefaultAlarmsUseCase(
+            planRepository: alarmPlanRepository,
+            reschedule: rescheduleNextNUseCase
+        )
+        updateAppSettingsUseCase = UpdateAppSettingsUseCase(
+            appSettingsRepository: appSettingsRepository,
+            reschedule: rescheduleNextNUseCase
+        )
     }
 
     /// For testing
@@ -82,6 +106,7 @@ final class DIContainer {
          scheduledTokenRepository: ScheduledTokenRepositoryProtocol,
          holidayRepository: HolidayRepositoryProtocol,
          subscriptionRepository: SubscriptionRepositoryProtocol,
+         appSettingsRepository: AppSettingsRepositoryProtocol,
          notificationScheduler: NotificationSchedulerProtocol,
          notificationPermission: NotificationPermissionProtocol) {
         self.database = database
@@ -90,12 +115,14 @@ final class DIContainer {
         self.scheduledTokenRepository = scheduledTokenRepository
         self.holidayRepository = holidayRepository
         self.subscriptionRepository = subscriptionRepository
+        self.appSettingsRepository = appSettingsRepository
         self.notificationScheduler = notificationScheduler
         self.notificationPermission = notificationPermission
         self.computeQueueUseCase = ComputeQueueUseCase(
             planRepository: alarmPlanRepository,
             skipRepository: skipExceptionRepository,
-            holidayRepository: holidayRepository
+            holidayRepository: holidayRepository,
+            appSettingsRepository: appSettingsRepository
         )
         self.rescheduleNextNUseCase = RescheduleNextNUseCase(
             computeQueue: computeQueueUseCase,
@@ -121,6 +148,23 @@ final class DIContainer {
         self.checkProLimitUseCase = CheckProLimitUseCase(
             planRepository: alarmPlanRepository,
             subscriptionRepository: subscriptionRepository
+        )
+        self.createPlanUseCase = CreatePlanUseCase(
+            planRepository: alarmPlanRepository,
+            checkProLimit: checkProLimitUseCase,
+            reschedule: rescheduleNextNUseCase
+        )
+        self.deletePlanUseCase = DeletePlanUseCase(
+            planRepository: alarmPlanRepository,
+            reschedule: rescheduleNextNUseCase
+        )
+        self.seedDefaultAlarmsUseCase = SeedDefaultAlarmsUseCase(
+            planRepository: alarmPlanRepository,
+            reschedule: rescheduleNextNUseCase
+        )
+        self.updateAppSettingsUseCase = UpdateAppSettingsUseCase(
+            appSettingsRepository: appSettingsRepository,
+            reschedule: rescheduleNextNUseCase
         )
     }
 }

@@ -5,7 +5,7 @@ final class RescheduleNextNUseCase: Sendable {
     private let tokenRepository: ScheduledTokenRepositoryProtocol
     private let scheduler: NotificationSchedulerProtocol
 
-    static let scheduleCount = 10
+    static let scheduleCount = 60
 
     init(computeQueue: ComputeQueueUseCase,
          tokenRepository: ScheduledTokenRepositoryProtocol,
@@ -32,9 +32,12 @@ final class RescheduleNextNUseCase: Sendable {
         // 3. Schedule new tokens
         var tokens: [ScheduledToken] = []
         for occurrence in topN {
-            let osId = "passalarm-\(occurrence.date)-\(occurrence.timeHHmm.replacingOccurrences(of: ":", with: ""))"
+            let planPrefix = occurrence.planId.uuidString.prefix(8)
+            let timeCompact = occurrence.timeHHmm.replacingOccurrences(of: ":", with: "")
+            let osId = "passalarm-\(planPrefix)-\(occurrence.date)-\(timeCompact)"
             let token = ScheduledToken(
                 id: UUID(),
+                planId: occurrence.planId,
                 date: occurrence.date,
                 fireAtEpoch: occurrence.fireDate.timeIntervalSince1970,
                 osIdentifier: osId,
@@ -48,7 +51,10 @@ final class RescheduleNextNUseCase: Sendable {
                 identifier: osId,
                 at: occurrence.fireDate,
                 title: "パスアラーム",
-                body: "\(occurrence.timeHHmm) アラーム"
+                body: occurrence.planLabel.isEmpty
+                    ? "\(occurrence.timeHHmm) アラーム"
+                    : "\(occurrence.planLabel) \(occurrence.timeHHmm)",
+                soundId: occurrence.soundId
             )
         }
 

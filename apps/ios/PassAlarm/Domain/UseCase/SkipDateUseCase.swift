@@ -10,9 +10,10 @@ final class SkipDateUseCase: Sendable {
         self.reschedule = reschedule
     }
 
-    func execute(date: String, reason: SkipException.SkipReason = .manual) async throws {
+    func execute(planId: UUID, date: String, reason: SkipException.SkipReason = .manual) async throws {
         let skip = SkipException(
             id: UUID(),
+            planId: planId,
             date: date,
             reason: reason,
             createdAt: Date()
@@ -21,8 +22,8 @@ final class SkipDateUseCase: Sendable {
         try await reschedule.execute()
     }
 
-    func unskip(date: String) async throws {
-        try await skipRepository.deleteByDate(date)
+    func unskip(planId: UUID, date: String) async throws {
+        try await skipRepository.deleteByPlanAndDate(planId: planId, date: date)
         try await reschedule.execute()
     }
 }

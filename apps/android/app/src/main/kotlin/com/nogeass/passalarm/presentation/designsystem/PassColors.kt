@@ -39,6 +39,13 @@ object PassColors {
     val brand = Color(0xFF6366F2)          // rgb(0.39, 0.40, 0.95)
     val brandLight = Color(0xFF8C8FFF)     // rgb(0.55, 0.56, 1.0)
 
+    // ── FAB toggle (Zenly-inspired neon) ─────────────────────────────────
+
+    /** Zenly green – list mode */
+    val fabList = Color(0xFFFF6B35)
+    /** Electric blue – skip mode */
+    val fabSkip = Color(0xFF4A9FF5)
+
     // ── Semantic ─────────────────────────────────────────────────────────
 
     val stopRed = Color(0xFFED4242)        // rgb(0.93, 0.26, 0.26)
@@ -49,9 +56,9 @@ object PassColors {
     // ── Surface ──────────────────────────────────────────────────────────
 
     /** Card background (light) with slight transparency */
-    val cardBackground = Color(0xD9FFFFFF)             // white @ 85%
+    val cardBackground = Color(0x1FFFFFFF)             // white @ 12%
     /** Card background (dark) with slight transparency */
     val cardBackgroundDark = Color(0xD91C1C1E)         // systemBackground-dark @ 85%
     /** Skipped-alarm card tint */
-    val cardBackgroundSkipped = Color(0x14FF9500)       // orange @ 8%
+    val cardBackgroundSkipped = Color(0x26FF9500)       // orange @ 15%
 }

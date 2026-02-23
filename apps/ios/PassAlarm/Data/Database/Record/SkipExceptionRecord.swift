@@ -5,12 +5,14 @@ struct SkipExceptionRecord: Codable, FetchableRecord, PersistableRecord, Sendabl
     static let databaseTableName = "skip_exception"
 
     var id: String
+    var planId: String
     var date: String
     var reason: String
     var createdAt: Date
 
     init(from entity: SkipException) {
         self.id = entity.id.uuidString
+        self.planId = entity.planId.uuidString
         self.date = entity.date
         self.reason = entity.reason.rawValue
         self.createdAt = entity.createdAt
@@ -19,6 +21,7 @@ struct SkipExceptionRecord: Codable, FetchableRecord, PersistableRecord, Sendabl
     func toEntity() -> SkipException {
         SkipException(
             id: UUID(uuidString: id) ?? UUID(),
+            planId: UUID(uuidString: planId) ?? UUID(),
             date: date,
             reason: SkipException.SkipReason(rawValue: reason) ?? .manual,
             createdAt: createdAt

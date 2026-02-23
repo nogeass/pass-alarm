@@ -4,6 +4,7 @@ struct PricePill: View {
     let periodLabel: String
     let price: String
     let pricePerMonth: String?
+    let trialText: String?
     let isYearly: Bool
     let isSelected: Bool
     let onTap: () -> Void
@@ -25,6 +26,16 @@ struct PricePill: View {
                 Text(perMonth)
                     .font(.system(size: 11, weight: .medium))
                     .foregroundStyle(.white.opacity(0.6))
+            }
+
+            // Trial badge
+            if let trial = trialText {
+                Text(trial)
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, PassSpacing.sm)
+                    .padding(.vertical, 3)
+                    .background(Capsule().fill(PassColors.successGreen))
             }
         }
         .frame(maxWidth: .infinity)

@@ -1,0 +1,7 @@
+name = "pass-alarm-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# secrets (set via `wrangler secret put`):
+#   GITHUB_TOKEN  — GitHub PAT with repo scope
+#   API_KEY       — shared secret for app → worker auth

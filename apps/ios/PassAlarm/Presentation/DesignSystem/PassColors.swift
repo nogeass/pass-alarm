@@ -15,6 +15,10 @@ enum PassColors {
     static let brand = Color(red: 0.39, green: 0.40, blue: 0.95) // indigo
     static let brandLight = Color(red: 0.55, green: 0.56, blue: 1.0)
 
+    // FAB toggle (Zenly-inspired neon)
+    static let fabList = Color(red: 1.0, green: 0.42, blue: 0.21)    // neon orange #FF6B35
+    static let fabSkip = Color(red: 0.29, green: 0.62, blue: 0.96)   // electric blue #4A9FF5
+
     // Semantic
     static let skipOrange = Color(red: 0.96, green: 0.62, blue: 0.04)
     static let stopRed = Color(red: 0.93, green: 0.26, blue: 0.26)
@@ -22,6 +26,6 @@ enum PassColors {
     static let successGreen = Color(red: 0.22, green: 0.80, blue: 0.47)
 
     // Surface
-    static let cardBackground = Color(.systemBackground).opacity(0.85)
-    static let cardBackgroundSkipped = Color.orange.opacity(0.08)
+    static let cardBackground = Color.white.opacity(0.12)
+    static let cardBackgroundSkipped = Color.orange.opacity(0.15)
 }
