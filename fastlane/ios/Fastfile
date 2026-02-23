@@ -79,7 +79,7 @@ platform :ios do
     )
   end
 
-  desc "Deploy to App Store"
+  desc "Deploy to App Store and submit for review"
   lane :release do |options|
     version = options[:version] || "1.0.0"
     increment_version_number(
@@ -97,8 +97,10 @@ platform :ios do
       app_identifier: APP_IDENTIFIER,
       metadata_path: METADATA_PATH,
       screenshots_path: SCREENSHOTS_PATH,
-      submit_for_review: false,
-      force: true
+      submit_for_review: true,
+      automatic_release: true,
+      force: true,
+      precheck_include_in_app_purchases: false
     )
   end
 end

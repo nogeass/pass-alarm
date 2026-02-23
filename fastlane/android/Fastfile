@@ -60,7 +60,7 @@ platform :android do
     )
   end
 
-  desc "Promote to production (with metadata + screenshots)"
+  desc "Deploy to production and submit for review"
   lane :release do |options|
     version = options[:version] || "1.0.0"
     gradle(
@@ -72,7 +72,8 @@ platform :android do
       package_name: APP_PACKAGE,
       track: "production",
       aab: "#{PROJECT_DIR}/app/build/outputs/bundle/release/app-release.aab",
-      metadata_path: METADATA_PATH
+      metadata_path: METADATA_PATH,
+      skip_upload_screenshots: false
     )
   end
 end
