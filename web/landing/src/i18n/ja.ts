@@ -19,7 +19,7 @@ export const ja = {
   },
 
   pain: {
-    title: 'OFFの問題、知ってますか？',
+    title: '今日だけOFF問題、知ってますか？',
     off: {
       label: 'OFF',
       title: '今日OFFにすると…',
