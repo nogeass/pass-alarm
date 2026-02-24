@@ -1,4 +1,5 @@
 import Foundation
+import AudioToolbox
 import AVFoundation
 
 @Observable
@@ -9,6 +10,7 @@ final class AlarmRingingViewModel {
 
     private var audioPlayer: AVAudioPlayer?
     private var timer: Timer?
+    private var vibrationTimer: Timer?
     private var currentSoundId: String = "default"
 
     /// Maps soundId to the bundled .caf filename.
@@ -96,10 +98,20 @@ final class AlarmRingingViewModel {
         } catch {
             print("Audio error: \(error)")
         }
+        startVibration()
+    }
+
+    private func startVibration() {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        vibrationTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        }
     }
 
     private func stopSound() {
         audioPlayer?.stop()
         audioPlayer = nil
+        vibrationTimer?.invalidate()
+        vibrationTimer = nil
     }
 }

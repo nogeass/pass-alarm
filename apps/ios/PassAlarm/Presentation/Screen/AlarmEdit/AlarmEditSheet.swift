@@ -210,11 +210,6 @@ struct AlarmEditSheet: View {
                     Task {
                         let success = await vm.save()
                         if success {
-                            toastMessage = PraiseMessages.randomSettingsComplete()
-                            withAnimation(.spring(response: 0.3)) {
-                                showToast = true
-                            }
-                            try? await Task.sleep(for: .seconds(1))
                             onSaved()
                         }
                     }

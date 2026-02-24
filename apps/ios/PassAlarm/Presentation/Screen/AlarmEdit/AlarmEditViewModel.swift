@@ -54,13 +54,26 @@ final class AlarmEditViewModel {
                 updatedAt: Date()
             )
             do {
-                try await container.updatePlanUseCase.execute(plan)
+                // DB write only (fast) — reschedule runs in background
+                try await container.alarmPlanRepository.save(plan)
+                Task { try? await container.rescheduleNextNUseCase.execute() }
                 return true
             } catch {
                 print("AlarmEditViewModel update error: \(error)")
                 return false
             }
         } else {
+            // Check limit first (fast)
+            do {
+                let canCreate = try await container.checkProLimitUseCase.execute()
+                guard canCreate else {
+                    showLimitError = true
+                    return false
+                }
+            } catch {
+                return false
+            }
+
             let plan = AlarmPlan(
                 id: UUID(),
                 isEnabled: true,
@@ -74,13 +87,10 @@ final class AlarmEditViewModel {
                 updatedAt: Date()
             )
             do {
-                try await container.createPlanUseCase.execute(plan)
+                // DB write only (fast) — reschedule runs in background
+                try await container.alarmPlanRepository.save(plan)
+                Task { try? await container.rescheduleNextNUseCase.execute() }
                 return true
-            } catch let error as CreatePlanUseCase.CreatePlanError {
-                if error == .limitReached {
-                    showLimitError = true
-                }
-                return false
             } catch {
                 print("AlarmEditViewModel create error: \(error)")
                 return false
