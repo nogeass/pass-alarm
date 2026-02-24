@@ -46,7 +46,11 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
           security list-keychains -d user -s "$KEYCHAIN_PATH" $(security list-keychains -d user | tr -d '"')
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          echo "$IOS_DIST_PROVISION" | base64 -d > ~/Library/MobileDevice/Provisioning\ Profiles/dist.mobileprovision
+          PROVISION_PATH=$RUNNER_TEMP/dist.mobileprovision
+          echo "$IOS_DIST_PROVISION" | base64 -d > "$PROVISION_PATH"
+          PROFILE_UUID=$(security cms -D -i "$PROVISION_PATH" | plutil -extract UUID raw -)
+          cp "$PROVISION_PATH" ~/Library/MobileDevice/Provisioning\ Profiles/"$PROFILE_UUID.mobileprovision"
+          echo "PROVISIONING_PROFILE_UUID=$PROFILE_UUID" >> $GITHUB_ENV
 
       - name: Deploy to TestFlight
         env:
