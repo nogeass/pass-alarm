@@ -16,35 +16,14 @@ struct MainContentView: View {
                 .animation(.easeInOut(duration: 0.5), value: selectedTab)
 
             VStack(spacing: 0) {
-                // Header with title and add button
-                HStack {
-                    Text(selectedTab == .list ? "アラーム一覧" : "次のアラーム")
-                        .font(.system(size: 34, weight: .bold))
-                        .foregroundStyle(.white)
-
-                    Spacer()
-
-                    // Add button — top right
-                    Button {
-                        PassHaptics.tap()
-                        editingPlan = nil
-                        showAlarmEdit = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 22, weight: .bold))
-                            .foregroundStyle(.white)
-                            .frame(width: 36, height: 36)
-                            .background(
-                                Circle()
-                                    .fill(.ultraThinMaterial)
-                            )
-                            .clipShape(Circle())
-                    }
-                    .buttonStyle(.plain)
-                }
-                .padding(.horizontal, PassSpacing.md)
-                .padding(.top, PassSpacing.sm)
-                .padding(.bottom, PassSpacing.xs)
+                // Large title — left aligned
+                Text(selectedTab == .list ? "アラーム一覧" : "次のアラーム")
+                    .font(.system(size: 34, weight: .bold))
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, PassSpacing.md)
+                    .padding(.top, PassSpacing.sm)
+                    .padding(.bottom, PassSpacing.xs)
 
                 // Content
                 switch selectedTab {
@@ -61,7 +40,7 @@ struct MainContentView: View {
                 }
             }
 
-            // Bottom floating buttons
+            // Bottom floating buttons — tight cluster
             VStack {
                 Spacer()
                 HStack(spacing: 16) {
@@ -83,8 +62,27 @@ struct MainContentView: View {
                     }
                     .buttonStyle(.plain)
 
-                    // Mode toggle
+                    // Mode toggle — center
                     ModeToggleFAB(selectedTab: $selectedTab)
+
+                    // Add button — right
+                    Button {
+                        PassHaptics.tap()
+                        editingPlan = nil
+                        showAlarmEdit = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 24, weight: .black))
+                            .foregroundStyle(.white)
+                            .frame(width: 48, height: 48)
+                            .background(
+                                Circle()
+                                    .fill(.ultraThinMaterial)
+                            )
+                            .clipShape(Circle())
+                            .shadow(color: .black.opacity(0.2), radius: 8, y: 2)
+                    }
+                    .buttonStyle(.plain)
                 }
                 .padding(.bottom, PassSpacing.xl)
             }
