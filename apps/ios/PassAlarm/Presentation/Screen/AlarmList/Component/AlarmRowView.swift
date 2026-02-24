@@ -2,12 +2,12 @@ import SwiftUI
 
 struct AlarmRowView: View {
     let plan: AlarmPlan
-    var onToggle: (Bool) -> Void
+    var onToggle: (Bool, @escaping () -> Void) -> Void
     var onTap: () -> Void
 
     @State private var isEnabled: Bool
 
-    init(plan: AlarmPlan, onToggle: @escaping (Bool) -> Void, onTap: @escaping () -> Void) {
+    init(plan: AlarmPlan, onToggle: @escaping (Bool, @escaping () -> Void) -> Void, onTap: @escaping () -> Void) {
         self.plan = plan
         self.onToggle = onToggle
         self.onTap = onTap
@@ -45,7 +45,9 @@ struct AlarmRowView: View {
                     .tint(PassColors.brand)
                     .onChange(of: isEnabled) { _, newValue in
                         PassHaptics.medium()
-                        onToggle(newValue)
+                        onToggle(newValue) {
+                            isEnabled = !newValue
+                        }
                     }
             }
             .padding(PassSpacing.md)

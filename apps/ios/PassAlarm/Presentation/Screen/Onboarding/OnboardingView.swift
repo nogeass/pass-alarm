@@ -74,11 +74,11 @@ struct OnboardingView: View {
 
             if denied {
                 VStack(spacing: PassSpacing.md) {
-                    Text("通知がONじゃないと起こせない")
+                    Text("通知がOFFだとアラームが鳴りません")
                         .font(.headline)
                         .foregroundStyle(.white)
 
-                    Text("設定アプリから通知を許可してください")
+                    Text("あとから設定アプリで許可できます")
                         .font(.subheadline)
                         .foregroundStyle(.white.opacity(0.6))
 
@@ -92,18 +92,36 @@ struct OnboardingView: View {
                         }
                     }
                     .padding(.horizontal, PassSpacing.xl)
+
+                    Button {
+                        withAnimation { step = .tutorial }
+                    } label: {
+                        Text("あとで設定する")
+                            .font(.subheadline)
+                            .foregroundStyle(.white.opacity(0.5))
+                    }
                 }
             } else {
-                PassButton(
-                    title: "通知を許可して始める",
-                    size: .large,
-                    color: PassColors.brand,
-                    isEnabled: !requesting,
-                    haptic: .success
-                ) {
-                    Task { await requestPermission() }
+                VStack(spacing: PassSpacing.md) {
+                    PassButton(
+                        title: "通知を許可して始める",
+                        size: .large,
+                        color: PassColors.brand,
+                        isEnabled: !requesting,
+                        haptic: .success
+                    ) {
+                        Task { await requestPermission() }
+                    }
+                    .padding(.horizontal, PassSpacing.lg)
+
+                    Button {
+                        withAnimation { step = .tutorial }
+                    } label: {
+                        Text("あとで設定する")
+                            .font(.subheadline)
+                            .foregroundStyle(.white.opacity(0.5))
+                    }
                 }
-                .padding(.horizontal, PassSpacing.lg)
             }
         }
     }

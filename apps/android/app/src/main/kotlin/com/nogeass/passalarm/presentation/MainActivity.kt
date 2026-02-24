@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        val startDestination = if (notificationsEnabled && tutorialCompleted) {
+        val startDestination = if (tutorialCompleted) {
             Screen.Main.route
         } else {
             Screen.Onboarding.route

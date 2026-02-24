@@ -638,6 +638,11 @@
 				TargetAttributes = {
 					E0651FAEE77F52412CF57E44 = {
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

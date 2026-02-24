@@ -16,6 +16,8 @@ import javax.inject.Inject
 data class AlarmListUiState(
     val plans: List<AlarmPlan> = emptyList(),
     val isLoading: Boolean = true,
+    val showPermissionDialog: Boolean = false,
+    val pendingTogglePlanId: Long? = null,
 )
 
 @HiltViewModel
@@ -44,6 +46,28 @@ class AlarmListViewModel @Inject constructor(
         viewModelScope.launch {
             enablePlanUseCase.execute(planId, isEnabled)
             load()
+        }
+    }
+
+    fun requestToggleOn(planId: Long, notificationsEnabled: Boolean) {
+        if (notificationsEnabled) {
+            togglePlan(planId, true)
+        } else {
+            _uiState.update { it.copy(showPermissionDialog = true, pendingTogglePlanId = planId) }
+        }
+    }
+
+    fun dismissPermissionDialog() {
+        _uiState.update { it.copy(showPermissionDialog = false, pendingTogglePlanId = null) }
+    }
+
+    fun onResumePermissionCheck(notificationsEnabled: Boolean) {
+        val pendingId = _uiState.value.pendingTogglePlanId ?: return
+        if (notificationsEnabled) {
+            togglePlan(pendingId, true)
+            _uiState.update { it.copy(showPermissionDialog = false, pendingTogglePlanId = null) }
+        } else {
+            _uiState.update { it.copy(showPermissionDialog = true) }
         }
     }
 

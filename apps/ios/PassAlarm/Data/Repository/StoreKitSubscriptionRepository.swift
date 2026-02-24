@@ -58,7 +58,9 @@ final class StoreKitSubscriptionRepository: SubscriptionRepositoryProtocol, @unc
     // MARK: - FetchProducts
 
     func fetchProducts() async throws -> [ProProduct] {
+        print("[IAP] fetchProducts requesting IDs: \(Self.productIDs)")
         let storeProducts = try await Product.products(for: Self.productIDs)
+        print("[IAP] fetchProducts returned \(storeProducts.count) products: \(storeProducts.map { $0.id })")
         return storeProducts.compactMap { product in
             guard let period = Self.period(for: product.id) else { return nil }
             let pricePerMonth: String? = {

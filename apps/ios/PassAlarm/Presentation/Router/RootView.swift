@@ -10,7 +10,7 @@ struct RootView: View {
         Group {
             if checkingState {
                 ProgressView()
-            } else if !permissionGranted || !tutorialCompleted {
+            } else if !tutorialCompleted {
                 OnboardingView(
                     skipPermission: permissionGranted,
                     onComplete: {

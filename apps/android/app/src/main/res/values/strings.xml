@@ -28,6 +28,9 @@
     <string name="onboarding_open_settings">設定を開く</string>
     <string name="onboarding_grant_permission">通知を許可して始める</string>
     <string name="onboarding_exact_alarm_needed">正確なアラームの許可が必要です</string>
+    <string name="permission_dialog_title">通知が必要です</string>
+    <string name="permission_dialog_message">通知がOFFだとアラームが鳴りません。設定アプリで通知を許可してください。</string>
+    <string name="permission_dialog_cancel">キャンセル</string>
     <string name="tab_home">ホーム</string>
     <string name="tab_queue">キュー</string>
     <string name="tab_settings">設定</string>

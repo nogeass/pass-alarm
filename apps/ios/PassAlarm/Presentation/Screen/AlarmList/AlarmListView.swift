@@ -2,7 +2,10 @@ import SwiftUI
 
 struct AlarmListView: View {
     @Environment(DIContainer.self) private var container
+    @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel: AlarmListViewModel?
+    @State private var showPermissionAlert = false
+    @State private var pendingTogglePlanId: UUID?
     var onEdit: (AlarmPlan) -> Void
     var onDeletePerformed: (() -> Void)? = nil
 
@@ -24,6 +27,30 @@ struct AlarmListView: View {
                 let vm = AlarmListViewModel(container: container)
                 viewModel = vm
                 await vm.load()
+            }
+        }
+        .alert("通知が必要です", isPresented: $showPermissionAlert) {
+            Button("設定を開く") {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+            Button("キャンセル", role: .cancel) {
+                pendingTogglePlanId = nil
+            }
+        } message: {
+            Text("通知がOFFだとアラームが鳴りません。設定アプリで通知を許可してください。")
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            guard newPhase == .active, let planId = pendingTogglePlanId else { return }
+            Task {
+                let status = await container.notificationPermission.currentStatus()
+                if status == .authorized {
+                    await viewModel?.togglePlan(planId, isEnabled: true)
+                    pendingTogglePlanId = nil
+                } else {
+                    showPermissionAlert = true
+                }
             }
         }
     }
@@ -55,8 +82,29 @@ struct AlarmListView: View {
                 ForEach(vm.plans) { plan in
                     AlarmRowView(
                         plan: plan,
-                        onToggle: { isEnabled in
-                            Task { await vm.togglePlan(plan.id, isEnabled: isEnabled) }
+                        onToggle: { isEnabled, revert in
+                            if !isEnabled {
+                                Task { await vm.togglePlan(plan.id, isEnabled: false) }
+                                return
+                            }
+                            Task {
+                                let status = await container.notificationPermission.currentStatus()
+                                switch status {
+                                case .authorized:
+                                    await vm.togglePlan(plan.id, isEnabled: true)
+                                case .notDetermined:
+                                    let granted = (try? await container.notificationPermission.request()) ?? false
+                                    if granted {
+                                        await vm.togglePlan(plan.id, isEnabled: true)
+                                    } else {
+                                        revert()
+                                    }
+                                case .denied, .provisional:
+                                    revert()
+                                    pendingTogglePlanId = plan.id
+                                    showPermissionAlert = true
+                                }
+                            }
                         },
                         onTap: {
                             onEdit(plan)

@@ -136,6 +136,10 @@ fun OnboardingScreen(
                     }
                     context.startActivity(intent)
                 },
+                onSkip = {
+                    step = 1
+                    viewModel.inferStep()
+                },
             )
 
             1 -> TutorialCreateAlarmStep(
@@ -241,6 +245,7 @@ private fun PermissionStep(
     requesting: Boolean,
     onRequestPermission: () -> Unit,
     onOpenSettings: () -> Unit,
+    onSkip: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -277,13 +282,13 @@ private fun PermissionStep(
                 verticalArrangement = Arrangement.spacedBy(PassSpacing.md),
             ) {
                 Text(
-                    text = stringResource(R.string.onboarding_permission_needed),
+                    text = "通知がOFFだとアラームが鳴りません",
                     style = PassTypography.cardDate,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
                 )
                 Text(
-                    text = stringResource(R.string.onboarding_permission_denied),
+                    text = "あとから設定アプリで許可できます",
                     style = PassTypography.badgeText,
                     color = Color.White.copy(alpha = 0.6f),
                 )
@@ -293,16 +298,35 @@ private fun PermissionStep(
                     color = PassColors.brand,
                     onClick = onOpenSettings,
                 )
+                androidx.compose.material3.TextButton(onClick = onSkip) {
+                    Text(
+                        text = "あとで設定する",
+                        style = PassTypography.badgeText,
+                        color = Color.White.copy(alpha = 0.5f),
+                    )
+                }
             }
         } else {
-            PassButton(
-                title = stringResource(R.string.onboarding_grant_permission),
-                size = PassButtonSize.Large,
-                color = PassColors.brand,
-                isEnabled = !requesting,
-                hapticType = PassHapticType.Success,
-                onClick = onRequestPermission,
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(PassSpacing.md),
+            ) {
+                PassButton(
+                    title = stringResource(R.string.onboarding_grant_permission),
+                    size = PassButtonSize.Large,
+                    color = PassColors.brand,
+                    isEnabled = !requesting,
+                    hapticType = PassHapticType.Success,
+                    onClick = onRequestPermission,
+                )
+                androidx.compose.material3.TextButton(onClick = onSkip) {
+                    Text(
+                        text = "あとで設定する",
+                        style = PassTypography.badgeText,
+                        color = Color.White.copy(alpha = 0.5f),
+                    )
+                }
+            }
         }
 
         Spacer(modifier = Modifier.weight(1f))
