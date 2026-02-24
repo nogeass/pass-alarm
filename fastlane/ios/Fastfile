@@ -43,6 +43,24 @@ def setup_manual_signing_if_ci
   )
 end
 
+def asc_xcargs
+  key_id    = ENV.fetch('ASC_KEY_ID', 'R7PF52F527')
+  issuer_id = ENV.fetch('ASC_ISSUER_ID', '44f2cad6-60e5-437b-8a28-a830872fc253')
+
+  if ENV['ASC_PRIVATE_KEY']
+    require 'base64'
+    key_path = "/tmp/AuthKey_#{key_id}.p8"
+    File.write(key_path, Base64.decode64(ENV['ASC_PRIVATE_KEY']))
+  else
+    key_path = "#{KEYS_DIR}/AuthKey.p8"
+  end
+
+  "-allowProvisioningUpdates " \
+  "-authenticationKeyPath #{key_path} " \
+  "-authenticationKeyID #{key_id} " \
+  "-authenticationKeyIssuerID #{issuer_id}"
+end
+
 def appstore_gym_options
   opts = {
     project: "#{PROJECT_DIR}/PassAlarm.xcodeproj",
@@ -57,6 +75,8 @@ def appstore_gym_options
         APP_IDENTIFIER => ENV['PROVISIONING_PROFILE_UUID']
       }
     }
+  else
+    opts[:xcargs] = asc_xcargs
   end
   opts
 end
