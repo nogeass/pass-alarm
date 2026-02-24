@@ -55,3 +55,6 @@ apps/android/app/google-services.json
 
 # Android release keystore
 passalarm-release.keystore
+
+# Google Play service account key
+fastlane/android/play-store-key.json
