@@ -9,6 +9,8 @@ struct ProPurchaseView: View {
     @State private var selectedPeriod: ProPeriod = .yearly
     @State private var isPurchasing = false
     @State private var appeared = false
+    @State private var errorMessage: String?
+    @State private var isLoadingProducts = true
 
     var body: some View {
         ZStack {
@@ -78,6 +80,35 @@ struct ProPurchaseView: View {
                         }
                     }
                     .padding(.horizontal, PassSpacing.md)
+
+                    // Loading indicator
+                    if isLoadingProducts && products.isEmpty {
+                        ProgressView()
+                            .tint(.white)
+                            .padding(PassSpacing.md)
+                    }
+
+                    // Error message with retry
+                    if let errorMessage {
+                        VStack(spacing: PassSpacing.sm) {
+                            Text(errorMessage)
+                                .font(.caption)
+                                .foregroundStyle(PassColors.stopRed)
+                                .multilineTextAlignment(.center)
+
+                            Button {
+                                Task { await loadProducts() }
+                            } label: {
+                                Text("再読み込み")
+                                    .font(.caption)
+                                    .foregroundStyle(.white.opacity(0.7))
+                                    .padding(.horizontal, PassSpacing.md)
+                                    .padding(.vertical, PassSpacing.xs)
+                                    .background(.ultraThinMaterial, in: Capsule())
+                            }
+                        }
+                        .padding(.horizontal, PassSpacing.md)
+                    }
 
                     // Purchase button
                     PassButton(
@@ -161,11 +192,18 @@ struct ProPurchaseView: View {
     // MARK: - Actions
 
     private func loadProducts() async {
+        isLoadingProducts = true
+        errorMessage = nil
         do {
             products = try await container.subscriptionRepository.fetchProducts()
+            if products.isEmpty {
+                errorMessage = "商品情報を取得できませんでした"
+            }
         } catch {
+            errorMessage = "読み込みに失敗しました: \(error.localizedDescription)"
             print("ProPurchaseView loadProducts error: \(error)")
         }
+        isLoadingProducts = false
     }
 
     private func purchase() async {
@@ -178,21 +216,28 @@ struct ProPurchaseView: View {
             if status.isPro {
                 onPurchased()
             }
+        } catch let error as SubscriptionError where error == .userCancelled {
+            // User cancelled — no error message needed
         } catch {
+            errorMessage = "購入に失敗しました: \(error.localizedDescription)"
             print("ProPurchaseView purchase error: \(error)")
         }
     }
 
     private func restore() async {
         isPurchasing = true
+        errorMessage = nil
         defer { isPurchasing = false }
 
         do {
             let status = try await container.subscriptionRepository.restorePurchases()
             if status.isPro {
                 onPurchased()
+            } else {
+                errorMessage = "有効なサブスクリプションが見つかりませんでした"
             }
         } catch {
+            errorMessage = "復元に失敗しました: \(error.localizedDescription)"
             print("ProPurchaseView restore error: \(error)")
         }
     }
