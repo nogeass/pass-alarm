@@ -16,8 +16,12 @@ android {
         applicationId = "com.nogeass.passalarm"
         minSdk = 26
         targetSdk = 35
-        versionCode = System.getenv("VERSION_CODE")?.toIntOrNull() ?: 1
-        versionName = System.getenv("VERSION_NAME") ?: "1.0.0"
+        versionCode = project.findProperty("versionCode")?.toString()?.toIntOrNull()
+            ?: System.getenv("VERSION_CODE")?.toIntOrNull()
+            ?: 1
+        versionName = project.findProperty("versionName")?.toString()
+            ?: System.getenv("VERSION_NAME")
+            ?: "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

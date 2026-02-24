@@ -46,10 +46,18 @@ platform :android do
   desc "Deploy beta to Google Play internal track"
   lane :beta do |options|
     version = options[:version] || "0.0.1"
+    version_codes = google_play_track_version_codes(
+      package_name: APP_PACKAGE,
+      track: "internal"
+    ) rescue [0]
+    next_code = (version_codes.max || 0) + 1
     gradle(
       project_dir: PROJECT_DIR,
       task: "bundleRelease",
-      properties: { "versionName" => version }
+      properties: {
+        "versionName" => version,
+        "versionCode" => next_code.to_s
+      }
     )
     supply(
       package_name: APP_PACKAGE,
@@ -64,10 +72,23 @@ platform :android do
   desc "Deploy to production and submit for review"
   lane :release do |options|
     version = options[:version] || "1.0.0"
+    version_codes = google_play_track_version_codes(
+      package_name: APP_PACKAGE,
+      track: "production"
+    ) rescue [0]
+    internal_codes = google_play_track_version_codes(
+      package_name: APP_PACKAGE,
+      track: "internal"
+    ) rescue [0]
+    all_codes = version_codes + internal_codes
+    next_code = (all_codes.max || 0) + 1
     gradle(
       project_dir: PROJECT_DIR,
       task: "bundleRelease",
-      properties: { "versionName" => version }
+      properties: {
+        "versionName" => version,
+        "versionCode" => next_code.to_s
+      }
     )
     supply(
       package_name: APP_PACKAGE,
