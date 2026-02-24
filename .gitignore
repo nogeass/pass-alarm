@@ -52,3 +52,6 @@ fastlane/keys/
 # Firebase config (stored in GitHub Secrets for CI)
 apps/ios/PassAlarm/Resources/GoogleService-Info.plist
 apps/android/app/google-services.json
+
+# Android release keystore
+passalarm-release.keystore
