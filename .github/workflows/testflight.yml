@@ -1,11 +1,11 @@
-name: TestFlight Deploy
+name: Beta Deploy
 
 on:
   push:
     branches: [main]
 
 concurrency:
-  group: testflight
+  group: beta-deploy
   cancel-in-progress: true
 
 jobs:
@@ -61,4 +61,48 @@ jobs:
           FASTLANE_XCODEBUILD_SETTINGS_RETRIES: "6"
         run: |
           ln -sf ios/Fastfile fastlane/Fastfile
+          fastlane beta version:1.0.0
+
+  android-internal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-beta-${{ runner.os }}-${{ hashFiles('apps/android/**/*.gradle*') }}
+          restore-keys: gradle-beta-${{ runner.os }}-
+
+      - name: Restore google-services.json
+        run: echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | base64 -d > apps/android/app/google-services.json
+
+      - name: Decode keystore
+        run: echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > apps/android/app/release.keystore
+
+      - name: Install Fastlane
+        run: sudo gem install fastlane
+
+      - name: Deploy to Google Play internal track
+        env:
+          SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_PLAY_JSON_KEY }}
+          ANDROID_KEYSTORE_PATH: release.keystore
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          ANDROID_STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+        run: |
+          mkdir -p fastlane/android/fastlane
+          ln -sf "$PWD/fastlane/android/Fastfile" fastlane/android/fastlane/Fastfile
+          cd fastlane/android
           fastlane beta version:1.0.0
