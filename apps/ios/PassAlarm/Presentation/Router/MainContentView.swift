@@ -7,6 +7,7 @@ struct MainContentView: View {
     @State private var showAlarmEdit = false
     @State private var editingPlan: AlarmPlan? = nil
     @State private var refreshId = UUID()
+    @State private var ringingVM = AlarmRingingViewModel()
 
     var body: some View {
         ZStack {
@@ -15,14 +16,35 @@ struct MainContentView: View {
                 .animation(.easeInOut(duration: 0.5), value: selectedTab)
 
             VStack(spacing: 0) {
-                // Large title — left aligned
-                Text(selectedTab == .list ? "アラーム一覧" : "次のアラーム")
-                    .font(.system(size: 34, weight: .bold))
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, PassSpacing.md)
-                    .padding(.top, PassSpacing.sm)
-                    .padding(.bottom, PassSpacing.xs)
+                // Header with title and add button
+                HStack {
+                    Text(selectedTab == .list ? "アラーム一覧" : "次のアラーム")
+                        .font(.system(size: 34, weight: .bold))
+                        .foregroundStyle(.white)
+
+                    Spacer()
+
+                    // Add button — top right
+                    Button {
+                        PassHaptics.tap()
+                        editingPlan = nil
+                        showAlarmEdit = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 22, weight: .bold))
+                            .foregroundStyle(.white)
+                            .frame(width: 36, height: 36)
+                            .background(
+                                Circle()
+                                    .fill(.ultraThinMaterial)
+                            )
+                            .clipShape(Circle())
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.horizontal, PassSpacing.md)
+                .padding(.top, PassSpacing.sm)
+                .padding(.bottom, PassSpacing.xs)
 
                 // Content
                 switch selectedTab {
@@ -39,7 +61,7 @@ struct MainContentView: View {
                 }
             }
 
-            // Bottom floating buttons — tight cluster
+            // Bottom floating buttons
             VStack {
                 Spacer()
                 HStack(spacing: 16) {
@@ -61,29 +83,26 @@ struct MainContentView: View {
                     }
                     .buttonStyle(.plain)
 
-                    // Mode toggle — center
+                    // Mode toggle
                     ModeToggleFAB(selectedTab: $selectedTab)
-
-                    // Add button — right
-                    Button {
-                        PassHaptics.tap()
-                        editingPlan = nil
-                        showAlarmEdit = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 24, weight: .black))
-                            .foregroundStyle(.white)
-                            .frame(width: 48, height: 48)
-                            .background(
-                                Circle()
-                                    .fill(.ultraThinMaterial)
-                            )
-                            .clipShape(Circle())
-                            .shadow(color: .black.opacity(0.2), radius: 8, y: 2)
-                    }
-                    .buttonStyle(.plain)
                 }
                 .padding(.bottom, PassSpacing.xl)
+            }
+
+            // Alarm ringing overlay
+            if ringingVM.isPresented {
+                AlarmRingingView(
+                    session: $ringingVM.session,
+                    onStop: {
+                        ringingVM.stop()
+                        refreshId = UUID()
+                    },
+                    onSnooze: {
+                        ringingVM.snooze()
+                    }
+                )
+                .transition(.opacity)
+                .zIndex(100)
             }
         }
         .sheet(isPresented: $showAlarmEdit, onDismiss: {
@@ -98,6 +117,17 @@ struct MainContentView: View {
         }
         .sheet(isPresented: $showSettings) {
             GlobalSettingsSheet()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: AppDelegate.alarmFiredNotification)) { notification in
+            let soundId = notification.userInfo?["soundId"] as? String ?? "default"
+            ringingVM.startFromNotification(soundId: soundId)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("PassAlarm.alarmStopped"))) { _ in
+            ringingVM.stop()
+            refreshId = UUID()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("PassAlarm.alarmSnoozed"))) { _ in
+            ringingVM.snooze()
         }
     }
 }

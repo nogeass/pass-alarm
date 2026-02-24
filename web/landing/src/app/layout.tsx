@@ -33,6 +33,22 @@ export const metadata: Metadata = {
     description: ja.meta.ogDescription,
     type: 'website',
     url: 'https://pass-alarm.nogeass.com',
+    siteName: 'パスアラーム',
+    locale: 'ja_JP',
+    images: [
+      {
+        url: 'https://pass-alarm.nogeass.com/ogp.png',
+        width: 1200,
+        height: 630,
+        alt: 'パスアラーム - OFFにしない目覚まし',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: ja.meta.ogTitle,
+    description: ja.meta.ogDescription,
+    images: ['https://pass-alarm.nogeass.com/ogp.png'],
   },
 }
 

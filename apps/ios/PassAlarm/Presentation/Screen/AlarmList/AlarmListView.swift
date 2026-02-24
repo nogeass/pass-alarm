@@ -40,7 +40,7 @@ struct AlarmListView: View {
                 .font(.headline)
                 .foregroundStyle(.white.opacity(0.6))
 
-            Text("右上の + ボタンで新規作成")
+            Text("+ ボタンで新規作成")
                 .font(.subheadline)
                 .foregroundStyle(.white.opacity(0.4))
 

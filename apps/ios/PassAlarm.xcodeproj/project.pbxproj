@@ -89,6 +89,12 @@
 		D4E5F6071829A30B5C6D7E8F /* FeedbackSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4E5F607182930A4B5C6D7 /* FeedbackSheet.swift */; };
 		F607182930A1B2C5D6E7F8A9 /* FeedbackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F607182930A1B4C5D6E7F8 /* FeedbackAPI.swift */; };
 		95C116B7F2997899D5C54630 /* TutorialFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B06CE70FC4D4D006F400E7 /* TutorialFlowView.swift */; };
+		AA01020304050607CAFAAA01 /* alarm_default.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB01020304050607CAFABB01 /* alarm_default.caf */; };
+		AA01020304050607CAFAAA02 /* alarm_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB01020304050607CAFABB02 /* alarm_alarm.caf */; };
+		AA01020304050607CAFAAA03 /* alarm_beacon.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB01020304050607CAFABB03 /* alarm_beacon.caf */; };
+		AA01020304050607CAFAAA04 /* alarm_bulletin.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB01020304050607CAFABB04 /* alarm_bulletin.caf */; };
+		AA01020304050607CAFAAA05 /* alarm_radar.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB01020304050607CAFABB05 /* alarm_radar.caf */; };
+		AA01020304050607CAFAAA06 /* alarm_signal.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB01020304050607CAFABB06 /* alarm_signal.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +189,12 @@
 		C3D4E5F607182930A4B5C6D7 /* FeedbackSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackSheet.swift; sourceTree = "<group>"; };
 		E5F607182930A1B4C5D6E7F8 /* FeedbackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackAPI.swift; sourceTree = "<group>"; };
 		35B06CE70FC4D4D006F400E7 /* TutorialFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFlowView.swift; sourceTree = "<group>"; };
+		BB01020304050607CAFABB01 /* alarm_default.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_default.caf; sourceTree = "<group>"; };
+		BB01020304050607CAFABB02 /* alarm_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_alarm.caf; sourceTree = "<group>"; };
+		BB01020304050607CAFABB03 /* alarm_beacon.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_beacon.caf; sourceTree = "<group>"; };
+		BB01020304050607CAFABB04 /* alarm_bulletin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_bulletin.caf; sourceTree = "<group>"; };
+		BB01020304050607CAFABB05 /* alarm_radar.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_radar.caf; sourceTree = "<group>"; };
+		BB01020304050607CAFABB06 /* alarm_signal.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_signal.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,8 +263,22 @@
 			children = (
 				F26CA68413320A0F266521B8 /* Assets.xcassets */,
 				FC069DA27E7E9C2AE5DC0391 /* GoogleService-Info.plist */,
+				CC01020304050607CAFACC01 /* Sounds */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CC01020304050607CAFACC01 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				BB01020304050607CAFABB01 /* alarm_default.caf */,
+				BB01020304050607CAFABB02 /* alarm_alarm.caf */,
+				BB01020304050607CAFABB03 /* alarm_beacon.caf */,
+				BB01020304050607CAFABB04 /* alarm_bulletin.caf */,
+				BB01020304050607CAFABB05 /* alarm_radar.caf */,
+				BB01020304050607CAFABB06 /* alarm_signal.caf */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		2FB86CDE8C285CACD4A2D17B /* Record */ = {
@@ -645,6 +671,12 @@
 			files = (
 				55437F9C958D0FF42A06CBCF /* Assets.xcassets in Resources */,
 				C6C2BEAC7235C7826280BCB9 /* GoogleService-Info.plist in Resources */,
+				AA01020304050607CAFAAA01 /* alarm_default.caf in Resources */,
+				AA01020304050607CAFAAA02 /* alarm_alarm.caf in Resources */,
+				AA01020304050607CAFAAA03 /* alarm_beacon.caf in Resources */,
+				AA01020304050607CAFAAA04 /* alarm_bulletin.caf in Resources */,
+				AA01020304050607CAFAAA05 /* alarm_radar.caf in Resources */,
+				AA01020304050607CAFAAA06 /* alarm_signal.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
