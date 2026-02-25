@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import com.nogeass.passalarm.presentation.alarmedit.AlarmEditScreen
 import com.nogeass.passalarm.presentation.main.MainScreen
 import com.nogeass.passalarm.presentation.onboarding.OnboardingScreen
+import com.nogeass.passalarm.presentation.redeem.RedeemScreen
 import com.nogeass.passalarm.presentation.settings.GlobalSettingsScreen
 
 @Composable
@@ -48,6 +49,22 @@ fun PassAlarmNavGraph(
         }
         composable(Screen.Settings.route) {
             GlobalSettingsScreen(navController)
+        }
+        composable(
+            route = Screen.Redeem.route,
+            arguments = listOf(
+                navArgument("token") {
+                    type = NavType.StringType
+                    nullable = true
+                    defaultValue = null
+                },
+            ),
+        ) { backStackEntry ->
+            val token = backStackEntry.arguments?.getString("token")
+            RedeemScreen(
+                navController = navController,
+                token = token,
+            )
         }
     }
 }

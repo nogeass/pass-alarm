@@ -1,11 +1,13 @@
 package com.nogeass.passalarm.presentation
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.app.NotificationManagerCompat
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.nogeass.passalarm.domain.repository.AlarmPlanRepository
 import com.nogeass.passalarm.domain.repository.AppSettingsRepository
@@ -21,6 +23,8 @@ class MainActivity : ComponentActivity() {
     @Inject lateinit var appSettingsRepository: AppSettingsRepository
     @Inject lateinit var alarmPlanRepository: AlarmPlanRepository
 
+    private var navController: NavHostController? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,7 +38,6 @@ class MainActivity : ComponentActivity() {
         val tutorialCompleted = runBlocking {
             val settings = appSettingsRepository.get()
             if (!settings.tutorialCompleted) {
-                // Migrate existing users: if alarms exist, skip tutorial
                 val plans = alarmPlanRepository.fetchAll()
                 if (plans.isNotEmpty()) {
                     appSettingsRepository.save(settings.copy(tutorialCompleted = true))
@@ -55,12 +58,28 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             PassAlarmTheme {
-                val navController = rememberNavController()
+                val nav = rememberNavController()
+                navController = nav
                 PassAlarmNavGraph(
-                    navController = navController,
+                    navController = nav,
                     startDestination = startDestination
                 )
             }
+        }
+
+        handleDeepLink(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        handleDeepLink(intent)
+    }
+
+    private fun handleDeepLink(intent: Intent?) {
+        val uri = intent?.data ?: return
+        if (uri.host == "pass-alarm.nogeass.com" && uri.pathSegments.size >= 2 && uri.pathSegments[0] == "r") {
+            val token = uri.pathSegments[1]
+            navController?.navigate(Screen.Redeem.createRoute(token))
         }
     }
 }

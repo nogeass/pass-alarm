@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["NDWFYRF8Y5.com.nogeass.passalarm"],
+        "components": [
+          {
+            "/": "/r/*",
+            "comment": "Crowdfunding redemption links"
+          }
+        ]
+      }
+    ]
+  }
+}

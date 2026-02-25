@@ -1,6 +1,5 @@
 package com.nogeass.passalarm.presentation.settings
 
-import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -20,6 +19,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AutoAwesome
+import androidx.compose.material.icons.filled.CardGiftcard
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material3.Icon
@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.nogeass.passalarm.presentation.designsystem.MapBackdrop
+import com.nogeass.passalarm.domain.model.ProSource
 import com.nogeass.passalarm.presentation.designsystem.PassButton
 import com.nogeass.passalarm.presentation.designsystem.PassButtonSize
 import com.nogeass.passalarm.presentation.designsystem.PassColors
@@ -52,6 +53,7 @@ import com.nogeass.passalarm.presentation.designsystem.PassTypography
 import com.nogeass.passalarm.presentation.designsystem.PraiseMessages
 import com.nogeass.passalarm.presentation.designsystem.PraiseToast
 import com.nogeass.passalarm.presentation.designsystem.TimeOfDay
+import com.nogeass.passalarm.presentation.navigation.Screen
 import com.nogeass.passalarm.presentation.pro.ProPurchaseScreen
 
 /**
@@ -219,6 +221,61 @@ fun GlobalSettingsScreen(
                         style = PassTypography.badgeText,
                         color = Color.White.copy(alpha = 0.7f),
                     )
+                }
+
+                // Crowdfunding redeem
+                Surface(
+                    shape = RoundedCornerShape(PassSpacing.cardCorner),
+                    color = Color.White.copy(alpha = 0.1f),
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screen.Redeem.createRoute())
+                    },
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(PassSpacing.md),
+                        horizontalArrangement = Arrangement.spacedBy(PassSpacing.sm),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.CardGiftcard,
+                            contentDescription = null,
+                            tint = PassColors.brand,
+                            modifier = Modifier.size(24.dp),
+                        )
+                        Column(modifier = Modifier.weight(1f)) {
+                            if (uiState.isPro && uiState.proSource == ProSource.CROWDFUND) {
+                                Text(
+                                    text = "Pro 有効（ライフタイム）",
+                                    color = Color.White,
+                                )
+                                Text(
+                                    text = "クラウドファンディング特典",
+                                    fontSize = 12.sp,
+                                    color = Color.White.copy(alpha = 0.5f),
+                                )
+                            } else {
+                                Text(
+                                    text = "クラファン特典を受け取る",
+                                    color = Color.White,
+                                )
+                                Text(
+                                    text = "支援者の方はこちら",
+                                    fontSize = 12.sp,
+                                    color = Color.White.copy(alpha = 0.5f),
+                                )
+                            }
+                        }
+                        if (uiState.isPro && uiState.proSource == ProSource.CROWDFUND) {
+                            Icon(
+                                imageVector = Icons.Default.CheckCircle,
+                                contentDescription = null,
+                                tint = PassColors.successGreen,
+                                modifier = Modifier.size(24.dp),
+                            )
+                        }
+                    }
                 }
 
                 // Feedback

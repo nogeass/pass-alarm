@@ -3,5 +3,12 @@ main = "src/index.ts"
 compatibility_date = "2024-01-01"
 
 # secrets (set via `wrangler secret put`):
-#   GITHUB_TOKEN  — GitHub PAT with repo scope
-#   API_KEY       — shared secret for app → worker auth
+#   GITHUB_TOKEN   — GitHub PAT with repo scope
+#   API_KEY        — shared secret for app → worker auth
+#   ADMIN_API_KEY  — admin dashboard auth
+
+[[d1_databases]]
+binding = "DB"
+database_name = "pass-alarm-db"
+database_id = "e16ca211-04f8-491f-aa3e-e440726b2dd9"
+migrations_dir = "migrations"

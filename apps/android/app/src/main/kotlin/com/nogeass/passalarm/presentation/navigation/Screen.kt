@@ -8,4 +8,8 @@ sealed class Screen(val route: String) {
             "alarm_edit/${planId ?: "new"}"
     }
     data object Settings : Screen("settings")
+    data object Redeem : Screen("redeem?token={token}") {
+        fun createRoute(token: String? = null): String =
+            if (token != null) "redeem?token=$token" else "redeem"
+    }
 }

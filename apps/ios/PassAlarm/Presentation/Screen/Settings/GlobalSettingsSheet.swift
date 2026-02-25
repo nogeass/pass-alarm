@@ -10,6 +10,8 @@ struct GlobalSettingsSheet: View {
     @State private var showToast = false
     @State private var toastMessage = ""
     @State private var showFeedback = false
+    @State private var showRedeem = false
+    @State private var proSource: ProSource = .store
 
     var body: some View {
         NavigationStack {
@@ -87,6 +89,41 @@ struct GlobalSettingsSheet: View {
                             .disabled(isRestoring)
                         }
 
+                        // Crowdfunding redeem
+                        Button {
+                            showRedeem = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "gift.fill")
+                                    .foregroundStyle(PassColors.brandLight)
+                                VStack(alignment: .leading, spacing: PassSpacing.xs) {
+                                    if isPro && proSource == .crowdfund {
+                                        Text("Pro 有効（ライフタイム）")
+                                            .foregroundStyle(.white)
+                                        Text("クラウドファンディング特典")
+                                            .font(.caption)
+                                            .foregroundStyle(.white.opacity(0.5))
+                                    } else {
+                                        Text("クラファン特典を受け取る")
+                                            .foregroundStyle(.white)
+                                        Text("支援者の方はこちら")
+                                            .font(.caption)
+                                            .foregroundStyle(.white.opacity(0.5))
+                                    }
+                                }
+                                Spacer()
+                                if isPro && proSource == .crowdfund {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundStyle(PassColors.successGreen)
+                                } else {
+                                    Image(systemName: "chevron.right")
+                                        .foregroundStyle(.white.opacity(0.3))
+                                }
+                            }
+                            .padding(PassSpacing.md)
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: PassSpacing.cardCorner))
+                        }
+
                         // Feedback
                         Button {
                             showFeedback = true
@@ -155,6 +192,10 @@ struct GlobalSettingsSheet: View {
                 }
             )
         }
+        .sheet(isPresented: $showRedeem) {
+            RedeemView()
+                .environment(container)
+        }
         .fullScreenCover(isPresented: $showProPurchase) {
             ProPurchaseView(
                 onPurchased: {
@@ -181,6 +222,7 @@ struct GlobalSettingsSheet: View {
         holidayAutoSkip = settings.holidayAutoSkip
         let status = await container.subscriptionRepository.currentStatus()
         isPro = status.isPro
+        proSource = status.source
     }
 
     private func saveHolidaySetting(_ enabled: Bool) async {

@@ -14,10 +14,12 @@ final class DIContainer {
     let holidayRepository: HolidayRepositoryProtocol
     let subscriptionRepository: SubscriptionRepositoryProtocol
     let appSettingsRepository: AppSettingsRepositoryProtocol
+    let serverEntitlementRepository: ServerEntitlementRepositoryProtocol
 
     // Services
     let notificationScheduler: NotificationSchedulerProtocol
     let notificationPermission: NotificationPermissionProtocol
+    let authService: AuthServiceProtocol
 
     // UseCases
     let computeQueueUseCase: ComputeQueueUseCase
@@ -36,17 +38,25 @@ final class DIContainer {
         // Database
         database = AppDatabase.shared
 
+        // Services
+        let firebaseAuth = FirebaseAuthService()
+        authService = firebaseAuth
+        notificationScheduler = UNNotificationSchedulerAdapter()
+        notificationPermission = UNNotificationPermissionAdapter()
+
         // Repositories
         alarmPlanRepository = GRDBAlarmPlanRepository(database: database)
         skipExceptionRepository = GRDBSkipExceptionRepository(database: database)
         scheduledTokenRepository = GRDBScheduledTokenRepository(database: database)
         holidayRepository = GRDBHolidayRepository(database: database)
-        subscriptionRepository = StoreKitSubscriptionRepository()
         appSettingsRepository = UserDefaultsAppSettingsRepository()
-
-        // Services
-        notificationScheduler = UNNotificationSchedulerAdapter()
-        notificationPermission = UNNotificationPermissionAdapter()
+        let serverEntitlements = ServerEntitlementRepository(authService: firebaseAuth)
+        serverEntitlementRepository = serverEntitlements
+        let storeKitRepo = StoreKitSubscriptionRepository()
+        subscriptionRepository = CompositeSubscriptionRepository(
+            storeKitRepository: storeKitRepo,
+            serverEntitlementRepository: serverEntitlements
+        )
 
         // UseCases
         computeQueueUseCase = ComputeQueueUseCase(
@@ -108,7 +118,9 @@ final class DIContainer {
          subscriptionRepository: SubscriptionRepositoryProtocol,
          appSettingsRepository: AppSettingsRepositoryProtocol,
          notificationScheduler: NotificationSchedulerProtocol,
-         notificationPermission: NotificationPermissionProtocol) {
+         notificationPermission: NotificationPermissionProtocol,
+         authService: AuthServiceProtocol,
+         serverEntitlementRepository: ServerEntitlementRepositoryProtocol) {
         self.database = database
         self.alarmPlanRepository = alarmPlanRepository
         self.skipExceptionRepository = skipExceptionRepository
@@ -118,6 +130,8 @@ final class DIContainer {
         self.appSettingsRepository = appSettingsRepository
         self.notificationScheduler = notificationScheduler
         self.notificationPermission = notificationPermission
+        self.authService = authService
+        self.serverEntitlementRepository = serverEntitlementRepository
         self.computeQueueUseCase = ComputeQueueUseCase(
             planRepository: alarmPlanRepository,
             skipRepository: skipExceptionRepository,

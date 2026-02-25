@@ -3,6 +3,7 @@ package com.nogeass.passalarm.presentation.settings
 import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nogeass.passalarm.domain.model.ProSource
 import com.nogeass.passalarm.domain.repository.AppSettingsRepository
 import com.nogeass.passalarm.domain.repository.SubscriptionRepository
 import com.nogeass.passalarm.domain.usecase.UpdateAppSettingsUseCase
@@ -18,6 +19,7 @@ import javax.inject.Inject
 data class GlobalSettingsUiState(
     val holidayAutoSkip: Boolean = true,
     val isPro: Boolean = false,
+    val proSource: ProSource = ProSource.STORE,
     val showProPurchase: Boolean = false,
     val isLoading: Boolean = true,
     val restoreMessage: String? = null,
@@ -94,7 +96,7 @@ class GlobalSettingsViewModel @Inject constructor(
     private fun observeProStatus() {
         subscriptionRepository.observeStatus()
             .onEach { status ->
-                _uiState.update { it.copy(isPro = status.isPro) }
+                _uiState.update { it.copy(isPro = status.isPro, proSource = status.source) }
             }
             .launchIn(viewModelScope)
     }
