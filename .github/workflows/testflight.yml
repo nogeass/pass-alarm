@@ -52,6 +52,12 @@ jobs:
           cp "$PROVISION_PATH" ~/Library/MobileDevice/Provisioning\ Profiles/"$PROFILE_UUID.mobileprovision"
           echo "PROVISIONING_PROFILE_UUID=$PROFILE_UUID" >> $GITHUB_ENV
 
+      - name: Get version from latest tag
+        id: version
+        run: |
+          VERSION=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' | sed 's/-.*//')
+          echo "VERSION=${VERSION:-1.0.0}" >> $GITHUB_OUTPUT
+
       - name: Deploy to TestFlight
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
@@ -61,7 +67,7 @@ jobs:
           FASTLANE_XCODEBUILD_SETTINGS_RETRIES: "6"
         run: |
           ln -sf ios/Fastfile fastlane/Fastfile
-          fastlane beta version:1.0.0
+          fastlane beta version:${{ steps.version.outputs.VERSION }}
 
   android-internal:
     runs-on: ubuntu-latest
@@ -94,6 +100,12 @@ jobs:
       - name: Install Fastlane
         run: sudo gem install fastlane
 
+      - name: Get version from latest tag
+        id: version
+        run: |
+          VERSION=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' | sed 's/-.*//')
+          echo "VERSION=${VERSION:-1.0.0}" >> $GITHUB_OUTPUT
+
       - name: Deploy to Google Play internal track
         env:
           SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_PLAY_JSON_KEY }}
@@ -105,4 +117,4 @@ jobs:
           mkdir -p fastlane/android/fastlane
           ln -sf "$PWD/fastlane/android/Fastfile" fastlane/android/fastlane/Fastfile
           cd fastlane/android
-          fastlane beta version:1.0.0
+          fastlane beta version:${{ steps.version.outputs.VERSION }}
