@@ -93,6 +93,7 @@ dependencies {
     implementation(libs.datastore.preferences)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.9.0")
     implementation(libs.core.ktx)
 
     implementation(platform(libs.firebase.bom))

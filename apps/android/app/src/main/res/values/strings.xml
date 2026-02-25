@@ -44,4 +44,6 @@
     <string name="weekday_fri">金</string>
     <string name="weekday_sat">土</string>
     <string name="weekday_sun">日</string>
+    <!-- Placeholder: overridden by google-services.json when OAuth client is configured -->
+    <string name="default_web_client_id" translatable="false">placeholder</string>
 </resources>
