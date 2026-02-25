@@ -117,11 +117,21 @@ platform :ios do
     version = options[:version] || "0.0.1"
     api_key = app_store_connect_api_key(asc_api_key_params)
 
-    latest = latest_testflight_build_number(
-      api_key: api_key,
-      app_identifier: APP_IDENTIFIER
-    )
-    build_number = latest + 1
+    # Check build numbers across current and previous versions to get the global max
+    max_build = 0
+    [version, "1.0.0", "1.0.1", "1.1.0", "1.1.1", "1.2.0"].uniq.each do |v|
+      begin
+        b = latest_testflight_build_number(
+          api_key: api_key,
+          app_identifier: APP_IDENTIFIER,
+          version: v
+        )
+        max_build = [max_build, b].max
+      rescue => e
+        UI.message("⚠️ No builds for version #{v}: #{e.message}")
+      end
+    end
+    build_number = max_build + 1
     UI.message("📦 Version: #{version}, Build: #{build_number}")
     setup_manual_signing_if_ci
     gym(**appstore_gym_options(version: version, build_number: build_number))
@@ -170,11 +180,20 @@ platform :ios do
     version = options[:version] || "1.0.0"
     api_key = app_store_connect_api_key(asc_api_key_params)
 
-    latest = latest_testflight_build_number(
-      api_key: api_key,
-      app_identifier: APP_IDENTIFIER
-    )
-    build_number = latest + 1
+    max_build = 0
+    [version, "1.0.0", "1.0.1", "1.1.0", "1.1.1", "1.2.0"].uniq.each do |v|
+      begin
+        b = latest_testflight_build_number(
+          api_key: api_key,
+          app_identifier: APP_IDENTIFIER,
+          version: v
+        )
+        max_build = [max_build, b].max
+      rescue => e
+        UI.message("⚠️ No builds for version #{v}: #{e.message}")
+      end
+    end
+    build_number = max_build + 1
     UI.message("📦 Version: #{version}, Build: #{build_number}")
     setup_manual_signing_if_ci
     gym(**appstore_gym_options(version: version, build_number: build_number))
