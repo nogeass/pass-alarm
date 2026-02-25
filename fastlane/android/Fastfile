@@ -6,6 +6,22 @@ PROJECT_DIR      = File.expand_path("../../apps/android", FASTFILE_DIR)
 METADATA_PATH    = File.expand_path("metadata/android", FASTFILE_DIR)
 SCREENSHOTS_PATH = File.expand_path("screenshots", FASTFILE_DIR)
 
+def max_play_version_code
+  max_code = 0
+  %w[internal alpha beta production].each do |track|
+    begin
+      codes = google_play_track_version_codes(
+        package_name: APP_PACKAGE,
+        track: track
+      )
+      max_code = [max_code, *codes].max if codes.any?
+    rescue => e
+      UI.message("⚠️ Could not fetch version codes from '#{track}': #{e.message}")
+    end
+  end
+  max_code
+end
+
 platform :android do
   desc "Build debug APK"
   lane :build do
@@ -46,11 +62,8 @@ platform :android do
   desc "Deploy beta to Google Play internal track"
   lane :beta do |options|
     version = options[:version] || "0.0.1"
-    version_codes = google_play_track_version_codes(
-      package_name: APP_PACKAGE,
-      track: "internal"
-    ) rescue [0]
-    next_code = (version_codes.max || 0) + 1
+    next_code = max_play_version_code + 1
+    UI.message("📦 Next versionCode: #{next_code}")
     gradle(
       project_dir: PROJECT_DIR,
       task: "bundleRelease",
@@ -72,16 +85,8 @@ platform :android do
   desc "Deploy to production and submit for review"
   lane :release do |options|
     version = options[:version] || "1.0.0"
-    version_codes = google_play_track_version_codes(
-      package_name: APP_PACKAGE,
-      track: "production"
-    ) rescue [0]
-    internal_codes = google_play_track_version_codes(
-      package_name: APP_PACKAGE,
-      track: "internal"
-    ) rescue [0]
-    all_codes = version_codes + internal_codes
-    next_code = (all_codes.max || 0) + 1
+    next_code = max_play_version_code + 1
+    UI.message("📦 Next versionCode: #{next_code}")
     gradle(
       project_dir: PROJECT_DIR,
       task: "bundleRelease",
