@@ -1,0 +1,2 @@
+# Serve /r/TOKEN requests with the redeem fallback page
+/r/*  /r/index.html  200

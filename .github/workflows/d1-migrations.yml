@@ -1,0 +1,64 @@
+name: D1 Database Migrations
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sql/**'
+      - '.github/workflows/d1-migrations.yml'
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    name: Apply D1 Migrations
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install wrangler
+        run: npm install -g wrangler
+
+      - name: Apply SQL migrations
+        run: |
+          echo "Applying migrations to pass-alarm-db..."
+
+          if [ -d "sql" ]; then
+            for sql_file in sql/*.sql; do
+              if [ -f "$sql_file" ]; then
+                echo "Applying $sql_file..."
+                npx wrangler d1 execute pass-alarm-db --remote --file="$sql_file" || echo "⚠️  Already applied or error: $sql_file"
+              fi
+            done
+          fi
+
+          # Also apply wrangler-managed migrations if they exist
+          if [ -d "web/api/migrations" ]; then
+            echo "=== Applying web/api/migrations/ ==="
+            cd web/api
+            npx wrangler d1 migrations apply pass-alarm-db --remote || echo "⚠️  Migrations already applied or error"
+            cd ../..
+          fi
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Verify migrations
+        run: |
+          echo "=== Verifying tables ==="
+          npx wrangler d1 execute pass-alarm-db --remote --command "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;"
+
+          echo "=== Checking backers table ==="
+          npx wrangler d1 execute pass-alarm-db --remote --command "PRAGMA table_info(backers);"
+
+          echo "=== Checking config values ==="
+          npx wrangler d1 execute pass-alarm-db --remote --command "SELECT * FROM config;"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

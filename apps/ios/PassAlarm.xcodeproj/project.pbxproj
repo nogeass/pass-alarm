@@ -95,6 +95,13 @@
 		AA01020304050607CAFAAA04 /* alarm_bulletin.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB01020304050607CAFABB04 /* alarm_bulletin.caf */; };
 		AA01020304050607CAFAAA05 /* alarm_radar.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB01020304050607CAFABB05 /* alarm_radar.caf */; };
 		AA01020304050607CAFAAA06 /* alarm_signal.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB01020304050607CAFABB06 /* alarm_signal.caf */; };
+		F5B536FEAEE7378392526A14 /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04B419E217AF4155AD7A620 /* AuthServiceProtocol.swift */; };
+		CCA04F47863F0413C69199E1 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A70F0A0671AFD4FA1CC1659 /* FirebaseAuthService.swift */; };
+		836C312A4AC79DEBFCF335A2 /* PassAlarmAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DEAFF5264F70F60B69950C /* PassAlarmAPI.swift */; };
+		4DB0A565D4FBE846767371DE /* ServerEntitlementRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D437C40D2889CCBD7F79CDD /* ServerEntitlementRepositoryProtocol.swift */; };
+		6B6E09A1BC5E90B252072C58 /* ServerEntitlementRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B1C316EB991E81E2F5319 /* ServerEntitlementRepository.swift */; };
+		AF2F9094B89F2480AA33A97F /* CompositeSubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F853F5DB7357EB7FF89EA499 /* CompositeSubscriptionRepository.swift */; };
+		DD345208D0D1BA6908D1167C /* RedeemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140F10CF1BE757AABB94D324 /* RedeemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +202,13 @@
 		BB01020304050607CAFABB04 /* alarm_bulletin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_bulletin.caf; sourceTree = "<group>"; };
 		BB01020304050607CAFABB05 /* alarm_radar.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_radar.caf; sourceTree = "<group>"; };
 		BB01020304050607CAFABB06 /* alarm_signal.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_signal.caf; sourceTree = "<group>"; };
+		F04B419E217AF4155AD7A620 /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
+		2A70F0A0671AFD4FA1CC1659 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
+		E3DEAFF5264F70F60B69950C /* PassAlarmAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassAlarmAPI.swift; sourceTree = "<group>"; };
+		1D437C40D2889CCBD7F79CDD /* ServerEntitlementRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEntitlementRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F69B1C316EB991E81E2F5319 /* ServerEntitlementRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEntitlementRepository.swift; sourceTree = "<group>"; };
+		F853F5DB7357EB7FF89EA499 /* CompositeSubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeSubscriptionRepository.swift; sourceTree = "<group>"; };
+		140F10CF1BE757AABB94D324 /* RedeemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,10 +253,12 @@
 		2336BF5307B5487FFDAA70AF /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				F853F5DB7357EB7FF89EA499 /* CompositeSubscriptionRepository.swift */,
 				B425B9FB3A31510BB43AA583 /* GRDBAlarmPlanRepository.swift */,
 				966DC27F927311A965C1CD5A /* GRDBHolidayRepository.swift */,
 				83F296EFB2F8A9689229BEC2 /* GRDBScheduledTokenRepository.swift */,
 				3EE36B355A6B5E20483DD925 /* GRDBSkipExceptionRepository.swift */,
+				F69B1C316EB991E81E2F5319 /* ServerEntitlementRepository.swift */,
 				A2F3AE12AC77323E3D649D5B /* StoreKitSubscriptionRepository.swift */,
 				557AB9FCE2C7223EBB2F49BE /* UserDefaultsAppSettingsRepository.swift */,
 			);
@@ -320,6 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				E5F607182930A1B4C5D6E7F8 /* FeedbackAPI.swift */,
+				2A70F0A0671AFD4FA1CC1659 /* FirebaseAuthService.swift */,
+				E3DEAFF5264F70F60B69950C /* PassAlarmAPI.swift */,
 				F02FB9F9216F16248C69E348 /* UNNotificationPermissionAdapter.swift */,
 				307F7CE0D449DE8EC32971BB /* UNNotificationSchedulerAdapter.swift */,
 			);
@@ -471,6 +489,7 @@
 				213BE041789497D1DD79A932 /* Onboarding */,
 				4521B2E2DAF1EA9BEA06C14D /* Pro */,
 				7D2C9BE1015E4322352D9021 /* Queue */,
+				BA9FF029F68B7CB45CD793B7 /* Redeem */,
 				20FB67EA510928EECD6E7BEA /* Ringing */,
 				7E04FDF7E4AF646EDEE807BC /* Settings */,
 				92E37CB690AB509EDD7F4F18 /* Skip */,
@@ -516,6 +535,7 @@
 		CE283E900A08F58C298EDEE2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F04B419E217AF4155AD7A620 /* AuthServiceProtocol.swift */,
 				B7328F927BC3E8C705C1EA46 /* NotificationPermissionProtocol.swift */,
 				6D9E5F50B2D5C496D7E68F65 /* NotificationSchedulerProtocol.swift */,
 			);
@@ -578,10 +598,19 @@
 				07BA3BBC9C25B731E54C184D /* AppSettingsRepositoryProtocol.swift */,
 				72631CCD0D12F31BB2526895 /* HolidayRepositoryProtocol.swift */,
 				D399D71699D97F821E1E9D9B /* ScheduledTokenRepositoryProtocol.swift */,
+				1D437C40D2889CCBD7F79CDD /* ServerEntitlementRepositoryProtocol.swift */,
 				D0BC53473C717E4C7F75ACE3 /* SkipExceptionRepositoryProtocol.swift */,
 				FB4EACB29705074CC617D983 /* SubscriptionRepositoryProtocol.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		BA9FF029F68B7CB45CD793B7 /* Redeem */ = {
+			isa = PBXGroup;
+			children = (
+				140F10CF1BE757AABB94D324 /* RedeemView.swift */,
+			);
+			path = Redeem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -695,6 +724,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5B536FEAEE7378392526A14 /* AuthServiceProtocol.swift in Sources */,
 				C442E1F5CB6887215516A311 /* AlarmCardView.swift in Sources */,
 				593069B0A422E997B5C50AAF /* AlarmEditSheet.swift in Sources */,
 				30D17C25E8854558BEFCA646 /* AlarmEditViewModel.swift in Sources */,
@@ -712,6 +742,7 @@
 				5A0DE3FB1E998D5E190C4390 /* AppSettings.swift in Sources */,
 				6E0A184C5F07F44790955ABC /* AppSettingsRepositoryProtocol.swift in Sources */,
 				7D8DB089FAA127A26BBC772A /* CheckProLimitUseCase.swift in Sources */,
+				AF2F9094B89F2480AA33A97F /* CompositeSubscriptionRepository.swift in Sources */,
 				0E7917D7F3D164D7BD614A4B /* ComputeQueueUseCase.swift in Sources */,
 				A4E7F41D15C0BA4B68A55B79 /* CreatePlanUseCase.swift in Sources */,
 				944669A32159574E6916C5B9 /* DIContainer.swift in Sources */,
@@ -735,6 +766,7 @@
 				E297F0718CAF0F9107C0ACF1 /* OnAlarmFiredUseCase.swift in Sources */,
 				4A4429FDB002A0FEA7CCB6F3 /* OnboardingView.swift in Sources */,
 				95C116B7F2997899D5C54630 /* TutorialFlowView.swift in Sources */,
+				836C312A4AC79DEBFCF335A2 /* PassAlarmAPI.swift in Sources */,
 				3B6C7A6CFF72E8582C3D01B0 /* PassAlarmApp.swift in Sources */,
 				9326455DAFA549A6B5094875 /* PassButton.swift in Sources */,
 				C412A94923E1C7161FD45623 /* PassColors.swift in Sources */,
@@ -748,12 +780,15 @@
 				5F5F16545C9E3C26AE2B0B1E /* ProCardView.swift in Sources */,
 				2B1DB81A478362FBD17B6D35 /* ProPurchaseView.swift in Sources */,
 				AB622E0196B92C0E4C97FBE0 /* ProStatus.swift in Sources */,
+				DD345208D0D1BA6908D1167C /* RedeemView.swift in Sources */,
 				D321FCE1C1E7C7849083FAD0 /* RescheduleNextNUseCase.swift in Sources */,
 				DDB1566995CBFFD527CE897C /* RootView.swift in Sources */,
 				F572D4726383B613C5C58F2D /* ScheduledToken.swift in Sources */,
 				F2C926888FED64E1C2852723 /* ScheduledTokenRecord.swift in Sources */,
 				DE2AFD5917D300021FABD04C /* ScheduledTokenRepositoryProtocol.swift in Sources */,
 				F60B780004346CD3598B5D3D /* SeedDefaultAlarmsUseCase.swift in Sources */,
+				6B6E09A1BC5E90B252072C58 /* ServerEntitlementRepository.swift in Sources */,
+				4DB0A565D4FBE846767371DE /* ServerEntitlementRepositoryProtocol.swift in Sources */,
 				0A4D09F92DFC602D79D7567D /* SkipDateUseCase.swift in Sources */,
 				AED3876A57F0D5E24B419FE5 /* SkipException.swift in Sources */,
 				F5A4F29C13ACA37DEC42F065 /* SkipExceptionRecord.swift in Sources */,
@@ -771,6 +806,7 @@
 				EAD366957F29FBA6E37A4E0A /* Weekday.swift in Sources */,
 				B2C3D4E5F6071829A3B4C5D6 /* SystemSoundPicker.swift in Sources */,
 				D4E5F6071829A30B5C6D7E8F /* FeedbackSheet.swift in Sources */,
+				CCA04F47863F0413C69199E1 /* FirebaseAuthService.swift in Sources */,
 				F607182930A1B2C5D6E7F8A9 /* FeedbackAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
