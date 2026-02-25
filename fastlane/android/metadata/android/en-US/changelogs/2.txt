@@ -1,0 +1,2 @@
+- Notification permission is now optional
+- Added permission prompt when enabling alarms
