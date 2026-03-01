@@ -37,7 +37,7 @@ export function DownloadButton({
         alt={alt}
         width={width}
         height={height}
-        className={`${variant === 'primary' ? 'h-12' : 'h-9'} w-auto`}
+        style={{ height: variant === 'primary' ? 48 : 36, width: 'auto' }}
       />
     </a>
   )
