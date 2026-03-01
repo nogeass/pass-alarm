@@ -160,7 +160,7 @@ export const ja = {
     terms: '利用規約',
     oss: 'オープンソース',
     contact: 'お問い合わせ',
-    copyright: '© 2025 nogeass.com',
+    copyright: '© no geass inc. All rights reserved',
   },
 
   privacyPage: {
