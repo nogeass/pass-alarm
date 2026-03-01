@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { ja } from '@/i18n/ja'
 import { SECTION_IDS } from '@/lib/constants'
 import { images } from '@/lib/assets'
@@ -10,6 +10,8 @@ import { BlobShape } from '@/components/decorative/BlobShape'
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion()
+  const { scrollY } = useScroll()
+  const bgY = useTransform(scrollY, [0, 800], ['0%', '30%'])
 
   const container = {
     hidden: {},
@@ -34,18 +36,21 @@ export function Hero() {
       id={SECTION_IDS.hero}
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
     >
-      {/* Hero map background image */}
-      <div className="absolute inset-0 -z-10">
+      {/* Hero map background image with parallax */}
+      <motion.div
+        className="absolute inset-0 -z-10"
+        style={{ y: shouldReduceMotion ? 0 : bgY }}
+      >
         <Image
           src={images.heroMap}
           alt=""
           fill
-          className="object-cover opacity-60"
+          className="object-cover opacity-60 scale-[1.3]"
           priority
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-surface/30 via-surface/10 to-surface/80" />
-      </div>
+      </motion.div>
 
       {/* Decorative blobs */}
       <BlobShape

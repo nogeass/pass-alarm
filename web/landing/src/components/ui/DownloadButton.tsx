@@ -37,7 +37,7 @@ export function DownloadButton({
         alt={alt}
         width={width}
         height={height}
-        className="h-auto"
+        className={`${variant === 'primary' ? 'h-12' : 'h-9'} w-auto`}
       />
     </a>
   )
