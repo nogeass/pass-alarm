@@ -130,6 +130,14 @@ struct ProPurchaseView: View {
                             .font(.caption)
                             .foregroundStyle(.white.opacity(0.5))
                     }
+
+                    // Legal links
+                    HStack(spacing: PassSpacing.md) {
+                        Link("利用規約 (EULA)", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+                        Link("プライバシーポリシー", destination: URL(string: "https://pass-alarm.nogeass.com/privacy")!)
+                    }
+                    .font(.caption2)
+                    .foregroundStyle(.white.opacity(0.4))
                     .padding(.bottom, PassSpacing.xl)
                 }
                 .padding(.horizontal, PassSpacing.md)

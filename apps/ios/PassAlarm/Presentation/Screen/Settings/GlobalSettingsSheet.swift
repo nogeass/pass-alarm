@@ -146,6 +146,42 @@ struct GlobalSettingsSheet: View {
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: PassSpacing.cardCorner))
                         }
 
+                        // Legal
+                        VStack(spacing: PassSpacing.md) {
+                            Text("法的情報")
+                                .font(PassTypography.sectionHeader)
+                                .foregroundStyle(.white.opacity(0.6))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+
+                            Link(destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!) {
+                                HStack {
+                                    Image(systemName: "doc.text")
+                                        .foregroundStyle(.white.opacity(0.7))
+                                    Text("利用規約 (EULA)")
+                                        .foregroundStyle(.white)
+                                    Spacer()
+                                    Image(systemName: "arrow.up.right")
+                                        .foregroundStyle(.white.opacity(0.3))
+                                }
+                                .padding(PassSpacing.md)
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: PassSpacing.cardCorner))
+                            }
+
+                            Link(destination: URL(string: "https://pass-alarm.nogeass.com/privacy")!) {
+                                HStack {
+                                    Image(systemName: "hand.raised")
+                                        .foregroundStyle(.white.opacity(0.7))
+                                    Text("プライバシーポリシー")
+                                        .foregroundStyle(.white)
+                                    Spacer()
+                                    Image(systemName: "arrow.up.right")
+                                        .foregroundStyle(.white.opacity(0.3))
+                                }
+                                .padding(PassSpacing.md)
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: PassSpacing.cardCorner))
+                            }
+                        }
+
                         Spacer()
                             .frame(height: PassSpacing.xxl)
 

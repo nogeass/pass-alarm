@@ -46,3 +46,8 @@ Pro (In-App Purchase):
 
 Pass Alarm uses OS notification features. Notification permission is required.
 Alarms may not sound during Focus mode or Do Not Disturb.
+
+■ Terms & Privacy
+
+Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+Privacy Policy: https://pass-alarm.nogeass.com/privacy

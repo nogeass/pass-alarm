@@ -46,3 +46,8 @@ Pro（アプリ内課金）:
 
 パスアラームはOSの通知機能を使用します。通知許可が必須です。
 おやすみモード・集中モード中は鳴らない場合があります。
+
+■ 規約・プライバシー
+
+利用規約（EULA）: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+プライバシーポリシー: https://pass-alarm.nogeass.com/privacy
