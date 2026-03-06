@@ -110,6 +110,15 @@ struct ProPurchaseView: View {
                         .padding(.horizontal, PassSpacing.md)
                     }
 
+                    // Subscription terms disclaimer
+                    if let disclaimer = subscriptionDisclaimer {
+                        Text(disclaimer)
+                            .font(.caption2)
+                            .foregroundStyle(.white.opacity(0.5))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, PassSpacing.lg)
+                    }
+
                     // Purchase button
                     PassButton(
                         title: isPurchasing ? "処理中..." : ctaTitle,
@@ -195,6 +204,15 @@ struct ProPurchaseView: View {
             return "\(trial)で試す"
         }
         return "はじめる"
+    }
+
+    private var subscriptionDisclaimer: String? {
+        guard let selected = products.first(where: { $0.period == selectedPeriod }) else { return nil }
+        let periodName = selected.period == .yearly ? "年額" : "月額"
+        if let trial = selected.trialText {
+            return "\(trial)のトライアル終了後、\(periodName)\(selected.displayPrice)が自動的に課金されます。サブスクリプションはいつでもキャンセルできます。"
+        }
+        return "サブスクリプションは\(periodName)\(selected.displayPrice)で自動更新されます。いつでもキャンセルできます。"
     }
 
     // MARK: - Actions
