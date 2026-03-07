@@ -10,6 +10,8 @@ struct AlarmEditSheet: View {
     @State private var showToast = false
     @State private var toastMessage = ""
     @State private var showSoundPicker = false
+    @State private var showNotificationAlert = false
+    @State private var showSkipConfirmation = false
 
     var body: some View {
         ZStack {
@@ -53,6 +55,32 @@ struct AlarmEditSheet: View {
             if viewModel == nil {
                 viewModel = AlarmEditViewModel(container: container, plan: plan)
             }
+        }
+        .alert("通知が必要です", isPresented: $showNotificationAlert) {
+            Button("設定を開く") {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+            Button("スキップ") {
+                showSkipConfirmation = true
+            }
+            Button("キャンセル", role: .cancel) {}
+        } message: {
+            Text("設定から通知を許可しないとアラームが鳴りません。")
+        }
+        .alert("確認", isPresented: $showSkipConfirmation) {
+            Button("はい") {
+                Task {
+                    if let vm = viewModel {
+                        let success = await vm.save(isEnabled: false)
+                        if success { onSaved() }
+                    }
+                }
+            }
+            Button("いいえ", role: .cancel) {}
+        } message: {
+            Text("アラームが鳴りませんがよろしいですか？")
         }
     }
 
@@ -208,9 +236,21 @@ struct AlarmEditSheet: View {
                     haptic: .success
                 ) {
                     Task {
-                        let success = await vm.save()
-                        if success {
-                            onSaved()
+                        let status = await container.notificationPermission.currentStatus()
+                        switch status {
+                        case .authorized:
+                            let success = await vm.save()
+                            if success { onSaved() }
+                        case .notDetermined:
+                            let granted = (try? await container.notificationPermission.request()) ?? false
+                            if granted {
+                                let success = await vm.save()
+                                if success { onSaved() }
+                            } else {
+                                showNotificationAlert = true
+                            }
+                        case .denied, .provisional:
+                            showNotificationAlert = true
                         }
                     }
                 }

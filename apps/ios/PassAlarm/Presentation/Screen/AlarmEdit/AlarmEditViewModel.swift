@@ -37,13 +37,13 @@ final class AlarmEditViewModel {
         }
     }
 
-    func save() async -> Bool {
+    func save(isEnabled: Bool = true) async -> Bool {
         let timeStr = String(format: "%02d:%02d", selectedHour, selectedMinute)
 
         if isEditing, let planId = planId {
             var plan = AlarmPlan(
                 id: planId,
-                isEnabled: true,
+                isEnabled: isEnabled,
                 label: label,
                 timeHHmm: timeStr,
                 weekdaysMask: weekdaysMask,
@@ -76,7 +76,7 @@ final class AlarmEditViewModel {
 
             let plan = AlarmPlan(
                 id: UUID(),
-                isEnabled: true,
+                isEnabled: isEnabled,
                 label: label,
                 timeHHmm: timeStr,
                 weekdaysMask: weekdaysMask,
