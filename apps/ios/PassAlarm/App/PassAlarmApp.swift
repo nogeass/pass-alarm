@@ -2,6 +2,7 @@ import SwiftUI
 
 @main
 struct PassAlarmApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var container = DIContainer.shared
     @State private var redeemToken: String?
     @State private var showRedeem = false
